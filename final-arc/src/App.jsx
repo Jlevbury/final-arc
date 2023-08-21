@@ -1,33 +1,31 @@
 import { useState } from "react";
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Stats, Environment } from "@react-three/drei";
 
 function App() {
 	const [count, setCount] = useState(0);
 
 	return (
-		<div className={" bg-indigo-800 absolute w-full h-screen p-0 top-0 left-0"}>
-			<div className={"h-5/6 p-0 "}>
-				<Canvas
-					camera={{
-						position: [0, 0, 7],
-						fov: 30,
-					}}
-				>
-					<color
-						attach='background'
-						args={["#ececec"]}
-					/>
+		<Canvas
+			camera={{
+				position: [0, 0, 7],
+				fov: 30,
+			}}
+		>
+			<Environment
+				background
+				blur={0.25}
+				files='../public/image/mosaic_tunnel_1k.hdr'
+			/>
 
-					<OrbitControls />
-					<mesh rotation={[Math.PI / 10, 10, 10]}>
-						<torusGeometry />
-						<meshNormalMaterial />
-					</mesh>
-				</Canvas>
-			</div>
-		</div>
+			<OrbitControls />
+			<mesh rotation={[Math.PI / 10, 10, 10]}>
+				<torusGeometry />
+				<meshNormalMaterial />
+			</mesh>
+			<Stats />
+		</Canvas>
 	);
 }
 
