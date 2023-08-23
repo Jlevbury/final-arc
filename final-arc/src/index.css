@@ -36,8 +36,28 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
+@font-face {
+	font-family: "neowave";
+	src: url("./assets/image/fonts/neowave.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "modifi";
+	src: url("./assets/image/fonts/modifi.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
 @tailwind base;
+@layer base {
+	html {
+		@apply text-neutral-800;
+	}
+	html.dark {
+		@apply text-neutral-50;
+		@apply bg-neutral-800;
+	}
+}
 @tailwind components;
 @tailwind utilities;
 

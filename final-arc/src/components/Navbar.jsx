@@ -10,7 +10,7 @@ const Navbar = () => {
 
 	return (
 		<nav
-			className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}
+			className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary bg-opacity-20`}
 		>
 			<div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
 				<Link
@@ -24,7 +24,7 @@ const Navbar = () => {
 					<img
 						src={logo}
 						alt='logo'
-						className='w-9 h-9 object-contain'
+						className='w-9 h-9 object-contain opacity-75 hover:shadow-lg'
 					/>
 					<p className='text-white text-[26px] font-crafttone cursor-pointer flex'>
 						<span className='sm:block hidden'>Final Arc | Gaming Hub</span>
@@ -36,7 +36,7 @@ const Navbar = () => {
 							key={link.id}
 							className={`${
 								active === link.title ? "text-white" : "text-secondary"
-							} hover:text-white text-[18px] font-digitalo  cursor-pointer`}
+							} hover:text-white text-[18px] font-modifi text-bold cursor-pointer`}
 							onClick={() => setActive(link.title)}
 						>
 							<a href={`#${link.id}`}>{link.title}</a>
@@ -61,7 +61,7 @@ const Navbar = () => {
 									key={link.id}
 									className={`${
 										active === link.title ? "text-white" : "text-secondary"
-									} font-robotika  cursor-pointer text-[16px]`}
+									} font-neowave  cursor-pointer text-[16px]`}
 									onClick={() => {
 										setToggle(!toggle);
 										setActive(link.title);

@@ -9,18 +9,20 @@
 // 	floormat,
 // 	Hex_Steel_normal,
 // } from "../assets";
+import { Login } from "../components";
 
 export const navLinks = [
 	{
-		id: "Link 1",
+		id: "Emu",
 		title: "Emu Js",
 	},
 	{
-		id: "Link 2",
+		id: "RAWG",
 		title: "RAWG",
 	},
 	{
-		id: "Link 3",
-		title: "Contact",
+		id: "Login",
+		title: "Login",
+		path: "../components/index.js",
 	},
 ];

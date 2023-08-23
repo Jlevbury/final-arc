@@ -4,5 +4,16 @@ import Ground from "./Ground";
 import HDRLight from "./HDRLight";
 import Navbar from "./Navbar";
 import Rig from "./Rig.jsx";
-
-export { Cards, CameraTargetProvider, Ground, Navbar, Rig, HDRLight };
+// import SideNav from "./SideNav";
+import Login from "./Login";
+import MainCanvas from "./Canvas";
+export {
+	Cards,
+	CameraTargetProvider,
+	Ground,
+	Navbar,
+	Rig,
+	HDRLight,
+	Login,
+	MainCanvas,
+};
