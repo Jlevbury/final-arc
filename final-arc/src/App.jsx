@@ -47,7 +47,7 @@ function App() {
 					/>
 					<axesHelper args={[5]} />
 					<gridHelper />
-					<Stats />
+					{/* <Stats /> */}
 				</Canvas>
 			</CameraTargetProvider>
 		</BrowserRouter>

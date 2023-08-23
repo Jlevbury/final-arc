@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
@@ -8,11 +7,12 @@ import { logo, menu } from "../assets/image";
 const Navbar = () => {
 	const [active, setActive] = useState("");
 	const [toggle, setToggle] = useState(false);
+
 	return (
 		<nav
 			className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}
 		>
-			<div className='w-full flex justify-between items-center max-w-7x1 mx-auto'>
+			<div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
 				<Link
 					to='/'
 					className='flex items-center gap-2'
@@ -26,7 +26,7 @@ const Navbar = () => {
 						alt='logo'
 						className='w-9 h-9 object-contain'
 					/>
-					<p className='text-white text-[18px] font-bold cursor-pointer flex'>
+					<p className='text-white text-[26px] font-crafttone cursor-pointer flex'>
 						<span className='sm:block hidden'>Final Arc | Gaming Hub</span>
 					</p>
 				</Link>
@@ -36,7 +36,7 @@ const Navbar = () => {
 							key={link.id}
 							className={`${
 								active === link.title ? "text-white" : "text-secondary"
-							} hover:text-white text-[18px] font-medium cursor-pointer`}
+							} hover:text-white text-[18px] font-digitalo  cursor-pointer`}
 							onClick={() => setActive(link.title)}
 						>
 							<a href={`#${link.id}`}>{link.title}</a>
@@ -61,7 +61,7 @@ const Navbar = () => {
 									key={link.id}
 									className={`${
 										active === link.title ? "text-white" : "text-secondary"
-									}font-poppins font-medium cursor-pointer text-[16px]`}
+									} font-robotika  cursor-pointer text-[16px]`}
 									onClick={() => {
 										setToggle(!toggle);
 										setActive(link.title);
