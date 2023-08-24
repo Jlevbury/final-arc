@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import "./App.css";
 
-import { CameraTargetProvider, Navbar, MainCanvas } from "./components";
+import { CameraTargetProvider, Navbar, MainCanvas, Cards } from "./components";
 import { BrowserRouter } from "react-router-dom";
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
 						<Navbar />
 
 						<MainCanvas />
+						<Cards />
 					</div>
 				</div>
 			</CameraTargetProvider>

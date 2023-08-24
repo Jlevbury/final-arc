@@ -9,6 +9,8 @@
 // 	floormat,
 // 	Hex_Steel_normal,
 // } from "../assets";
+
+import { logo } from "../assets/image";
 import { Login } from "../components";
 
 export const navLinks = [
@@ -24,5 +26,24 @@ export const navLinks = [
 		id: "Login",
 		title: "Login",
 		path: "../components/index.js",
+	},
+];
+
+export const services = [
+	{
+		title: "placeholder",
+		icon: logo,
+	},
+	{
+		title: "placeholder",
+		icon: logo,
+	},
+	{
+		title: "placeholder",
+		icon: logo,
+	},
+	{
+		title: "placeholder",
+		icon: logo,
 	},
 ];

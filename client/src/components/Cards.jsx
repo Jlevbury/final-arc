@@ -1,49 +1,70 @@
-import { useRef, useState, useMemo } from "react";
-import { useFrame } from "@react-three/fiber";
-import { Color, MathUtils } from "three";
-import { useCameraTarget } from "./CameraTargetProvider";
+import React from "react";
+import Tilt from "react-parallax-tilt";
+import { motion } from "framer-motion";
 
-export default function Cards(props) {
-	const { setTarget } = useCameraTarget();
-	const ref = useRef();
-	const [hovered, setHovered] = useState(false);
-	const [selected, setSelected] = useState(false);
+import { styles } from "../styles";
+import { services } from "../constants";
+import { fadeIn, textVariant } from "../utils/motion";
+import { SectionWrapper } from "../components/hoc";
 
-	const colorTo = useMemo(
-		() => new Color(Math.floor(Math.random() * 16777216)),
-		[]
-	);
-
-	useFrame(() => {
-		if (ref.current) {
-			if (hovered) {
-				ref.current.scale.set(1.05, 1.05, 1.05); // Scale up when hovered
-				ref.current.material.color.lerp(colorTo, 0.1); // Change color when hovered
-			} else {
-				ref.current.scale.set(1, 1, 1); // Reset scale when not hovered
-				ref.current.material.color.set("white"); // Reset color when not hovered
-			}
-
-			// Apply zoom effect based on the selected state
-			ref.current.position.z = selected
-				? MathUtils.lerp(ref.current.position.z, 0, 0.1)
-				: MathUtils.lerp(ref.current.position.z, 0, 0.1);
-		}
-	});
-
+const ServiceCard = ({ index, title, icon }) => {
 	return (
-		<mesh
-			ref={ref}
-			{...props}
-			onPointerDown={() => {
-				setSelected(!selected);
-				setTarget(props.position);
-			}}
-			onPointerOver={() => setHovered(true)}
-			onPointerOut={() => setHovered(false)}
-		>
-			<planeGeometry />
-			<meshPhysicalMaterial />
-		</mesh>
+		<Tilt className='xs:w-[250px] w-full'>
+			<motion.div
+				variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
+				className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
+			>
+				<div
+					options={{
+						max: 45,
+						scale: 1,
+						speed: 450,
+					}}
+					className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[250px] flex flex-col items-center justify-evenly'
+				>
+					<img
+						src={icon}
+						alt={title}
+						className='w-16 h-16 object-contain'
+					/>
+					<h3 className='text-white text-[20px] font-bold text-center'>
+						{title}
+					</h3>
+				</div>
+			</motion.div>
+		</Tilt>
 	);
-}
+};
+
+const Cards = () => {
+	return (
+		<>
+			<motion.div variants={textVariant()}>
+				<p className={styles.sectionSubText}>PLACEHOLDER</p>
+				<h2 className={styles.sectionHeadText}>PLACEHOLDER</h2>
+			</motion.div>
+			<motion.p
+				variants={fadeIn("", "", 0.1, 1)}
+				className='mt-4 text-secondary text-[17px] max-w-3x1 leading-[30px]'
+			>
+				<p>TESTING</p>
+				<br />
+				<p>
+					<br />
+				</p>
+				<br /> <p></p>
+			</motion.p>
+			<div className='mt-20 flex flex-wrap gap-10'>
+				{services.map((service, index) => (
+					<ServiceCard
+						key={service.title}
+						index={index}
+						{...service}
+					/>
+				))}
+			</div>
+		</>
+	);
+};
+
+export default SectionWrapper(Cards, "cards");
