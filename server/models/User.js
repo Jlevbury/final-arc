@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const gameSchema = require('./Game');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
@@ -21,6 +22,7 @@ const userSchema = new Schema({
     minlength: [8, "Password must be at least 8 characters!"],
     match: [/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "Must have one lowercase, one uppercase, one number, and one special character!"],
   },
+  games: [gameSchema],
 });
 
 userSchema.pre('save', async function (next) {

@@ -6,6 +6,14 @@ const typeDefs = `
     password: String!
   }
 
+  type Game {
+    gameId: ID
+    rawgId: String!
+    name: String!
+    image: String
+    rating: Float
+  }
+
   type Auth {
     token: ID!
     user: User
