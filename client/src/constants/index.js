@@ -42,8 +42,8 @@ export const services = [
 		title: "placeholder",
 		icon: logo,
 	},
-	{
-		title: "placeholder",
-		icon: logo,
-	},
+	// {
+	// 	title: "placeholder",
+	// 	icon: logo,
+	// },
 ];
