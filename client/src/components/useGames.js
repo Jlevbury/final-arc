@@ -1,57 +1,60 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-const KEY = 'c14a6d53';
+export function useGames(query, callback) {
+  const [games, setGames] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-export function useMovies(query, callback) {
+  const KEY = import.meta.env.VITE_RAWG_KEY;
 
-    const [movies, setMovies] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState('');
+  useEffect(
+    function () {
+      callback?.();
 
-    useEffect(function() {
-        callback?.();
+      const controller = new AbortController();
 
-        const controller = new AbortController();
+      async function fetchGames() {
+        try {
+          setIsLoading(true);
+          setError('');
+          const res = await fetch(
+            `https://api.rawg.io/api/games?key=${KEY}&search=${query}`,
+            { signal: controller.signal }
+          );
 
-        async function fetchMovies() {
-            try {
-                setIsLoading(true);
-                setError('');
-                const res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
-                {signal: controller.signal}
-                );
+          if (!res.ok)
+            throw new Error('Something went wrong with fecthing games');
 
-                if(!res.ok) 
-                    throw new Error("Something went wrong with fecthing movies");
+          const data = await res.json();
 
-                const data = await res.json();
+          if (data.Response === 'False') throw new Error('Game not found');
 
-                if(data.Response === 'False') throw new Error('Movie not found');
-
-                setMovies(data.Search);
-                setError("")
-            }  catch (err) {
-                if(err.name !== "AbortError") {
-                    console.log(err.message)
-                    setError(err.message);
-            }
-            } finally {
-                setIsLoading(false);
-            }
+          setGames(data.results);
+          setError('');
+        } catch (err) {
+          if (err.name !== 'AbortError') {
+            console.log(err.message);
+            setError(err.message);
+          }
+        } finally {
+          setIsLoading(false);
         }
+      }
 
-        if (query.length < 3) {
-            setMovies([]);
-            setError('');
-            return;
-        }
-        // handleCloseMovie();
-        fetchMovies();
+      if (query.length < 3) {
+        setGames([]);
+        setError('');
+        return;
+      }
+      // handleCloseMovie();
+      fetchGames();
 
-        return function() {
-            controller.abort();
-        }
-    }, [query]);
-    
-    return {movies, isLoading, error };
+      return function () {
+        controller.abort();
+      };
+    },
+    [query]
+  );
+
+  return { games, isLoading, error };
 }

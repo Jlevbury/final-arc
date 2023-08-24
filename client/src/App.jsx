@@ -1,13 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import StarRating from './StarRating';
 import { useGames } from './components/useGames';
 import { useLOcalStorageState } from './components/useLocalStroageState';
 import { useKey } from './components/useKey';
 
 const average = arr =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
-
-const KEY = import.meta.env.VITE_RAWG_KEY;
 
 export default function App() {
   const [query, setQuery] = useState('');
@@ -23,12 +20,12 @@ export default function App() {
     setSelectedId(null);
   }
 
-  function handleAddOwned(movie) {
+  function handleAddOwned(game) {
     setOwned(owned => [...owned, game]);
   }
 
   function handleDeleteOwned(id) {
-    setOwned(owned => owned.filter(mogamevie => game.id !== id));
+    setOwned(owned => owned.filter(game => game.id !== id));
   }
 
   return (
@@ -153,7 +150,7 @@ function GameList({ games, onSelectGame }) {
   );
 }
 
-function Movie({ game, onSelectGame }) {
+function Game({ game, onSelectGame }) {
   return (
     <li onClick={() => onSelectGame(game.id)}>
       <img src={game.background_image} alt={`${game.name} poster`} />
@@ -202,7 +199,6 @@ function GameDetails({ selectedId, onCloseGame, onAddOwned, owned }) {
       imdbRating: Number(imdbRating),
       runtime: Number(runtime.split(' ').at(0)),
       userRating,
-      countRatingDecisions: countRef.current,
     };
 
     onAddOwned(newOwnedGame);
@@ -219,7 +215,7 @@ function GameDetails({ selectedId, onCloseGame, onAddOwned, owned }) {
           `https://api.rawg.io/api/games?search=${query}&key=${key}key`
         );
         const data = await res.json();
-        setMovie(data);
+        setGame(data);
         setIsLoading(false);
       }
       getGameDetails();
@@ -318,18 +314,17 @@ function OwnedSummary({ owned }) {
         </p>
         <p>
           <span>⏳</span>
-          <span>{avgRuntime.toFixed(0)} min</span>
         </p>
       </div>
     </div>
   );
 }
 
-function WatchedGameList({ owned, onDeleteGame }) {
+function OwnedGameList({ owned, onDeleteGame }) {
   return (
     <ul className='list'>
       {owned.map(game => (
-        <WatchedGame game={game} key={game.id} onDeleteGame={onDeleteGame} />
+        <OwnedGame game={game} key={game.id} onDeleteGame={onDeleteGame} />
       ))}
     </ul>
   );
