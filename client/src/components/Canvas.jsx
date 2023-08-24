@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Center } from "@react-three/drei";
+import { OrbitControls, Center, Html } from "@react-three/drei";
 import { Cards, Ground, HDRLight, Rig, CameraTargetProvider } from "./index";
 
 export default function MainCanvas() {
@@ -13,7 +13,10 @@ export default function MainCanvas() {
 			<HDRLight />
 			<Ground />
 			<Center>
-				{[...Array(3).keys()].map((x, index) => {
+				<Html>
+					<bold>HELLO WORLD!!</bold>
+				</Html>
+				{/* {[...Array(3).keys()].map((x, index) => {
 					let rotation = [0, 0, 0];
 					if (index === 0) rotation = [0, Math.PI / 3, 0];
 					if (index === 2) rotation = [0, -Math.PI / 3, 0];
@@ -25,7 +28,7 @@ export default function MainCanvas() {
 							rotation={rotation}
 						/>
 					);
-				})}
+				})} */}
 			</Center>
 			<Rig />
 			<OrbitControls
