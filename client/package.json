@@ -13,11 +13,13 @@
     "@material-tailwind/react": "^2.1.0",
     "@react-three/drei": "^9.80.4",
     "@react-three/fiber": "^8.13.7",
+    "framer-motion": "^10.16.1",
     "leva": "^0.9.35",
     "maath": "^0.7.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-parallax-tilt": "^1.7.162",
     "react-router-dom": "^6.15.0",
     "sort-by": "^0.0.2",
     "three": "^0.155.0",
@@ -41,5 +43,4 @@
     "node": "18.x",
     "npm": "9.6.7"
   }
-  
 }
