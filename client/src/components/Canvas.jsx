@@ -13,9 +13,7 @@ export default function MainCanvas() {
 			<HDRLight />
 			<Ground />
 			<Center>
-				<Html>
-					<bold>HELLO WORLD!!</bold>
-				</Html>
+				<Html>HELLO WORLD!!</Html>
 				{/* {[...Array(3).keys()].map((x, index) => {
 					let rotation = [0, 0, 0];
 					if (index === 0) rotation = [0, Math.PI / 3, 0];
@@ -38,8 +36,8 @@ export default function MainCanvas() {
 				minPolarAngle={Math.PI / 3}
 				maxPolarAngle={Math.PI - Math.PI / 2}
 			/>
-			<axesHelper args={[5]} />
-			<gridHelper />
+			{/* <axesHelper args={[5]} />
+			<gridHelper /> */}
 			{/* <Stats /> */}
 		</Canvas>
 	);
