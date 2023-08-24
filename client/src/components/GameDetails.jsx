@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useKey } from './components/useKey';
+import { useKey } from './useKey';
 import { Loader } from './Loader';
 
 export function GameDetails({ selectedId, onCloseGame, onAddOwned, owned }) {

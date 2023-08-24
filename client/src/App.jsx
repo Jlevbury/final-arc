@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { useGames } from './components/useGames';
 import { useLOcalStorageState } from './components/useLocalStroageState';
-import { Search } from './Search';
-import { NumResults } from './NumResults';
-import { Main } from './Main.1';
-import { Box } from './Box';
-import { GameList } from './GameList';
-import { GameDetails } from './GameDetails';
-import { OwnedSummary } from './OwnedSummary';
-import { OwnedGameList } from './OwnedGameList';
-import { NavBar } from './NavBar';
-import { ErrorMessage } from './ErrorMessage';
-import { Loader } from './Loader';
+import { Search } from './components/Search';
+import { NumResults } from './components/NumResults';
+import { Main } from './components/Main.1';
+import { Box } from './components/Box';
+import { GameList } from './components/GameList';
+import { GameDetails } from './components/GameDetails';
+import { OwnedSummary } from './components/OwnedSummary';
+import { OwnedGameList } from './components/OwnedGameList';
+import { NavBar } from './components/NavBar';
+import { ErrorMessage } from './components/ErrorMessage';
+import { Loader } from './components/Loader';
 
 export const average = arr =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
