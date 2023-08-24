@@ -19,7 +19,7 @@
 	"dependencies": {
 		"framer-motion": "^10.16.1",
 		"react-parallax-tilt": "^1.7.162"
-	}
+	},
   "engines": {
     "node": "18.16.0",
     "npm": "9.7.2"
