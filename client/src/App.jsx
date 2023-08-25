@@ -16,7 +16,7 @@ export const average = arr =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function App() {
-  const [query, setQuery] = useState('portal');
+  const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState(null);
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -44,18 +44,30 @@ export default function App() {
   useEffect(
     function () {
       async function fetchGames() {
-        setIsLoading(true);
-        const res = await fetch(
-          `https://api.rawg.io/api/games?key=${KEY}&search=${query}`
-        );
-        const data = await res.json();
-        console.log(data.results);
-        setGames(data.results);
-        setIsLoading(false);
+        try {
+          setIsLoading(true);
+          setError('');
+          const res = await fetch(
+            `https://api.rawg.io/api/games?key=${KEY}&search=${query}`
+          );
+
+          if (!res.ok)
+            throw new Error('Something went wrong with fetching games');
+
+          const data = await res.json();
+          if (data.Response === 'False') throw new Error('Game not found');
+
+          console.log(data);
+          setGames(data.results);
+          setIsLoading(false);
+        } catch (err) {
+          console.error(err);
+          setError(err.message);
+        }
       }
       fetchGames();
     },
-    [KEY]
+    [query, KEY]
   );
 
   return (

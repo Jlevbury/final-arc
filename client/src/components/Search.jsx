@@ -1,8 +1,7 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useKey } from './useKey';
 
-export function Search() {
-  const [query, setQuery] = useState();
+export function Search({ query, setQuery }) {
   const inputEl = useRef(null);
 
   useKey('Enter', function () {
