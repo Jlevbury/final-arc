@@ -57,7 +57,7 @@ export default function App() {
           const data = await res.json();
           if (data.count === 0) throw new Error('Game not found');
 
-          console.log(data);
+          console.log(data.results);
           setGames(data.results);
           setIsLoading(false);
         } catch (err) {
@@ -100,6 +100,7 @@ export default function App() {
               onCloseGame={handleClosegame}
               onAddOwned={handleAddOwned}
               owned={owned}
+              KEY={KEY}
             />
           ) : (
             <>
