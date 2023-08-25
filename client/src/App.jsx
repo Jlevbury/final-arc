@@ -11,6 +11,7 @@ import { OwnedGameList } from './components/OwnedGameList';
 import { NavBar } from './components/NavBar';
 import { ErrorMessage } from './components/ErrorMessage';
 import { Loader } from './components/Loader';
+import useGames from './components/useGames';
 
 export const average = arr =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -18,16 +19,15 @@ export const average = arr =>
 export default function App() {
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState(null);
-  const [games, setGames] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [owned, setOwned] = useLOcalStorageState([], 'owned');
-  const [error, setError] = useState('');
+
+  const { games, error, isLoading, KEY } = useGames(query, handleCloseGame);
 
   function handleSelectGame(id) {
     setSelectedId(selectedId => (id === selectedId ? null : id));
   }
 
-  function handleClosegame() {
+  function handleCloseGame() {
     setSelectedId(null);
   }
 
@@ -38,44 +38,6 @@ export default function App() {
   function handleDeleteOwned(id) {
     setOwned(owned => owned.filter(game => game.id !== id));
   }
-
-  const KEY = import.meta.env.VITE_RAWG_KEY;
-
-  useEffect(
-    function () {
-      async function fetchGames() {
-        try {
-          setIsLoading(true);
-          setError('');
-          const res = await fetch(
-            `https://api.rawg.io/api/games?key=${KEY}&search=${query}`
-          );
-
-          if (!res.ok)
-            throw new Error('Something went wrong with fetching games');
-
-          const data = await res.json();
-          if (data.count === 0) throw new Error('Game not found');
-
-          console.log(data.results);
-          setGames(data.results);
-          setIsLoading(false);
-        } catch (err) {
-          console.error(err);
-          setError(err.message);
-        } finally {
-          setIsLoading(false);
-        }
-      }
-      if (query.length < 3) {
-        setGames([]);
-        setError('');
-        return;
-      }
-      fetchGames();
-    },
-    [query, KEY]
-  );
 
   return (
     <>
@@ -97,7 +59,7 @@ export default function App() {
           {selectedId ? (
             <GameDetails
               selectedId={selectedId}
-              onCloseGame={handleClosegame}
+              onCloseGame={handleCloseGame}
               onAddOwned={handleAddOwned}
               owned={owned}
               KEY={KEY}

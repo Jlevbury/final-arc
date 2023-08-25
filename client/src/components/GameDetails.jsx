@@ -12,6 +12,7 @@ export function GameDetails({
 }) {
   const [game, setGame] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [userRating, setUserRating] = useState('');
 
   useEffect(
     function () {
@@ -29,6 +30,8 @@ export function GameDetails({
     [selectedId, KEY]
   );
 
+  const isWatched = owned.map(game => game.id).includes(selectedId);
+
   const {
     name,
     background_image,
@@ -40,6 +43,36 @@ export function GameDetails({
     released,
     website,
   } = game;
+
+  useEffect(
+    function () {
+      if (!name) return;
+      document.title = `Game | ${name}`;
+
+      return function () {
+        document.title = 'Final Arc';
+      };
+    },
+    [name]
+  );
+
+  useKey('Escape', onCloseGame);
+
+  function handleAdd() {
+    const newOwnedGame = {
+      metacritic: Number(metacritic),
+      name,
+      released,
+      background_image,
+      genres,
+      id: selectedId,
+      esrb,
+      platforms,
+      userRating,
+    };
+    onAddOwned(newOwnedGame);
+    onCloseGame();
+  }
 
   return (
     <div className='details'>
@@ -64,7 +97,20 @@ export function GameDetails({
           </header>
 
           <section>
-            <StarRating size={32} />
+            <div className='rating'>
+              {!isWatched ? (
+                <>
+                  <StarRating size={32} onSetRating={setUserRating} />
+                  {userRating > 0 && (
+                    <button className='btn-add' onClick={handleAdd}>
+                      + Add to list
+                    </button>
+                  )}
+                </>
+              ) : (
+                <p>You own this game</p>
+              )}
+            </div>
             <p>
               <em>{description_raw}</em>
             </p>
