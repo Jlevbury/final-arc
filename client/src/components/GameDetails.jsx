@@ -13,16 +13,11 @@ export function GameDetails({ selectedId, onCloseGame, onAddOwned, owned }) {
   )?.userRating;
 
   const {
-    Title: title,
-    Year: year,
-    Poster: poster,
-    Runtime: runtime,
-    imdbRating,
-    Plot: plot,
-    Released: released,
-    Actors: actors,
-    Director: director,
-    Genre: genre,
+    name,
+
+    background_image,
+
+    metacritic,
   } = game;
 
   const [avgRating, setAvgRating] = useState(0);
@@ -31,10 +26,9 @@ export function GameDetails({ selectedId, onCloseGame, onAddOwned, owned }) {
     const newOwnedGame = {
       id: selectedId,
       name,
-      year,
-      background_image,
-      imdbRating: Number(imdbRating),
-      runtime: Number(runtime.split(' ').at(0)),
+
+      metacritic: Number(metacritic),
+
       userRating,
     };
 
@@ -62,14 +56,14 @@ export function GameDetails({ selectedId, onCloseGame, onAddOwned, owned }) {
 
   useEffect(
     function () {
-      if (!title) return;
+      if (!name) return;
       document.title = `Game | ${name}`;
 
       return function () {
         document.title = 'We Haz Games';
       };
     },
-    [title]
+    [name]
   );
 
   return (
@@ -85,10 +79,7 @@ export function GameDetails({ selectedId, onCloseGame, onAddOwned, owned }) {
             <img src={background_image} alt={`Poster of ${name}`}></img>
             <div className='details-overview'>
               <h2>{name}</h2>
-              <p>
-                {released} &bull; {runtime}
-              </p>
-              <p>{genre}</p>
+
               <p>
                 <span>⭐</span>
                 {metacritic} IMDb rating
@@ -100,11 +91,11 @@ export function GameDetails({ selectedId, onCloseGame, onAddOwned, owned }) {
             <div className='rating'>
               {!isOwned ? (
                 <>
-                  <StarRating
+                  {/* <StarRating
                     maxRating={10}
                     size={24}
                     onSetRating={setUserRating}
-                  />
+                  /> */}
                   {userRating > 0 && (
                     <button className='btn-add' onClick={handleAdd}>
                       + Add to List
@@ -113,15 +104,10 @@ export function GameDetails({ selectedId, onCloseGame, onAddOwned, owned }) {
                 </>
               ) : (
                 <p>
-                  You rated this game {watchedUserRating} <span>⭐</span>
+                  {/* You rated this game {watchedUserRating} <span>⭐</span> */}
                 </p>
               )}
             </div>
-            <p>
-              <em>{plot}</em>
-            </p>
-            <p>Starring {actors}</p>
-            <p>Directed by {director}</p>
           </section>
         </>
       )}

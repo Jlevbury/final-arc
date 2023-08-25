@@ -53,7 +53,7 @@ export function useGames(query, callback) {
         controller.abort();
       };
     },
-    [query]
+    [query, KEY]
   );
 
   return { games, isLoading, error };

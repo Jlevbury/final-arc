@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useKey } from './useKey';
 
 export function Search({ query, setQuery }) {
+  const [query, setQuery] = useState();
   const inputEl = useRef(null);
 
   useKey('Enter', function () {

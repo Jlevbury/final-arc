@@ -19,7 +19,7 @@ export const average = arr =>
 export default function App() {
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState(null);
-  const { games, isLoading, error } = useGames(query, handleClosegame);
+  const [games, setGames] = useState([]);
   const [owned, setOwned] = useLOcalStorageState([], 'owned');
 
   function handleSelectGame(id) {
