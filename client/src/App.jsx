@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useGames } from './components/useGames';
+import { useEffect, useState } from 'react';
 import { useLOcalStorageState } from './components/useLocalStroageState';
 import { Search } from './components/Search';
 import { NumResults } from './components/NumResults';
@@ -17,10 +16,12 @@ export const average = arr =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function App() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('portal');
   const [selectedId, setSelectedId] = useState(null);
   const [games, setGames] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [owned, setOwned] = useLOcalStorageState([], 'owned');
+  const [error, setError] = useState('');
 
   function handleSelectGame(id) {
     setSelectedId(selectedId => (id === selectedId ? null : id));
@@ -37,6 +38,25 @@ export default function App() {
   function handleDeleteOwned(id) {
     setOwned(owned => owned.filter(game => game.id !== id));
   }
+
+  const KEY = import.meta.env.VITE_RAWG_KEY;
+
+  useEffect(
+    function () {
+      async function fetchGames() {
+        setIsLoading(true);
+        const res = await fetch(
+          `https://api.rawg.io/api/games?key=${KEY}&search=${query}`
+        );
+        const data = await res.json();
+        console.log(data.results);
+        setGames(data.results);
+        setIsLoading(false);
+      }
+      fetchGames();
+    },
+    [KEY]
+  );
 
   return (
     <>

@@ -1,7 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useKey } from './useKey';
 
-export function Search({ query, setQuery }) {
+export function Search() {
   const [query, setQuery] = useState();
   const inputEl = useRef(null);
 
