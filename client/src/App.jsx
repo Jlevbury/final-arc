@@ -55,7 +55,7 @@ export default function App() {
             throw new Error('Something went wrong with fetching games');
 
           const data = await res.json();
-          if (data.Response === 'False') throw new Error('Game not found');
+          if (data.count === 0) throw new Error('Game not found');
 
           console.log(data);
           setGames(data.results);
@@ -63,7 +63,14 @@ export default function App() {
         } catch (err) {
           console.error(err);
           setError(err.message);
+        } finally {
+          setIsLoading(false);
         }
+      }
+      if (query.length < 3) {
+        setGames([]);
+        setError('');
+        return;
       }
       fetchGames();
     },
