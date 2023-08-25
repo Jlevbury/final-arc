@@ -6,7 +6,7 @@ const resolvers = {
         me: async (parent, args, context) => {
                 const userData = await User.findOne({})
                 .select('-__v -password')
-                .populate('savedBooks');
+                .populate('games');
                 return userData;
         }
     },
