@@ -17,7 +17,7 @@ const ServiceCard = ({ index, title, icon }) => {
 				<div
 					options={{
 						max: 45,
-						scale: 1,
+						scale: 0.25,
 						speed: 450,
 					}}
 					className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[250px] flex flex-col items-center justify-evenly'
@@ -41,7 +41,7 @@ const Cards = () => {
 		<>
 			<motion.div variants={textVariant()}>
 				<p className={styles.sectionSubText}>PLACEHOLDER</p>
-				<h2 className={styles.sectionHeadText}>PLACEHOLDER</h2>
+				<h2 className={styles.sectionHeadText}>PLACEHOLDER2</h2>
 			</motion.div>
 			<motion.p
 				variants={fadeIn("", "", 0.1, 1)}

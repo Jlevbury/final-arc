@@ -14,6 +14,6 @@ export {
 	Navbar,
 	Rig,
 	HDRLight,
-	Login,
 	MainCanvas,
+	Login,
 };

@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"engines": {
 		"node": "18.16.0"
-	  },
+	},
 	"description": "",
 	"main": "server/server.js",
 	"scripts": {
@@ -20,7 +20,11 @@
 		"concurrently": "^8.2.0"
 	},
 	"dependencies": {
+		"@ant-design/react-slick": "^1.0.2",
+		"@iconify/react": "^4.1.1",
 		"framer-motion": "^10.16.1",
-		"react-parallax-tilt": "^1.7.162"
+		"html-react-parser": "^4.2.1",
+		"react-parallax-tilt": "^1.7.162",
+		"sass": "^1.66.1"
 	}
 }

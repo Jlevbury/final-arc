@@ -11,7 +11,7 @@
 // } from "../assets";
 
 import { logo } from "../assets/image";
-import { Login } from "../components";
+import Login from "../components/Login";
 
 export const navLinks = [
 	{
@@ -25,21 +25,20 @@ export const navLinks = [
 	{
 		id: "Login",
 		title: "Login",
-		path: "../components/index.js",
 	},
 ];
 
 export const services = [
 	{
-		title: "placeholder",
+		title: "placeholder1",
 		icon: logo,
 	},
 	{
-		title: "placeholder",
+		title: "placeholder2",
 		icon: logo,
 	},
 	{
-		title: "placeholder",
+		title: "placeholder3",
 		icon: logo,
 	},
 	// {
