@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import SocialWidget from "../Widget/SocialWidget";
+
 import "./header.scss";
-import ContactInfoWidget from "../Widget/ContactInfoWidget";
+
 import Div from "../Div";
 import DropDown from "./DropDown";
 
@@ -94,10 +94,10 @@ export default function Header({ variant }) {
 										</li>
 										<li>
 											<NavLink
-												to='/about'
+												to='/login'
 												onClick={() => setMobileToggle(false)}
 											>
-												About
+												Login / Register
 											</NavLink>
 										</li>
 										<li className='menu-item-has-children'>
@@ -192,14 +192,42 @@ export default function Header({ variant }) {
 						</h2>
 					</Div>
 					<Div className='cs-side_header_box'>
-						<ContactInfoWidget
-							title='Contact Us'
-							withIcon
-						/>
+						<Div class='form-outline'>
+							<input
+								type='username'
+								id='Username'
+								className='form-control'
+							/>
+							<label
+								className='form-label'
+								htmlFor='Username'
+							>
+								Username
+								{/* <input
+									type='email'
+									id='Email'
+									className='form-control'
+								/> */}
+								{/* <label
+									className='form-label'
+									htmlFor='Email'
+								> */}
+								<input
+									type='password'
+									id='Password'
+									className='form-control'
+								/>
+								<label
+									className='form-label'
+									htmlFor='Password'
+								>
+									Password input
+								</label>
+							</label>
+							{/* </label> */}
+						</Div>
 					</Div>
-					<Div className='cs-side_header_box'>
-						<SocialWidget />
-					</Div>
+					<Div className='cs-side_header_box'></Div>
 				</Div>
 			</Div>
 		</>
