@@ -94,7 +94,7 @@ export default function Header({ variant }) {
 										</li>
 										<li>
 											<NavLink
-												to='/login'
+												to='/signup'
 												onClick={() => setMobileToggle(false)}
 											>
 												Login / Register

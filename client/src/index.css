@@ -68,6 +68,10 @@
 	color-scheme: dark;
 }
 
+.heading {
+	color: #ff0000;
+}
+
 .hash-span {
 	margin-top: -100px;
 	padding-bottom: 100px;

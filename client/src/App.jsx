@@ -1,7 +1,8 @@
 import { useState, useMemo } from "react";
 import "./App.css";
 import Layout from "./components/Layout";
-import Login from "./components/Login";
+
+import { SignUp, SignIn } from "./components/logReg/Index";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ServicesPage from "./components/pages/ServicesPage";
 import "./scss/index.scss";
@@ -26,8 +27,12 @@ function App() {
 					element={<GameCollection />}
 				/>
 				<Route
-					path='/login'
-					element={<Login />}
+					path='/signup'
+					element={<SignUp />}
+				/>
+				<Route
+					path='/signin'
+					element={<SignIn />}
 				/>
 				<Route
 					path='/emulator'
