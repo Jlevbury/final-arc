@@ -19,6 +19,7 @@
 		"@mui/joy": "^5.0.0-beta.3",
 		"@react-three/drei": "^9.80.4",
 		"@react-three/fiber": "^8.13.7",
+		"aos": "^2.3.4",
 		"framer-motion": "^10.16.1",
 		"html-react-parser": "^4.2.1",
 		"leva": "^0.9.35",
@@ -26,15 +27,18 @@
 		"match-sorter": "^6.3.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"react-parallax": "^3.5.1",
 		"react-parallax-tilt": "^1.7.162",
 		"react-router-dom": "^6.15.0",
+		"react-scroll": "^1.8.9",
 		"react-slick": "^0.29.0",
 		"sass": "^1.66.1",
 		"slick-carousel": "^1.8.1",
 		"sort-by": "^0.0.2",
 		"three": "^0.155.0",
 		"tw-elements": "^1.0.0-beta3",
-		"tw-elements-react": "^1.0.0-alpha1"
+		"tw-elements-react": "^1.0.0-alpha1",
+		"typewriter-effect": "^2.20.1"
 	},
 	"devDependencies": {
 		"@types/react": "^18.2.15",
