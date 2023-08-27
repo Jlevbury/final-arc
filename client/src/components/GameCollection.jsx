@@ -1,19 +1,19 @@
 import { useState } from 'react';
 import { useLocalStorageState } from '../hooks - Chase/useLocalStorageState';
-import { Search } from '../components - Chase/Search';
-import { NumResults } from '../components - Chase/NumResults';
-import { Main } from '../components - Chase/Main.1';
-import { Box } from '../components - Chase/Box';
-import { GameList } from '../components - Chase/GameList';
-import { GameDetails } from '../components - Chase/GameDetails';
-import { OwnedSummary } from '../components - Chase/OwnedSummary';
-import { OwnedGameList } from '../components - Chase/OwnedGameList';
-import { NavBar } from '../components - Chase/NavBar';
-import { ErrorMessage } from '../components - Chase/ErrorMessage';
-import { Loader } from '../components - Chase/Loader';
+import { Search } from '../components-chase/Search';
+import { NumResults } from '../components-chase/NumResults';
+import { Main } from '../components-chase/Main.1';
+import { Box } from '../components-chase/Box';
+import { GameList } from '../components-chase/GameList';
+import { GameDetails } from '../components-chase/GameDetails';
+import { OwnedSummary } from '../components-chase/OwnedSummary';
+import { OwnedGameList } from '../components-chase/OwnedGameList';
+import { NavBar } from '../components-chase/NavBar';
+import { ErrorMessage } from '../components-chase/ErrorMessage';
+import { Loader } from '../components-chase/Loader';
 import useGames from '../hooks - Chase/useGames';
-import GenreFilter from '../components - Chase/GenreFilter';
-import PlatformFilter from '../components - Chase/PlatformFilter';
+import GenreFilter from '../components-chase/GenreFilter';
+import PlatformFilter from '../components-chase/PlatformFilter';
 
 export const average = arr =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
