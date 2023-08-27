@@ -24,7 +24,7 @@ function App() {
 					element={<ServicesPage />}
 				/>
 				<Route
-					path='/collection'
+					path='/gamecollection'
 					element={<GameCollection />}
 				/>
 				<Route

@@ -5,7 +5,6 @@ import "../../index.css";
 import Div from "../Div";
 import Spacing from "../Spacing";
 import SearchWidget from "../Widget/SearchWidget";
-import MenuWidget from "../Widget/MenuWidget";
 
 export default function Emulator() {
 	pageTitle("Emu JS");

@@ -16,11 +16,11 @@ export default function ServicesPage() {
 
 	return (
 		<>
-			<PageHeading
+			{/* <PageHeading
 				title='Final Arc '
 				bgSrc='/image/42.jpg'
 				pageLinkText=''
-			/>
+			/> */}
 			<Spacing
 				lg='150'
 				md='80'
