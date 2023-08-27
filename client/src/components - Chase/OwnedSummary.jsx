@@ -1,4 +1,4 @@
-import { average } from '../pages/GameCollection';
+import { average } from '../pages - Chase/GameCollection';
 
 export function OwnedSummary({ owned }) {
   const avgImdbRating = average(owned.map(game => game.metacritic));
