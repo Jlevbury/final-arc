@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useKey } from '../hooks - Chase/useKey';
+import { useKey } from './hooks/useKey';
 import { Loader } from './Loader';
 import StarRating from './StarRating';
 
