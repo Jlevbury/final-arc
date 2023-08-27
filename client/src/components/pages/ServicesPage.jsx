@@ -29,14 +29,14 @@ export default function ServicesPage() {
 			<Div className='container'>
 				<Div className='row '>
 					<Div className='col-xl-4'>
-						<SectionHeading
+						{/* <SectionHeading
 							title='The Essentials'
 							subtitle='All your content in one place'
 						/>
 						<Spacing
 							lg='90'
 							md='45'
-						/>
+						/> */}
 					</Div>
 					<Hero />
 					{/* You can add more content here */}
