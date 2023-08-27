@@ -9,6 +9,8 @@
 	img {
 		width: auto;
 		height: 100%;
+		max-width: 500px; /* Set maximum width */
+		max-height: 300px; /* Set maximum height */
 		border-radius: inherit;
 	}
 	.cs-card_overlay {
@@ -26,6 +28,7 @@
 		padding: 45px 25px 0;
 		top: 0;
 		left: 0;
+		height: 25%;
 		span {
 			display: block;
 			height: 12px;
@@ -45,6 +48,10 @@
 	.cs-card.cs-style1 .cs-card_title {
 		font-size: 20px;
 	}
+	.cs-card.cs-style1 img {
+		max-width: 400px;
+		max-height: 250px;
+	}
 	.cs-card.cs-style1 .cs-card_info {
 		padding: 40px 18px 0;
 	}
@@ -54,9 +61,10 @@
 	.cs-card.cs-style1 .cs-card_title {
 		font-size: 24px;
 	}
+
 	.cs-card.cs-style1 .cs-card_info {
 		padding: 40px 30px;
-		height: 50%;
+		height: 100%;
 		display: flex;
 		justify-content: center;
 		flex-direction: column;

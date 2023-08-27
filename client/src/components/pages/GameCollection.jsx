@@ -157,22 +157,10 @@ export default function Page() {
 							</Box>
 						</Main>
 
-            <Div className='cs-height_45 cs-height_lg_30' />
-          </Div>
-        </Div>
-      </Div>
-      <Spacing lg='150' md='80' />
-      <Div className='container'>
-        <p className='cs-m0'>OTHER CONTENT RELATED TO THE EMULATOR</p>
-        <Div className='cs-height_45 cs-height_lg_30' />
-      </Div>
-    </>
-  );
 						<Div className='cs-height_45 cs-height_lg_30' />
 					</Div>
 				</Div>
 			</Div>
-			{/* </Div> */}
 			<Spacing
 				lg='150'
 				md='80'

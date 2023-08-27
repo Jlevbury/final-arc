@@ -24,12 +24,12 @@ const Hero = () => {
 	};
 	return (
 		<>
-			{/* <div style={backgroundImage} > */}
+			{/* <div style={backgroundImage}> */}
 			<div className='v-center'>
 				<div className='container'>
 					<div className='row'>
-						<div className='col-12'>
-							<h6
+						<div className='col-12 h2 '>
+							<h2
 								className='color'
 								data-aos='fade-up'
 								data-aos-duration='1000'
@@ -37,7 +37,7 @@ const Hero = () => {
 								data-aos-once='true'
 							>
 								Final ARC
-							</h6>
+							</h2>
 							<div className='spacer-20'></div>
 							<div
 								className='h1_big'
@@ -64,10 +64,10 @@ const Hero = () => {
 								data-aos-once='true'
 							>
 								<li>
-									In quis amet ex veniam in irure est culpa veniam velit fugiat
-									cupidatat duis anim commodo elit in occaecat cupidatat eu et
-									sunt commodo voluptate ullamco magna nulla amet. Lorem ipsum
-									officia.
+									The Final Arc Gaming Hub is a space for gamers that offers a
+									game emulator, a detailed game database, and a social network.
+									Relive classic titles, discover new games, and connect with
+									like-minded players, all in one place.
 								</li>
 							</ul>
 							<Div className='col-xl-8'>
@@ -100,12 +100,12 @@ const Hero = () => {
 									</Div>
 								</Div>
 							</Div>
+
 							<button className='btn-main mt-3'></button>
 						</div>
 					</div>
 				</div>
 			</div>
-			{/* </div> */}
 		</>
 	);
 };
