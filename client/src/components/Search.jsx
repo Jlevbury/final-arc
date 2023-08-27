@@ -1,8 +1,12 @@
-import { useEffect, useRef } from 'react';
-import { useKey } from './useKey';
+import { useRef } from 'react';
+import { useKey } from '../hooks/useKey';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
-export function Search({ query, setQuery }) {
+export function Search({ query, setQuery, games }) {
   const inputEl = useRef(null);
+
+  const tempArray = ['dog', 'cat', 'human'];
 
   useKey('Enter', function () {
     if (document.activeElement === inputEl.current) return;
@@ -10,14 +14,20 @@ export function Search({ query, setQuery }) {
     setQuery('');
   });
 
+  console.log(games);
+
   return (
-    <input
-      className='search'
-      type='text'
-      placeholder='Search games...'
-      value={query}
-      onChange={e => setQuery(e.target.value)}
-      ref={inputEl}
+    <Autocomplete
+      filterOptions={x => x}
+      id='combo-box-demo'
+      options={games}
+      onChange={(e, games) => setQuery(games.name)}
+      onInputChange={e => setQuery(e.target.value)}
+      getOptionLabel={games => games.name}
+      style={{ width: 300 }}
+      renderInput={params => (
+        <TextField {...params} label='Combo box' variant='outlined' />
+      )}
     />
   );
 }

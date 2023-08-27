@@ -1,6 +1,6 @@
-export function OwnedGame({ game, onDeleteGame }) {
+export function OwnedGame({ game, onDeleteGame, onSelectGame }) {
   return (
-    <li>
+    <li onClick={() => onSelectGame(game.id)}>
       <img src={game.background_image} alt={`${game.name} poster`} />
       <h3>{game.name}</h3>
       <div>

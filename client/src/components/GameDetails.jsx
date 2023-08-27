@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useKey } from './useKey';
+import { useKey } from '../hooks/useKey';
 import { Loader } from './Loader';
 import StarRating from './StarRating';
 
@@ -9,6 +9,7 @@ export function GameDetails({
   onAddOwned,
   owned,
   KEY,
+  onAddWant,
 }) {
   const [game, setGame] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -74,6 +75,24 @@ export function GameDetails({
     onCloseGame();
   }
 
+  function handleAddWant() {
+    const newWantGame = {
+      metacritic: Number(metacritic),
+      name,
+      released,
+      background_image,
+      genres,
+      id: selectedId,
+      esrb,
+      platforms,
+      userRating,
+    };
+    onAddWant(newWantGame);
+    onCloseGame();
+  }
+
+  console.log(platforms, name);
+
   return (
     <div className='details'>
       {isLoading ? (
@@ -102,9 +121,14 @@ export function GameDetails({
                 <>
                   <StarRating size={32} onSetRating={setUserRating} />
                   {userRating > 0 && (
-                    <button className='btn-add' onClick={handleAdd}>
-                      + Add to list
-                    </button>
+                    <>
+                      <button className='btn-add' onClick={handleAdd}>
+                        + Add to Owned
+                      </button>
+                      <button className='btn-add' onClick={handleAddWant}>
+                        + Add to Wishlist
+                      </button>
+                    </>
                   )}
                 </>
               ) : (
@@ -117,7 +141,20 @@ export function GameDetails({
             <a href={website} target='_blank' rel='noreferrer'>
               Visit the site
             </a>
-            <p>ESRB Rating: </p>
+            <h3>Genres:</h3>
+            {genres?.map(genre => {
+              return <p key={genre.id}> {genre.name}</p>;
+            })}
+            <h3>Platforms:</h3>
+            {platforms?.map(platform => {
+              {
+                return (
+                  <p key={platform.platform.id}> {platform.platform.name}</p>
+                );
+              }
+            })}
+            <h3>ESRB Rating: </h3>
+            <p>{esrb?.name}</p>
           </section>
         </>
       )}
