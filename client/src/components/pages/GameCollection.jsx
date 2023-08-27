@@ -1,11 +1,11 @@
-import { Icon } from "@iconify/react";
+// import { Icon } from "@iconify/react";
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { pageTitle } from "../../helper";
 
 import PageHeading from "../PageHeading";
 import Div from "../Div";
-import Sidebar from "../Sidebar.jsx/index.jsx";
+// import Sidebar from "../Sidebar.jsx/index.jsx";
 import Spacing from "../Spacing";
 
 export default function Page() {

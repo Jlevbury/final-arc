@@ -19,7 +19,7 @@ export default function Page() {
 			{/* Start Page Heading Section */}
 			<PageHeading
 				title='Game INFORMATION TO BE UPDATED'
-				bgSrc='/images/blog_details_hero_bg.jpeg'
+				bgSrc=''
 				pageLinkText={params.blogDetailsId}
 			/>
 			{/* End Page Heading Section */}
@@ -36,7 +36,7 @@ export default function Page() {
 						<Div className='cs-post cs-style2'>
 							<Div className='cs-post_thumb cs-radius_15'>
 								<img
-									src='/images/post_5.jpeg'
+									src=''
 									alt='Post'
 									className='w-100 cs-radius_15'
 								/>

@@ -1,33 +1,31 @@
 import React, { useEffect } from "react";
 import { pageTitle } from "../../helper";
-
-import PageHeading from "../PageHeading";
+import Header from "../Header";
+import "../../index.css";
 import Div from "../Div";
 import Spacing from "../Spacing";
+import SearchWidget from "../Widget/SearchWidget";
+import MenuWidget from "../Widget/MenuWidget";
 
 export default function Emulator() {
-	pageTitle("Team Member");
+	pageTitle("Emu JS");
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
 	return (
 		<>
-			<PageHeading
-				title='Emulator JS'
-				bgSrc='../../../public/image/placeholder.jpeg'
-				pageLinkText='Emu JS'
-			/>
 			<Spacing
 				lg='150'
 				md='80'
 			/>
+			<Header />
 			<Div className='container'>
 				<Div className='row align-items-center'>
 					<Div className='col-xl-5 col-lg-6'>
 						<Div className='cs-radius_15 cs-shine_hover_1'>
 							<img
-								src='/images/member_details_1.jpeg'
-								alt='Member'
+								src='/image/SVG/emu.svg'
+								alt='Online Emulation'
 								className='w-100'
 							/>
 						</Div>
@@ -37,6 +35,8 @@ export default function Emulator() {
 							lg='0'
 							md='45'
 						/>
+						<SearchWidget />
+
 						<Div className='cs-section_heading cs-style1'>
 							<h2 className='cs-section_title'>PLACEHOLDER</h2>
 							<Div className='cs-height_10 cs-height_lg_10' />

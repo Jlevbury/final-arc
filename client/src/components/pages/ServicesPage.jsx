@@ -18,7 +18,7 @@ export default function ServicesPage() {
 		<>
 			<PageHeading
 				title='Final Arc Essentials'
-				bgSrc='../../public/image/'
+				bgSrc='/image/42.jpg'
 				pageLinkText=''
 			/>
 			<Spacing
@@ -47,7 +47,7 @@ export default function ServicesPage() {
 									<Card
 										title='Emu.Js online emulation'
 										link='/emulator'
-										src='../../public/image/stardust-01.png'
+										src='../../../public/image/SVG/emu.svg'
 										alt='Emu JS'
 									/>
 
@@ -61,7 +61,7 @@ export default function ServicesPage() {
 									<Card
 										title='RAWG Gaming API'
 										link='/collection'
-										src='../../public/image/stardust-03.png'
+										src='../../../public/image/SVG/rawg1.svg'
 										alt='RAWG API'
 									/>
 									<Spacing
@@ -69,7 +69,7 @@ export default function ServicesPage() {
 										md='30'
 									/>
 								</Div>
-								<Div className='col-lg-3 col-sm-6'>
+								{/* <Div className='col-lg-3 col-sm-6'>
 									<Card
 										title='Third Cards Content'
 										link='/Page'
@@ -82,19 +82,19 @@ export default function ServicesPage() {
 									/>
 								</Div>
 
-								<Div className='col-lg-6 col-sm-6 cs-hidden_mobile'></Div>
-								<Div className='col-lg-6 col-sm-6'>
+								<Div className='col-lg-6 col-sm-6 cs-hidden_mobile'></Div> */}
+								{/* <Div className='col-lg-6 col-sm-6'>
 									<Card
 										title='LINKING IN REACT SUCKS THIS IS NOT CONNECTED DONT CLICK'
-										link='/service/creative-design'
-										src='../../public/image/stardust-06.png'
+										link='/'
+										src='../'
 										alt='MY DELICIOUS TEARS'
 									/>
 									<Spacing
 										lg='15'
 										md='30'
 									/>
-								</Div>
+								</Div> */}
 							</Div>
 						</Div>
 					</Div>
