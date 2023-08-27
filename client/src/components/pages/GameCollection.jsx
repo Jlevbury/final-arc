@@ -96,7 +96,6 @@ export default function Page() {
           <Div className='col-lg-6 offset-xl-1'>
             <Spacing lg='0' md='45' />
 
-            {/* <Div className='cs-section_heading cs-style1'> */}
             {/* Search bar */}
             <NavBar>
               <Search query={query} setQuery={setQuery} games={games} />
@@ -112,7 +111,6 @@ export default function Page() {
             <Div className='cs-height_45 cs-height_lg_25' />
             <Main>
               <Box>
-                {/* {isLoading ? <Loader /> : <MovieList movies={movies} />} */}
                 {isLoading && <Loader />}
                 {!isLoading && !error && (
                   <GameList games={games} onSelectGame={handleSelectGame} />
@@ -120,7 +118,7 @@ export default function Page() {
                 {error && <ErrorMessage message={error} />}
               </Box>
               <Div className='cs-height_25 cs-height_lg_20' />
-              <p className='cs-m0'>OTHER CONTENT RELATED TO THE collection</p>
+
               <Box>
                 {selectedId ? (
                   <GameDetails
@@ -148,7 +146,6 @@ export default function Page() {
           </Div>
         </Div>
       </Div>
-      {/* </Div> */}
       <Spacing lg='150' md='80' />
       <Div className='container'>
         <p className='cs-m0'>OTHER CONTENT RELATED TO THE EMULATOR</p>

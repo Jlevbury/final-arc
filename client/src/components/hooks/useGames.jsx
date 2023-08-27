@@ -15,6 +15,7 @@ function useGames(query, callback, selectedGenre, selectedPlatform) {
         try {
           setIsLoading(true);
           setError('');
+          setGames([]);
           let fetchCommand = `https://api.rawg.io/api/games?key=${KEY}&search=${query}`;
           if (selectedGenre !== 'All' && selectedPlatform === 'All') {
             fetchCommand = fetchCommand + `&genres=${selectedGenre}`;
@@ -36,7 +37,11 @@ function useGames(query, callback, selectedGenre, selectedPlatform) {
           const data = await res.json();
           if (data.count === 0) throw new Error('Game not found');
           console.log(data);
-          setGames(data.results);
+          if (query === '') {
+            setGames([]);
+          } else {
+            setGames(data.results);
+          }
           setIsLoading(false);
           setError('');
         } catch (err) {
