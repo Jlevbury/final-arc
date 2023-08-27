@@ -27,7 +27,7 @@ import PlatformFilter from "../../components/PlatformFilter";
 export const average = (arr) =>
 	arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-export default function Page() {
+export default function GameCollection() {
 	const [query, setQuery] = useState("");
 	const [selectedId, setSelectedId] = useState(null);
 	const [owned, setOwned] = useLocalStorageState([], "owned");
@@ -157,17 +157,6 @@ export default function Page() {
 							</Box>
 						</Main>
 
-            <Div className='cs-height_45 cs-height_lg_30' />
-          </Div>
-        </Div>
-      </Div>
-      <Spacing lg='150' md='80' />
-      <Div className='container'>
-        <p className='cs-m0'>OTHER CONTENT RELATED TO THE EMULATOR</p>
-        <Div className='cs-height_45 cs-height_lg_30' />
-      </Div>
-    </>
-  );
 						<Div className='cs-height_45 cs-height_lg_30' />
 					</Div>
 				</Div>
