@@ -96,14 +96,6 @@ export default function GameCollection() {
             </>
           )}
         </Box>
-        <Box>
-          <WishListSummary want={want} />
-          <GamesWishList
-            want={want}
-            onDeleteGame={handleDeleteWanted}
-            onSelectGame={handleSelectGame}
-          />
-        </Box>
       </Main>
     </>
   );
