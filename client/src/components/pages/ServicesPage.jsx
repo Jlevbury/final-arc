@@ -1,8 +1,8 @@
 import React from "react";
 import { pageTitle } from "../../helper";
-import PageHeading from "../PageHeading";
+
 import Div from "../Div";
-import SectionHeading from "../SectionHeading";
+
 import Hero from "../Layout/Hero";
 import Spacing from "../Spacing";
 
@@ -47,7 +47,7 @@ export default function ServicesPage() {
 				lg='150'
 				md='80'
 			/>
-			<Div className='container'></Div>
+			{/* <Div className='container'></Div>
 			<Spacing
 				lg='125'
 				md='55'
@@ -55,7 +55,7 @@ export default function ServicesPage() {
 			<Spacing
 				lg='150'
 				md='80'
-			/>
+			/> */}
 		</>
 	);
 }
