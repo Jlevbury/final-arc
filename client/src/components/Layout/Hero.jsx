@@ -89,7 +89,7 @@ const Hero = () => {
 										<Card
 											title='Emu.Js online emulation'
 											link='/emulator'
-											src='../../../public/image/SVG/emu.svg'
+											src='../../../public/image/SVG/emuLink.svg'
 											alt='Emu JS'
 										/>
 										<Spacing
@@ -102,7 +102,7 @@ const Hero = () => {
 										<Card
 											title='RAWG Gaming API'
 											link='/gamecollection'
-											src='../../../public/image/SVG/rawg1.svg'
+											src='../../../public/image/SVG/rawgLink.svg'
 											alt='RAWG API'
 										/>
 										<Spacing
