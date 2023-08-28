@@ -1,0 +1,195 @@
+// Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap");
+
+// Importing custom fonts
+@each $font,
+	$path
+		in (
+			"crafttone": "./assets/image/fonts/crafttone.ttf",
+			"digitalo": "../../../src/assets/image/fonts/digitalo.ttf",
+			"NEMESYS-Regular": "../../../src/assets/image/fonts/NEMESYS-Regular.ttf",
+			"RobotikaBold": "../../../src/assets/image/fonts/RobotikaBold.ttf",
+			"sabiko": "../../../src/assets/image/fonts/sabiko.ttf",
+			"neowave": "../../../src/assets/image/fonts/neowave.ttf",
+			"modifi": "../../../src/assets/image/fonts/modifi.ttf"
+		)
+{
+	@font-face {
+		font-family: #{$font};
+		src: url(#{$path}) format("truetype");
+		font-weight: normal;
+		font-style: normal;
+	}
+}
+
+// General styles
+body,
+html {
+	color: $secondary;
+	font-family: "neowave", "Open Sans", sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.6em;
+	overflow-x: hidden;
+	background-color: $gray;
+}
+
+// Header styles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	color: $primary;
+	padding: 0;
+	margin: 0 0 20px 0;
+	font-weight: 600;
+	line-height: 1.3em;
+
+	&.cs-primary_font {
+		font-family: "sabiko", sans-serif;
+	}
+
+	&.cs-secondary_font {
+		font-family: "Open Sans", sans-serif;
+	}
+
+	// Individual header sizes
+	@each $header,
+		$size
+			in (
+				"h1": 56px,
+				"h2": 42px,
+				"h3": 30px,
+				"h4": 24px,
+				"h5": 18px,
+				"h6": 16px
+			)
+	{
+		&#{$header} {
+			font-size: $size;
+			font-family: if(
+				$header == "h1" or $header == "h2",
+				"robotikabold",
+				"RobotikaBold"
+			);
+		}
+	}
+}
+
+p {
+	margin-bottom: 15px;
+}
+
+ul {
+	margin: 0 0 25px 0;
+	padding-left: 20px;
+	list-style: square outside none;
+}
+
+ol {
+	padding-left: 20px;
+	margin-bottom: 25px;
+}
+
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+blockquote {
+	margin: 0 15px;
+	font-style: italic;
+	font-size: 20px;
+	line-height: 1.6em;
+	margin: 0;
+}
+
+address {
+	margin: 0 0 15px;
+}
+
+img {
+	border: 0;
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+button {
+	color: inherit;
+	transition: all 0.3s ease;
+}
+
+a:hover {
+	text-decoration: none;
+	color: $accent;
+}
+
+table {
+	width: 100%;
+	margin-bottom: 25px;
+
+	th {
+		font-weight: 600;
+		color: $secondary;
+	}
+
+	td,
+	th {
+		border-top: 1px solid $border;
+		padding: 11px 10px;
+	}
+}
+
+dl {
+	margin-bottom: 25px;
+
+	dt {
+		font-weight: 600;
+	}
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+pre {
+	color: $secondary;
+	border: 1px solid $border;
+	font-size: 18px;
+	padding: 25px;
+	border-radius: 5px;
+}
+
+kbd {
+	font-size: 100%;
+	background-color: $secondary;
+	border-radius: 5px;
+}
+
+@media screen and (max-width: 991px) {
+	body,
+	html {
+		font-size: 16px;
+		line-height: 1.6em;
+	}
+	h2 {
+		font-size: 36px;
+		margin-bottom: 10px;
+	}
+}
+input,
+textarea {
+	color: $primary;
+}

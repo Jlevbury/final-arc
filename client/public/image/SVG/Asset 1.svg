@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1055.69 172.85">
+  <defs>
+    <style>
+      .cls-1 { opacity: .7; }
+      .cls-2 { fill: url(#linear-gradient); }
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 { stroke-width: 0px; }
+      .cls-7, .cls-5 { opacity: .2; }
+      .cls-8 { font-family: 'neowave'; font-size: 14.82px; font-style: oblique; }
+      .cls-8, .cls-9 { fill: #fff; }
+      .cls-10 { font-size: 9.68px; }
+      .cls-11 { font-family: 'neowave'; font-size: 61.95px; opacity: .9; }
+      .cls-11, .cls-6 { fill: #f2f2f2; }
+      .cls-12 { letter-spacing: 0em; opacity: .2; }
+      .cls-3 { fill: url(#linear-gradient-2); }
+      .cls-9 { opacity: .1; }
+      .cls-4 { fill: url(#linear-gradient-3); }
+      .cls-5 { fill: url(#linear-gradient-4); }
+      .cls-13 { font-size: 13.98px; }
+
+      @font-face {
+        font-family: "neowave";
+        src: url("../../image/fonts/neowave.ttf");
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="48.88" y1="109.34" x2="794.28" y2="109.34" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#cadef1" stop-opacity="0"/>
+      <stop offset=".06" stop-color="#c2daef" stop-opacity=".04"/>
+      <stop offset=".15" stop-color="#add2ec" stop-opacity=".16"/>
+      <stop offset=".26" stop-color="#8bc5e6" stop-opacity=".36"/>
+      <stop offset=".4" stop-color="#5db2df" stop-opacity=".63"/>
+      <stop offset=".55" stop-color="#229bd5" stop-opacity=".97"/>
+      <stop offset=".57" stop-color="#1d99d5"/>
+      <stop offset=".87" stop-color="#0a75ba"/>
+      <stop offset=".99" stop-color="#005b95"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0" y1="995.31" x2="662.19" y2="995.31" gradientTransform="translate(0 1132.58) scale(1 -1)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="609.3" y1="26.06" x2="679.3" y2="26.06" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="793.75" y1="112.64" x2="799.97" y2="112.64" xlink:href="#linear-gradient"/>
+     <style type="text/css">
+      <![CDATA[
+      @font-face {
+        font-family: "neowave";
+        src: url("../fonts/neowave.ttf");
+      }
+      ]]>
+    </style>
+  
+  
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="Title06">
+      <path class="cls-6" d="m840.08,23.73c0,1.3-1.05,2.36-2.35,2.36s-2.37-1.06-2.37-2.36,1.06-2.35,2.37-2.35,2.35,1.05,2.35,2.35Z"/>
+      <g class="cls-1">
+        <polygon class="cls-2" points="591.89 143.08 455.78 143.08 455.78 128.25 365.28 128.25 365.28 113.43 349.67 113.43 349.67 77.54 336.01 77.54 336.01 110.31 225.23 110.31 225.23 129.03 153.61 129.03 153.61 143.08 62.22 143.08 62.22 132.67 48.88 132.67 48.88 130.74 64.15 130.74 64.15 141.14 151.67 141.14 151.67 127.09 223.29 127.09 223.29 108.37 334.07 108.37 334.07 75.6 351.61 75.6 351.61 111.5 367.21 111.5 367.21 126.32 457.71 126.32 457.71 141.14 589.96 141.14 589.96 111.5 794.28 111.5 794.28 113.43 591.89 113.43 591.89 143.08"/>
+      </g>
+      <g class="cls-7">
+        <polygon class="cls-3" points="543.01 103.53 406.9 103.53 406.9 118.36 316.4 118.36 316.4 133.18 300.79 133.18 300.79 169.07 287.13 169.07 287.13 136.3 176.35 136.3 176.35 117.58 104.73 117.58 104.73 103.53 13.34 103.53 13.34 113.94 0 113.94 0 115.87 15.27 115.87 15.27 105.47 102.79 105.47 102.79 119.51 174.41 119.51 174.41 138.23 285.19 138.23 285.19 171 302.73 171 302.73 135.12 318.33 135.12 318.33 120.29 408.83 120.29 408.83 105.47 541.08 105.47 541.08 135.12 662.19 135.12 662.19 133.18 543.01 133.18 543.01 103.53"/>
+      </g>
+      <text class="cls-11" transform="translate(126.43 86.11)"><tspan x="0" y="0">Emu Js  </tspan></text>
+      <text class="cls-6" transform="translate(598.25 13.38) rotate(-.32)">Let's Play<tspan x="0" y="0" xml:space="preserve">  </tspan><tspan class="cls-12" x="62.26" y="0"></tspan></text>
+      <rect class="cls-4" x="609.3" y="22.56" width="70" height="7"/>
+      <text class="cls-9" transform="translate(308.52 158.45)"><tspan class="cls-13"><tspan x="0" y="0">DATA INFORMATION BOX </tspan></tspan><tspan class="cls-10"><tspan x="0" y="11.61">MORE INFO HERE</tspan></tspan></text>
+      <path class="cls-5" d="m799.97,112.64c0,1.72-1.39,3.11-3.11,3.11s-3.11-1.39-3.11-3.11,1.39-3.11,3.11-3.11,3.11,1.39,3.11,3.11Z"/>
+    </g>
+  </g>
+</svg>

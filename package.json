@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"engines": {
 		"node": "18.16.0"
-	  },
+	},
 	"description": "",
 	"main": "server/server.js",
 	"scripts": {
@@ -20,7 +20,19 @@
 		"concurrently": "^8.2.0"
 	},
 	"dependencies": {
+		"@ant-design/react-slick": "^1.0.2",
+		"@emotion/react": "^11.11.1",
+		"@emotion/styled": "^11.11.0",
+		"@iconify/react": "^4.1.1",
+		"@mui/icons-material": "^5.14.6",
+		"@mui/joy": "^5.0.0-beta.3",
+		"aos": "^2.3.4",
 		"framer-motion": "^10.16.1",
-		"react-parallax-tilt": "^1.7.162"
+		"html-react-parser": "^4.2.1",
+		"react-parallax": "^3.5.1",
+		"react-parallax-tilt": "^1.7.162",
+		"react-scroll": "^1.8.9",
+		"sass": "^1.66.1",
+		"typewriter-effect": "^2.20.1"
 	}
 }
