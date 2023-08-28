@@ -52,10 +52,10 @@ const Hero = () => {
 							>
 								<Typewriter
 									options={{
-										strings: ["Play ...", "Collect..", "Something Else..."],
+										strings: ["Play ...", "Collect..", "Something Else.."],
 										autoStart: true,
 										loop: true,
-										delay: 200,
+										delay: 150,
 										deleteSpeed: 25,
 									}}
 								/>
@@ -78,44 +78,11 @@ const Hero = () => {
 									like-minded players, all in one place.
 								</li>
 							</ul>
-							<Spacing
-								lg='15'
-								md='30'
-							/>
-							<Div className='col-xl-8'>
-								<Div className='row'>
-									<Div className='col-lg-3 col-sm-6 cs-hidden_mobile'></Div>
-									<Div className='col-lg-3 col-sm-6'>
-										<Card
-											title='Emu.Js online emulation'
-											link='/emulator'
-											src='../../../public/image/SVG/emuLink.svg'
-											alt='Emu JS'
-										/>
-										<Spacing
-											lg='15'
-											md='15'
-										/>
-									</Div>
-									<Div className='col-lg-3 col-sm-6 cs-hidden_mobile'></Div>
-									<Div className='col-lg-3 col-sm-6'>
-										<Card
-											title='RAWG Gaming API'
-											link='/gamecollection'
-											src='../../../public/image/SVG/rawgLink.svg'
-											alt='RAWG API'
-										/>
-										<Spacing
-											lg='15'
-											md='30'
-										/>
-									</Div>
-								</Div>
-							</Div>
 						</Div>
 					</Div>
 				</Div>
 			</Div>
+
 			{/* </Div> */}
 		</>
 	);

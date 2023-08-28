@@ -37,7 +37,7 @@ const Emulator = () => {
 					<Div className='col-xl-5 col-lg-6'>
 						<Div className='cs-radius_15 cs-shine_hover_1'>
 							<img
-								src='/image/SVG/emu.svg'
+								src='/image/SVG/emuLink.svg'
 								alt='Online Emulation'
 								className='w-100'
 							/>
