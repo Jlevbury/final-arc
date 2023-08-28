@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { pageTitle } from "../../helper";
 import Header from "../Header";
-import "../../index.css";
+
 import Div from "../Div";
 import Spacing from "../Spacing";
 import SearchWidget from "../Widget/SearchWidget";
@@ -37,7 +37,7 @@ const Emulator = () => {
 					<Div className='col-xl-5 col-lg-6'>
 						<Div className='cs-radius_15 cs-shine_hover_1'>
 							<img
-								src='/image/SVG/emu.svg'
+								src='/image/SVG/emuLink.svg'
 								alt='Online Emulation'
 								className='w-100'
 							/>

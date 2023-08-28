@@ -4,7 +4,6 @@ import Header from "../Header";
 import Div from "../Div";
 import SectionHeading from "../SectionHeading";
 import Spacing from "../Spacing";
-import Team from "../../components/Team/index";
 
 export default function TeamPage() {
 	useEffect(() => {
@@ -72,12 +71,6 @@ export default function TeamPage() {
 							key={index}
 							className='col-lg-3 col-sm-6'
 						>
-							<Team
-								memberImage={item.memberImage}
-								memberName={item.memberName}
-								memberDesignation={item.memberDesignation}
-								memberSocial={item.memberSocial}
-							/>
 							<Spacing
 								lg='80'
 								md='30'

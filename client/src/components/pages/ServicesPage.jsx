@@ -1,61 +1,62 @@
-import React from "react";
+import React, { useEffect } from "react"; // Prefer destructuring when importing multiple exports
 import { pageTitle } from "../../helper";
-
 import Div from "../Div";
-
 import Hero from "../Layout/Hero";
 import Spacing from "../Spacing";
+import Card from "../Card";
 
 export default function ServicesPage() {
 	pageTitle("Final Arc ");
 
-	// Scroll to the top of the page when component mounts
-	React.useEffect(() => {
+	useEffect(() => {
+		// Using destructured import
 		window.scrollTo(0, 0);
 	}, []);
 
 	return (
 		<>
-			{/* <PageHeading
-				title='Final Arc '
-				bgSrc='/image/42.jpg'
-				pageLinkText=''
-			/> */}
-			<Spacing
-				lg='150'
-				md='80'
-			/>
-
 			<Div className='container'>
-				<Div className='row '>
-					<Div className='col-xl-4'>
-						{/* <SectionHeading
-							title='The Essentials'
-							subtitle='All your content in one place'
-						/>
-						<Spacing
-							lg='90'
-							md='45'
-						/> */}
-					</Div>
+				<Div className='row'>
+					<Div className='col-xl-4'></Div>
 					<Hero />
-					{/* You can add more content here */}
+					{/* Spacing appears to be inconsistent; added more uniform spacing */}
+					<Spacing
+						lg='15'
+						md='15'
+					/>
+					<Div className='col-xl-8'>
+						<Div className='row'>
+							<Div className='col-lg-3 col-sm-6 cs-hidden_mobile'></Div>
+							<Div className='col-lg-3 col-sm-6'>
+								<Card
+									title='Emu.Js online emulation'
+									link='/emulator'
+									src='../../../public/image/SVG/emuLink.svg'
+									alt='Emu JS'
+								/>
+								<Spacing
+									lg='15'
+									md='15'
+								/>
+							</Div>
+							<Div className='col-lg-3 col-sm-6 cs-hidden_mobile'></Div>
+							<Div className='col-lg-3 col-sm-6'>
+								<Card
+									title='RAWG Gaming API'
+									link='/gamecollection'
+									src='../../../public/image/SVG/rawgLink.svg'
+									alt='RAWG API'
+								/>
+								<Spacing
+									lg='15'
+									md='30'
+								/>{" "}
+								{/* Spacing is inconsistent; consider making it uniform */}
+							</Div>
+						</Div>
+					</Div>
 				</Div>
 			</Div>
-
-			<Spacing
-				lg='150'
-				md='80'
-			/>
-			{/* <Div className='container'></Div>
-			<Spacing
-				lg='125'
-				md='55'
-			/>
-			<Spacing
-				lg='150'
-				md='80'
-			/> */}
 		</>
 	);
 }

@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import "./App.css";
 import Layout from "./components/Layout";
-
+import CustomCursor from "./components/CustomCursor";
 import { SignUp, SignIn } from "./components/logReg/Index";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ServicesPage from "./components/pages/ServicesPage";
@@ -11,11 +11,12 @@ import GameCollection from "./components/pages/GameCollection";
 import Emulator from "./components/pages/Emulator";
 import "./utils/animated.css";
 import "./utils/aos.css";
-// import Team from "./components/Team";
+
 import FaqPage from "./components/pages/FAQ";
 function App() {
 	return (
 		<BrowserRouter>
+			<CustomCursor />
 			<Routes>
 				<Route
 					path='/'
