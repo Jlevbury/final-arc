@@ -4,10 +4,11 @@ import {
   InputLabel,
   MenuItem,
   FormControl,
-  ListItemText,
   Select,
   Checkbox,
+  IconButton,
 } from '@mui/material';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const KEY = import.meta.env.VITE_RAWG_KEY;
 
@@ -42,12 +43,7 @@ function Filter({ setSelectFilterQuery, fetchTerm }) {
       const data = await res.json();
       if (data.count === 0) throw new Error(`${fetchTerm} not found`);
 
-      const filterArray = [];
-      data.results.forEach(item => {
-        filterArray.push(item);
-      });
-
-      setTermList(filterArray);
+      setTermList(data.results);
       setIsLoading(false);
       setError('');
     } catch (err) {
@@ -63,28 +59,20 @@ function Filter({ setSelectFilterQuery, fetchTerm }) {
   }, [fetchData]);
 
   const handleChange = e => {
-    const {
-      target: { value },
-    } = e;
-
-    if (value.length > 0) {
-      const newValue = value[value.length - 1];
-
-      const index = value.findIndex(e => e.slug === newValue.slug);
-      if (index > -1 && index < value.length - 1) {
-        value.splice(index, 1);
-        value.splice(value.length - 1, 1);
-      }
-    }
-
-    setSelectedTerm(value);
-    const query = value.map(e => e.id).join(',');
+    setSelectedTerm(e.target.value);
+    const query = e.target.value.map(item => item.id).join(',');
     setSelectFilterQuery(query);
   };
 
+  const handleClearSelection = () => {
+    setSelectedTerm([]);
+    setSelectFilterQuery('');
+  };
+
   if (isLoading) {
-    return;
+    return null;
   }
+
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
@@ -98,35 +86,16 @@ function Filter({ setSelectFilterQuery, fetchTerm }) {
           onChange={handleChange}
           input={<OutlinedInput label='Tag' />}
           MenuProps={MenuProps}>
-          {termList?.map((item, index) => (
-            <MenuItem key={index} value={item}>
-              <Checkbox
-                checked={selectedTerm.findIndex(e => e.id === item.id) > -1}
-              />
-              <ListItemText primary={item.name} />
+          {termList.map(item => (
+            <MenuItem key={item.id} value={item}>
+              <Checkbox checked={selectedTerm.some(e => e.id === item.id)} />
+              {item.name}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
+      <button onClick={handleClearSelection}>Clear All</button>
     </div>
-    // <div>
-    //   <label>Select a Genre</label>
-    //   <select
-    //     data-te-select-init
-    //     multiple
-    //     className='search'
-    //     name='genre'
-    //     onChange={handleChange}>
-    //     <option value='all'>All</option>
-    //     {genres?.map((genre, index) => {
-    //       return (
-    //         <option value={genre} key={index}>
-    //           {genre}
-    //         </option>
-    //       );
-    //     })}
-    //   </select>
-    // </div>
   );
 }
 
