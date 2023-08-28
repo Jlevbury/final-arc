@@ -1,12 +1,10 @@
 import { useRef } from 'react';
-import { useKey } from './hooks/useKey';
+import { useKey } from '../hooks/useKey';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 export function Search({ query, setQuery, games }) {
   const inputEl = useRef(null);
-
-  const tempArray = ['dog', 'cat', 'human'];
 
   useKey('Enter', function () {
     if (document.activeElement === inputEl.current) return;
@@ -14,10 +12,10 @@ export function Search({ query, setQuery, games }) {
     setQuery('');
   });
 
-  console.log(games);
-
   return (
     <Autocomplete
+      isOptionEqualToValue={(option, value) => option.id === value.id}
+      className='search'
       filterOptions={x => x}
       id='combo-box-demo'
       options={games}
