@@ -12,6 +12,10 @@ const resolvers = {
         users: async () => {
             return User.find().populate('games');
         },
+        games: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return User.findOne(params).populate('games');
+        }
     },
     Mutation: {
         addUser: async (parent, { username, email, password }) => {
@@ -44,6 +48,16 @@ const resolvers = {
                 { new: true, runValidators: true }
             );
         },
+        removeGameDEV: async (parent, { gameId, userId }, context) => {
+                return User.findOneAndUpdate(
+                    { _id: userId },
+                    { $pull: { games: { gameId }}},
+                    { new: true }
+                );
+        },
+        removeUserDEV: async (parent, { _id }, context) => {
+                return User.findOneAndDelete({ _id: _id });
+        },
         addGame: async (parent, { rawgId, name, image, rating }, context) => {
             if (context.user) {
                 return User.findOneAndUpdate(
@@ -51,6 +65,20 @@ const resolvers = {
                     { $addToSet: { games: { rawgId, name, image, rating }}},
                     { new: true, runValidators: true }
                 );
+            }
+        },
+        removeGame: async (parent, { gameId }, context) => {
+            if (context.user) {
+                return User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { games: { gameId }}},
+                    { new: true }
+                );
+            }
+        },
+        removeUser: async (parent, { _id }, context) => {
+            if (context.user) {
+                return User.findOneAndDelete({ _id: context.user._id });
             }
         },
     },
