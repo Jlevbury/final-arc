@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { pageTitle } from "../../helper";
 import Header from "../Header";
-import "../../index.css";
+
 import Div from "../Div";
 import Spacing from "../Spacing";
 import SearchWidget from "../Widget/SearchWidget";

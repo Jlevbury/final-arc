@@ -37,7 +37,7 @@ export default function Header({ variant }) {
 									to='/'
 								>
 									<img
-										src='../../../public/logo2.svg'
+										src='/logo.svg'
 										alt='Logo'
 									/>
 								</Link>

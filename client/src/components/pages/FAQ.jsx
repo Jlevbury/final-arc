@@ -2,9 +2,7 @@ import { Icon } from "@iconify/react";
 import React, { useEffect } from "react";
 import { pageTitle } from "../../helper";
 import Accordion from "../Accordion";
-
 import Div from "../Div";
-
 import Spacing from "../Spacing";
 
 export default function FaqPage() {
