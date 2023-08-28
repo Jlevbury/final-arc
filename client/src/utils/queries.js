@@ -23,7 +23,7 @@ export const QUERY_GAMES = gql`
       _id
       username
       games {
-        gameId
+        _id
         rawgId
         name
         image

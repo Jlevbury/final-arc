@@ -30,7 +30,7 @@ export const ADD_GAME = gql`
       _id
       username
       games {
-        gameId
+        _id
         rawgId
         name
         image
@@ -41,12 +41,12 @@ export const ADD_GAME = gql`
 `;
 
 export const REMOVE_GAME = gql`
-  mutation removeGame($gameId: String!) {
-    removeGame(gameId: $gameId) {
+  mutation removeGame($_id: String!) {
+    removeGame(_id: $_id) {
       _id
       username
       games {
-        gameId
+        _id
         rawgId
         name
         image
