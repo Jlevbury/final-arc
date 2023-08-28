@@ -9,7 +9,6 @@ export function GameDetails({
   onAddOwned,
   owned,
   KEY,
-  onAddWant,
 }) {
   const [game, setGame] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -124,9 +123,6 @@ export function GameDetails({
                     <>
                       <button className='btn-add' onClick={handleAdd}>
                         + Add to Owned
-                      </button>
-                      <button className='btn-add' onClick={handleAddWant}>
-                        + Add to Wishlist
                       </button>
                     </>
                   )}
