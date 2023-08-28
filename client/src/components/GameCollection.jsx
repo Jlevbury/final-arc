@@ -25,7 +25,6 @@ export default function GameCollection() {
   const [owned, setOwned] = useLocalStorageState([], 'owned');
   const [selectedGenre, setSelectedGenre] = useState('');
   const [selectedPlatform, setSelectedPlatform] = useState('');
-  const [want, setWant] = useLocalStorageState([], 'want');
 
   const { games, error, isLoading, KEY } = useGames(
     query,
@@ -52,10 +51,6 @@ export default function GameCollection() {
 
   function handleDeleteOwned(id) {
     setOwned(owned => owned.filter(game => game.id !== id));
-  }
-
-  function handleDeleteWanted(id) {
-    setOwned(want => want.filter(game => game.id !== id));
   }
 
   return (
@@ -99,14 +94,6 @@ export default function GameCollection() {
               />
             </>
           )}
-        </Box>
-        <Box>
-          <WishListSummary want={want} />
-          <GamesWishList
-            want={want}
-            onDeleteGame={handleDeleteWanted}
-            onSelectGame={handleSelectGame}
-          />
         </Box>
       </Main>
     </>
