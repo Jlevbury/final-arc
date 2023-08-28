@@ -6,11 +6,13 @@ import { SignUp, SignIn } from "./components/logReg/Index";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ServicesPage from "./components/pages/ServicesPage";
 import "./scss/index.scss";
-
+import TeamPage from "./components/pages/Team";
 import GameCollection from "./components/pages/GameCollection";
 import Emulator from "./components/pages/Emulator";
 import "./utils/animated.css";
 import "./utils/aos.css";
+// import Team from "./components/Team";
+import FaqPage from "./components/pages/FAQ";
 function App() {
 	return (
 		<BrowserRouter>
@@ -32,8 +34,16 @@ function App() {
 					element={<SignUp />}
 				/>
 				<Route
+					path='/teampage'
+					element={<TeamPage />}
+				/>
+				<Route
 					path='/signin'
 					element={<SignIn />}
+				/>
+				<Route
+					path='/FaqPage'
+					element={<FaqPage />}
 				/>
 				<Route
 					path='/emulator'
