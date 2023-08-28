@@ -41,17 +41,17 @@ const resolvers = {
       
             return { token, user };
         },    
-        addGameDEV: async (parent, { userId, rawgId, name, image, rating }, context) => {
+        addGameDEV: async (parent, { _id, rawgId, name, image, rating }, context) => {
             return User.findOneAndUpdate(
                 { _id: userId },
                 { $addToSet: { games: { rawgId, name, image, rating }}},
                 { new: true, runValidators: true }
             );
         },
-        removeGameDEV: async (parent, { gameId, userId }, context) => {
+        removeGameDEV: async (parent, { _id, userId }, context) => {
                 return User.findOneAndUpdate(
                     { _id: userId },
-                    { $pull: { games: { gameId }}},
+                    { $pull: { games: { _id: _id }}},
                     { new: true }
                 );
         },
@@ -67,11 +67,11 @@ const resolvers = {
                 );
             }
         },
-        removeGame: async (parent, { gameId }, context) => {
+        removeGame: async (parent, { _id }, context) => {
             if (context.user) {
                 return User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { games: { gameId }}},
+                    { $pull: { games: { _id }}},
                     { new: true }
                 );
             }

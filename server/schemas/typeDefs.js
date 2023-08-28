@@ -2,7 +2,7 @@ const typeDefs = `
   type Query {
     me: User
     users: [User]
-    games(username: String!): [Game]
+    games(username: String!): User
   }
 
   type User {
@@ -14,7 +14,7 @@ const typeDefs = `
   }
 
   type Game {
-    gameId: ID
+    _id: ID
     rawgId: String!
     name: String!
     image: String
@@ -30,11 +30,12 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addGame(rawgId: String!, name: String!, image: String, rating: Float): User
-    removeGame(gameId: String!): User
+
+    removeGame(_id: String!): User
     removeUser(_id: String!): User
 
-    addGameDEV(userId: String!, rawgId: String!, name: String!, image: String, rating: Float): User
-    removeGameDEV(gameId: String!, userId: String!): User
+    addGameDEV(_id: String!, rawgId: String!, name: String!, image: String, rating: Float): User
+    removeGameDEV(_id: String!, userId: String!): User
     removeUserDEV(_id: String!): User
   }
 `;
