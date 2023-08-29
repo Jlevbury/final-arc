@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-const KEY = import.meta.env.VITE_RAWG_KEY;
 
-function useGames(query, callback, selectedGenre, selectedPlatform) {
+function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -35,7 +34,6 @@ function useGames(query, callback, selectedGenre, selectedPlatform) {
           if (data.count === 0) throw new Error('Game not found');
 
           setGames(data.results);
-          console.log('Fetch', data.results);
 
           setIsLoading(false);
           setError('');

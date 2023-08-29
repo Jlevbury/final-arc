@@ -4,12 +4,9 @@ import {
   InputLabel,
   MenuItem,
   FormControl,
-  ListItemText,
   Select,
   Checkbox,
 } from '@mui/material';
-
-const KEY = import.meta.env.VITE_RAWG_KEY;
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -22,14 +19,16 @@ const MenuProps = {
   },
 };
 
-function Filter({ setSelectFilterQuery, fetchTerm }) {
+function Filter({ setSelectFilterQuery, fetchTerm, KEY }) {
   const [isLoading, setIsLoading] = useState(false);
   const [, setError] = useState('');
   const [termList, setTermList] = useState([]);
   const [selectedTerm, setSelectedTerm] = useState([]);
 
   const fetchData = useCallback(async () => {
+    if (!KEY) return;
     try {
+      console.log(KEY);
       setIsLoading(true);
       setError('');
       const res = await fetch(
@@ -42,12 +41,7 @@ function Filter({ setSelectFilterQuery, fetchTerm }) {
       const data = await res.json();
       if (data.count === 0) throw new Error(`${fetchTerm} not found`);
 
-      const filterArray = [];
-      data.results.forEach(item => {
-        filterArray.push(item);
-      });
-
-      setTermList(filterArray);
+      setTermList(data.results);
       setIsLoading(false);
       setError('');
     } catch (err) {
@@ -56,41 +50,36 @@ function Filter({ setSelectFilterQuery, fetchTerm }) {
     } finally {
       setIsLoading(false);
     }
-  }, [fetchTerm]);
+  }, [fetchTerm, KEY]);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
   const handleChange = e => {
-    const {
-      target: { value },
-    } = e;
-
-    if (value.length > 0) {
-      const newValue = value[value.length - 1];
-
-      const index = value.findIndex(e => e.slug === newValue.slug);
-      if (index > -1 && index < value.length - 1) {
-        value.splice(index, 1);
-        value.splice(value.length - 1, 1);
-      }
-    }
-
-    setSelectedTerm(value);
-    const query = value.map(e => e.id).join(',');
+    setSelectedTerm(e.target.value);
+    const query = e.target.value.map(item => item.id).join(',');
     setSelectFilterQuery(query);
   };
 
+  const handleClearSelection = () => {
+    setSelectedTerm([]);
+    setSelectFilterQuery('');
+  };
+
   if (isLoading) {
-    return;
+    return null;
   }
+
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id='demo-multiple-checkbox-label'>{fetchTerm}</InputLabel>
+        <InputLabel id='demo-multiple-checkbox-label'>
+          Filter by {fetchTerm}
+        </InputLabel>
         <Select
           className='search'
+          style={{ backgroundColor: 'white' }}
           labelId='demo-multiple-checkbox-label'
           id='demo-multiple-checkbox'
           multiple
@@ -98,35 +87,16 @@ function Filter({ setSelectFilterQuery, fetchTerm }) {
           onChange={handleChange}
           input={<OutlinedInput label='Tag' />}
           MenuProps={MenuProps}>
-          {termList?.map((item, index) => (
-            <MenuItem key={index} value={item}>
-              <Checkbox
-                checked={selectedTerm.findIndex(e => e.id === item.id) > -1}
-              />
-              <ListItemText primary={item.name} />
+          {termList.map(item => (
+            <MenuItem key={item.id} value={item}>
+              <Checkbox checked={selectedTerm.some(e => e.id === item.id)} />
+              {item.name}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
+      <button onClick={handleClearSelection}>Clear All</button>
     </div>
-    // <div>
-    //   <label>Select a Genre</label>
-    //   <select
-    //     data-te-select-init
-    //     multiple
-    //     className='search'
-    //     name='genre'
-    //     onChange={handleChange}>
-    //     <option value='all'>All</option>
-    //     {genres?.map((genre, index) => {
-    //       return (
-    //         <option value={genre} key={index}>
-    //           {genre}
-    //         </option>
-    //       );
-    //     })}
-    //   </select>
-    // </div>
   );
 }
 
