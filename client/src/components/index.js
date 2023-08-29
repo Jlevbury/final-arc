@@ -18,6 +18,14 @@ import ErrorMessage from './ErrorMessage';
 import Loader from './Loader';
 import NumResults from './NumResults';
 import Search from './Search';
+import Box from './Box';
+import Main from './Body';
+import Spacing from './Spacing';
+import Filter from './Filter';
+import Header from './Header';
+import PageHeading from './PageHeading';
+import Div from './Div';
+
 export {
   Navbar,
   GameList,
@@ -31,4 +39,11 @@ export {
   NumResults,
   Search,
   OwnedGame,
+  Box,
+  Main,
+  Spacing,
+  Filter,
+  Header,
+  PageHeading,
+  Div,
 };

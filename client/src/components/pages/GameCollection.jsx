@@ -1,8 +1,6 @@
 // import { Icon } from "@iconify/react";
 import { useState, useEffect } from 'react';
 import { useLocalStorageState } from '../hooks/useLocalStorageState';
-import { Main } from '../Main.1';
-import { Box } from '../Box';
 import {
   GameList,
   GameDetails,
@@ -14,13 +12,15 @@ import {
   Loader,
   NumResults,
   Search,
+  Main,
+  Box,
+  Filter,
+  Header,
+  PageHeading,
+  Spacing,
+  Div,
 } from '..';
 import useGames from '../hooks/useGames';
-import Filter from '../Filter';
-import Header from '../Header';
-import PageHeading from '../PageHeading';
-import Div from '../Div';
-import Spacing from '../Spacing';
 import axios from 'axios';
 
 const currentUrl = '/api/gamecollection/rawgkey';
