@@ -3,7 +3,7 @@ import { pageTitle } from "../../helper";
 import Div from "../Div";
 import Hero from "../Layout/Hero";
 import Spacing from "../Spacing";
-import Card from "../Card";
+import SectionCard from "../Card/SectionCard";
 
 export default function ServicesPage() {
 	pageTitle("Final Arc ");
@@ -24,7 +24,7 @@ export default function ServicesPage() {
 
 				<Div className='row'>
 					<Div className='col-lg-3 col-sm-6  cs-shine_hover_1 '>
-						<Card
+						<SectionCard
 							title=''
 							link='/emulator'
 							src='../../../public/image/SVG/emuLink.svg'
@@ -37,7 +37,7 @@ export default function ServicesPage() {
 					</Div>
 
 					<Div className='col-lg-3 col-sm-6 cs-shine_hover_1 '>
-						<Card
+						<SectionCard
 							title=''
 							link='/gamecollection'
 							src='../../../public/image/SVG/rawgLink.svg'
