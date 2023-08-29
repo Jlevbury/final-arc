@@ -1,6 +1,6 @@
 import { Game } from './Game';
 
-export function GameList({ games, onSelectGame }) {
+export default function GameList({ games, onSelectGame }) {
   return (
     <ul className='list list-movies'>
       {games?.map(game => (

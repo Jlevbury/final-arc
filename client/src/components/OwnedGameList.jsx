@@ -1,6 +1,6 @@
-import { OwnedGame } from './OwnedGame';
+import OwnedGame from './OwnedGame';
 
-export function OwnedGameList({ owned, onDeleteGame, onSelectGame }) {
+export default function OwnedGameList({ owned, onDeleteGame, onSelectGame }) {
   return (
     <ul className='list list-movies'>
       {owned.map(game => (

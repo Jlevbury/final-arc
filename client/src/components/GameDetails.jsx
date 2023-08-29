@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useKey } from './hooks/useKey';
-import { Loader } from './Loader';
+import Loader from './Loader';
 import StarRating from './StarRating';
 
-export function GameDetails({
+export default function GameDetails({
   selectedId,
   onCloseGame,
   onAddWant,

@@ -1,18 +1,20 @@
 // import { Icon } from "@iconify/react";
 import { useState, useEffect } from 'react';
 import { useLocalStorageState } from '../hooks/useLocalStorageState';
-import { Search } from '../Search';
-import { NumResults } from '../NumResults';
 import { Main } from '../Main.1';
 import { Box } from '../Box';
-import { GameList } from '../GameList';
-import { GameDetails } from '../GameDetails';
-import { OwnedSummary } from '../OwnedSummary';
-import { OwnedGameList } from '../OwnedGameList';
-import { WantedSummary } from '../WantedSummary';
-import { WantedGameList } from '../WantedGameList';
-import { ErrorMessage } from '../ErrorMessage';
-import { Loader } from '../Loader';
+import {
+  GameList,
+  GameDetails,
+  OwnedSummary,
+  OwnedGameList,
+  WantedSummary,
+  WantedGameList,
+  ErrorMessage,
+  Loader,
+  NumResults,
+  Search,
+} from '..';
 import useGames from '../hooks/useGames';
 import Filter from '../Filter';
 import Header from '../Header';
@@ -91,6 +93,7 @@ export default function Page() {
   //   useEffect(() => {
   //     window.scrollTo(0, 0);
   //   }, []);
+
   if (data === null) {
     return <Loader />;
   }

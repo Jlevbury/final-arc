@@ -1,6 +1,6 @@
-import { WantedGame } from './WantedGame';
+import WantedGame from './WantedGame';
 
-export function WantedGameList({ want, onDeleteGame, onSelectGame }) {
+export default function WantedGameList({ want, onDeleteGame, onSelectGame }) {
   return (
     <ul className='list list-movies'>
       {want.map(game => (

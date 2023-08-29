@@ -3,7 +3,7 @@ import { useKey } from '../components/hooks/useKey';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-export function Search({ query, setQuery, games }) {
+export default function Search({ query, setQuery, games }) {
   const inputEl = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 

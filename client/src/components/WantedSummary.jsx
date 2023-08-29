@@ -1,6 +1,6 @@
 import { average } from './pages/GameCollection';
 
-export function WantedSummary({ want }) {
+export default function WantedSummary({ want }) {
   const avgImdbRating = average(want.map(game => game.metacritic));
   const avgUserRating = average(want.map(game => game.userRating));
 
