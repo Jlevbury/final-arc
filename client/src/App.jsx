@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import "./App.css";
 import Layout from "./components/Layout";
 import CustomCursor from "./components/CustomCursor";
@@ -13,6 +13,7 @@ import "./utils/animated.css";
 import "./utils/aos.css";
 
 import FaqPage from "./components/pages/FAQ";
+
 function App() {
 	return (
 		<BrowserRouter>

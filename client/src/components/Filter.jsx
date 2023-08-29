@@ -10,7 +10,6 @@ import {
 } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 
-const KEY = import.meta.env.VITE_RAWG_KEY;
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -23,11 +22,12 @@ const MenuProps = {
   },
 };
 
-function Filter({ setSelectFilterQuery, fetchTerm }) {
+function Filter({ setSelectFilterQuery, fetchTerm, KEY }) {
   const [isLoading, setIsLoading] = useState(false);
   const [, setError] = useState('');
   const [termList, setTermList] = useState([]);
   const [selectedTerm, setSelectedTerm] = useState([]);
+
 
   const fetchData = useCallback(async () => {
     try {

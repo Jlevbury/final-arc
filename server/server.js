@@ -5,12 +5,18 @@ const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
 const path = require('path');
+const cors = require('cors');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+app.use(cors());
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+});
+
+app.get('/api/gamecollection/rawgkey', (req, res) => {
+  res.json(process.env.VITE_RAWG_KEY);
 });
 
 const startApolloServer = async () => {

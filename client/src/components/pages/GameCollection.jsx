@@ -1,5 +1,5 @@
 // import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import { Search } from "../Search";
 import { NumResults } from "../NumResults";
@@ -17,6 +17,11 @@ import Header from "../Header";
 import PageHeading from "../PageHeading";
 import Div from "../Div";
 import Spacing from "../Spacing";
+import axios from "axios";
+
+const currentUrl = "/api/gamecollection/rawgkey"; 
+const urlPrefix = window.location.hostname === 'localhost' ? 'http://localhost:3001' : window.location.hostname;
+let KEY = "";
 
 export const average = (arr) =>
 	arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -27,13 +32,25 @@ export default function Page() {
 	const [owned, setOwned] = useLocalStorageState([], "owned");
 	const [selectedGenre, setSelectedGenre] = useState("");
 	const [selectedPlatform, setSelectedPlatform] = useState("");
+	const [data, setData] = useState(null);
 
-	const { games, error, isLoading, KEY } = useGames(
+	const { games, error, isLoading } = useGames(
 		query,
 		handleCloseGame,
 		selectedGenre,
-		selectedPlatform
+		selectedPlatform,
+		KEY
 	);
+
+	useEffect(() => {
+		axios.get(urlPrefix + currentUrl).then(function (response) {
+			KEY = response.data;
+			console.log("KEY: " + KEY);
+		}).catch(function (error) {
+			console.error("Error " + error);
+		});
+		setData("");
+	}, []);
 
 	function handleSelectGame(id) {
 		setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -60,7 +77,9 @@ export default function Page() {
 	//   useEffect(() => {
 	//     window.scrollTo(0, 0);
 	//   }, []);
-
+	if (data === null) {
+		return <Loader />;
+	}
 	return (
 		<>
 			<Spacing
@@ -107,10 +126,12 @@ export default function Page() {
 							<Filter
 								setSelectFilterQuery={setSelectedGenre}
 								fetchTerm={"genres"}
+								KEY={KEY}
 							/>
 							<Filter
 								setSelectFilterQuery={setSelectedPlatform}
 								fetchTerm={"platforms"}
+								KEY={KEY}
 							/>
 							<Div className='cs-height_5 cs-height_lg_5' />
 							<Div className='cs-separator cs-accent_bg' />
