@@ -1,12 +1,15 @@
 #root {
-	max-width: 1280px;
-	margin: 0 auto;
-	padding: 0 auto;
+	max-width: 1440px;
+	margin: 0;
+	padding: 0;
 	text-align: center;
+	background-image: url("..//public/image/064-v1.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
 }
-
 .App-header {
-	background-color: #282c34;
+	background-color: #124bbd;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;

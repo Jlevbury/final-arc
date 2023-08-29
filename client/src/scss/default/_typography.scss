@@ -1,7 +1,6 @@
 // Google Fonts
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap");
 
-// Importing custom fonts
 @each $font,
 	$path
 		in (
@@ -11,7 +10,8 @@
 			"RobotikaBold": "../../../src/assets/image/fonts/RobotikaBold.ttf",
 			"sabiko": "../../../src/assets/image/fonts/sabiko.ttf",
 			"neowave": "../../../src/assets/image/fonts/neowave.ttf",
-			"modifi": "../../../src/assets/image/fonts/modifi.ttf"
+			"modifi": "../../../src/assets/image/fonts/modifi.ttf",
+			"Artpast": "../../../src/assets/image/fonts/Artpast.ttf"
 		)
 {
 	@font-face {

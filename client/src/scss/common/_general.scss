@@ -3,11 +3,11 @@ html {
 	scroll-behavior: auto;
 }
 body {
-	background: url("../../../public/image/7.jpg");
+	background: url("../../../public/image/10.jpg");
 	font-family: var(--body-font);
 	font-size: 16px;
 	font-weight: 400;
-	color: #909090;
+	color: #f7f0f0;
 	background: $black;
 	line-height: 30px;
 	padding: 0;
@@ -63,7 +63,7 @@ footer.footer-light h5 {
 	position: relative;
 	left: -3px;
 	top: -10px;
-	font-size: 64px;
+	font-size: 42px;
 	line-height: 70px;
 	text-transform: uppercase;
 	margin-bottom: 10px;
@@ -1580,8 +1580,13 @@ label {
 
 .cs-faq_nav {
 	height: 100%;
-	background-color: #000;
+	background: linear-gradient(
+		to bottom,
+		rgba(240, 133, 242, 0.5),
+		rgba(240, 180, 242, 0.2)
+	); // Added transparency here
 	padding: 45px 35px;
+
 	.cs-faq_nav_title {
 		font-size: 30px;
 	}
