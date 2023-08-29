@@ -22,12 +22,12 @@ import {
   Div,
 } from '..';
 
-const currentUrl = '/api/gamecollection/rawgkey';
-const urlPrefix =
-  window.location.hostname === 'localhost'
-    ? 'http://localhost:3001'
-    : window.location.hostname;
-let KEY = '';
+// const currentUrl = '/api/gamecollection/rawgkey';
+// const urlPrefix =
+//   window.location.hostname === 'localhost'
+//     ? 'http://localhost:3001'
+//     : window.location.hostname;
+const KEY = import.meta.env.VITE_RAWG_KEY;
 
 export const average = arr =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -49,20 +49,18 @@ export default function Page() {
     KEY
   );
 
-  useEffect(() => {
-    axios
-      .get(urlPrefix + currentUrl)
-      .then(function (response) {
-        KEY = response.data;
-        console.log('KEY: ' + KEY);
-        setData('');
-      })
-      .catch(function (error) {
-        console.error('Error ' + error);
-      });
-  }, []);
-
-  console.log('key:', KEY);
+  //   useEffect(() => {
+  //     axios
+  //       .get(urlPrefix + currentUrl)
+  //       .then(function (response) {
+  //         KEY = response.data;
+  //         console.log('KEY: ' + KEY);
+  //         setData('');
+  //       })
+  //       .catch(function (error) {
+  //         console.error('Error ' + error);
+  //       });
+  //   }, []);
 
   function handleSelectGame(id) {
     setSelectedId(selectedId => (id === selectedId ? null : id));
@@ -93,9 +91,9 @@ export default function Page() {
   //     window.scrollTo(0, 0);
   //   }, []);
 
-  if (data === null) {
-    return <Loader />;
-  }
+  //   if (data === null) {
+  //     return <Loader />;
+  //   }
   return (
     <>
       <Spacing lg='150' md='80' />
