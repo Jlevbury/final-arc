@@ -6,9 +6,7 @@ import {
   FormControl,
   Select,
   Checkbox,
-  IconButton,
 } from '@mui/material';
-import ClearIcon from '@mui/icons-material/Clear';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;

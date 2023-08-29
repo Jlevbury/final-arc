@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { useKey } from '../components/hooks/useKey';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import useKey from '../components/hooks/useKey';
+import { TextField, Autocomplete } from '@mui/material';
 
 export default function Search({ query, setQuery, games }) {
   const inputEl = useRef(null);

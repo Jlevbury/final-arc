@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useKey } from './hooks/useKey';
-import Loader from './Loader';
-import StarRating from './StarRating';
+import useKey from './hooks/useKey';
+import { Loader, StarRating } from './';
 
 export default function GameDetails({
   selectedId,

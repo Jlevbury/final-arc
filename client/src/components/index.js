@@ -25,6 +25,7 @@ import Filter from './Filter';
 import Header from './Header';
 import PageHeading from './PageHeading';
 import Div from './Div';
+import StarRating from './StarRating';
 
 export {
   Navbar,
@@ -46,4 +47,5 @@ export {
   Header,
   PageHeading,
   Div,
+  StarRating,
 };

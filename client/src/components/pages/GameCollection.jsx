@@ -1,6 +1,7 @@
 // import { Icon } from "@iconify/react";
 import { useState, useEffect } from 'react';
-import { useLocalStorageState } from '../hooks/useLocalStorageState';
+import axios from 'axios';
+import { useLocalStorageState, useGames } from '../hooks/';
 import {
   GameList,
   GameDetails,
@@ -20,8 +21,6 @@ import {
   Spacing,
   Div,
 } from '..';
-import useGames from '../hooks/useGames';
-import axios from 'axios';
 
 const currentUrl = '/api/gamecollection/rawgkey';
 const urlPrefix =

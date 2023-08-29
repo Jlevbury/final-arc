@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 
-
 function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-
 
   useEffect(
     function () {
