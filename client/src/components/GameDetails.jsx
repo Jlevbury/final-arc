@@ -6,9 +6,11 @@ import StarRating from './StarRating';
 export function GameDetails({
   selectedId,
   onCloseGame,
+  onAddWant,
   onAddOwned,
-  owned,
+  want,
   KEY,
+  owned,
 }) {
   const [game, setGame] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -29,8 +31,8 @@ export function GameDetails({
     },
     [selectedId, KEY]
   );
-
-  const isWatched = owned.map(game => game.id).includes(selectedId);
+  const isOwned = owned.map(game => game.id).includes(selectedId);
+  const isWanted = want.map(game => game.id).includes(selectedId);
 
   const {
     name,
@@ -58,7 +60,7 @@ export function GameDetails({
 
   useKey('Escape', onCloseGame);
 
-  function handleAdd() {
+  function handleAddOwned() {
     const newOwnedGame = {
       metacritic: Number(metacritic),
       name,
@@ -73,7 +75,6 @@ export function GameDetails({
     onAddOwned(newOwnedGame);
     onCloseGame();
   }
-
   function handleAddWant() {
     const newWantGame = {
       metacritic: Number(metacritic),
@@ -89,8 +90,6 @@ export function GameDetails({
     onAddWant(newWantGame);
     onCloseGame();
   }
-
-  console.log(platforms, name);
 
   return (
     <div className='details'>
@@ -116,19 +115,24 @@ export function GameDetails({
 
           <section>
             <div className='rating'>
-              {!isWatched ? (
+              <StarRating size={32} onSetRating={setUserRating} />
+              {!isOwned ? (
                 <>
-                  <StarRating size={32} onSetRating={setUserRating} />
-                  {userRating > 0 && (
-                    <>
-                      <button className='btn-add' onClick={handleAdd}>
-                        + Add to Owned
-                      </button>
-                    </>
-                  )}
+                  <button className='btn-add' onClick={handleAddOwned}>
+                    + Add to Owned
+                  </button>
                 </>
               ) : (
                 <p>You own this game</p>
+              )}
+              {!isWanted ? (
+                <>
+                  <button className='btn-add' onClick={handleAddOwned}>
+                    + Add to Want List
+                  </button>
+                </>
+              ) : (
+                <p>This game is on your want list</p>
               )}
             </div>
             <p>
