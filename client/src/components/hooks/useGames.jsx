@@ -36,7 +36,6 @@ function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
           if (data.count === 0) throw new Error('Game not found');
 
           setGames(data.results);
-          console.log('Fetch', data.results);
 
           setIsLoading(false);
           setError('');

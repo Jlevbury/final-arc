@@ -23,8 +23,8 @@ const currentUrl = "/api/gamecollection/rawgkey";
 const urlPrefix = window.location.hostname === 'localhost' ? 'http://localhost:3001' : window.location.hostname;
 let KEY = "";
 
-export const average = (arr) =>
-	arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+export const average = arr =>
+  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function Page() {
 	const [query, setQuery] = useState("");
@@ -52,25 +52,28 @@ export default function Page() {
 		setData("");
 	}, []);
 
-	function handleSelectGame(id) {
-		setSelectedId((selectedId) => (id === selectedId ? null : id));
-	}
+  function handleSelectGame(id) {
+    setSelectedId(selectedId => (id === selectedId ? null : id));
+  }
 
-	function handleCloseGame() {
-		setSelectedId(null);
-	}
+  function handleCloseGame() {
+    setSelectedId(null);
+  }
 
-	function handleAddOwned(game) {
-		setOwned((owned) => [...owned, game]);
-	}
+  function handleAddOwned(game) {
+    setOwned(owned => [...owned, game]);
+  }
 
-	function handleAddWant(game) {
-		setWant((want) => [...want, game]);
-	}
+  function handleAddWant(game) {
+    setWant(want => [...want, game]);
+  }
 
-	function handleDeleteOwned(id) {
-		setOwned((owned) => owned.filter((game) => game.id !== id));
-	}
+  function handleDeleteOwned(id) {
+    setOwned(owned => owned.filter(game => game.id !== id));
+  }
+  function handleDeleteWant(id) {
+    setWant(want => want.filter(game => game.id !== id));
+  }
 
 	//   const params = useParams();
 	//   pageTitle('Game collection');
@@ -94,34 +97,27 @@ export default function Page() {
 				// pageLinkText={params.blogDetailsId}
 			/>
 
-			<Div className='container'>
-				<Div className='row align-items-center'>
-					<Div className='col-xl-5 col-lg-6'>
-						<Div className='cs-radius_15 cs-shine_hover_1'>
-							<img
-								src='/image/SVG/rawgLink.svg'
-								alt='Game Collection'
-								className='w-100'
-							/>
-						</Div>
-					</Div>
-					<Div className='col-lg-6 offset-xl-1'>
-						<spacing
-							lg='0'
-							md='45'
-						/>
+      <Div className='container'>
+        <Div className='row align-items-center'>
+          <Div className='col-xl-5 col-lg-6'>
+            <Div className='cs-radius_15 cs-shine_hover_1'>
+              <img
+                src='/image/SVG/rawgLink.svg'
+                alt='Game Collection'
+                className='w-100'
+              />
+            </Div>
+          </Div>
+          <Div className='col-lg-6 offset-xl-1'>
+            <Spacing lg='0' md='45' />
 
-						<Div className='cs-section_heading cs-style1'>
-							{/* Search bar */}
+            <Div className='cs-section_heading cs-style1'>
+              {/* Search bar */}
 
-							<Search
-								query={query}
-								setQuery={setQuery}
-								games={games}
-							/>
-							<NumResults games={games} />
+              <Search query={query} setQuery={setQuery} games={games} />
+              <NumResults games={games} />
 
-							<Div className='cs-height_10 cs-height_lg_10' />
+              <Div className='cs-height_10 cs-height_lg_10' />
 
 							<Filter
 								setSelectFilterQuery={setSelectedGenre}
@@ -172,19 +168,16 @@ export default function Page() {
 								</Box>
 							</Main>
 
-							<Div className='cs-height_45 cs-height_lg_30' />
-						</Div>
-					</Div>
-				</Div>
-				<spacing
-					lg='150'
-					md='80'
-				/>
-				<Div className='container'>
-					<p className='cs-m0'>OTHER CONTENT RELATED TO THE EMULATOR</p>
-					<Div className='cs-height_45 cs-height_lg_30' />
-				</Div>
-			</Div>
-		</>
-	);
+              <Div className='cs-height_45 cs-height_lg_30' />
+            </Div>
+          </Div>
+        </Div>
+        <Spacing lg='150' md='80' />
+        <Div className='container'>
+          <p className='cs-m0'>OTHER CONTENT RELATED TO THE EMULATOR</p>
+          <Div className='cs-height_45 cs-height_lg_30' />
+        </Div>
+      </Div>
+    </>
+  );
 }
