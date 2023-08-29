@@ -10,7 +10,6 @@ import {
 } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -28,9 +27,10 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY }) {
   const [termList, setTermList] = useState([]);
   const [selectedTerm, setSelectedTerm] = useState([]);
 
-
   const fetchData = useCallback(async () => {
+    if (!KEY) return;
     try {
+      console.log(KEY);
       setIsLoading(true);
       setError('');
       const res = await fetch(
@@ -52,7 +52,7 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY }) {
     } finally {
       setIsLoading(false);
     }
-  }, [fetchTerm]);
+  }, [fetchTerm, KEY]);
 
   useEffect(() => {
     fetchData();

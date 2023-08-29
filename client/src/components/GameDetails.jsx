@@ -127,7 +127,7 @@ export function GameDetails({
               )}
               {!isWanted ? (
                 <>
-                  <button className='btn-add' onClick={handleAddOwned}>
+                  <button className='btn-add' onClick={handleAddWant}>
                     + Add to Want List
                   </button>
                 </>
