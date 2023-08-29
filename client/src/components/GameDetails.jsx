@@ -11,6 +11,7 @@ export default function GameDetails({
   KEY,
   owned,
 }) {
+  I;
   const [game, setGame] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState('');
