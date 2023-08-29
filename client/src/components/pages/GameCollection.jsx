@@ -172,7 +172,7 @@ export default function Page() {
                   )}
                 </Box>
                 <Box>
-                  <WantedSummary want={onWanted} />
+                  <WantedSummary want={want} />
                   <WantedGameList
                     want={want}
                     onDeleteGame={handleDeleteWant}
