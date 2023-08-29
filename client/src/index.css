@@ -46,6 +46,12 @@
 	font-weight: normal;
 	font-style: normal;
 }
+@font-face {
+	font-family: "artpast";
+	src: url("./assets/image/fonts/Artpast.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
 @tailwind base;
 @layer base {
 	html {
@@ -59,17 +65,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* this controls the base styles,FINALLY FIGURED IT OUT SWEET BABY JEEBUS */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Modifi", sans-serif;
+	font-family: "modifi", sans-serif;
 	scroll-behavior: smooth;
-	color-scheme: dark;
+	color-scheme: normal;
+	color: #faf6f6;
 }
 
 .App-header {
-	background-color: #282c34;
+	background-color: #3e79ee;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
