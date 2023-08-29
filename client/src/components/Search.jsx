@@ -19,7 +19,7 @@ export function Search({ query, setQuery, games }) {
 
   return (
     <Autocomplete
-      className='search'
+      style={{ backgroundColor: 'white' }}
       filterOptions={x => x}
       id='combo-box-demo'
       options={games}
@@ -33,7 +33,7 @@ export function Search({ query, setQuery, games }) {
       renderInput={params => (
         <TextField
           {...params}
-          label='Combo box'
+          label='Search for a game'
           variant='outlined'
           inputRef={inputEl}
         />

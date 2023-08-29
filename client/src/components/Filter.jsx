@@ -76,9 +76,12 @@ function Filter({ setSelectFilterQuery, fetchTerm }) {
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id='demo-multiple-checkbox-label'>{fetchTerm}</InputLabel>
+        <InputLabel id='demo-multiple-checkbox-label'>
+          Filter by {fetchTerm}
+        </InputLabel>
         <Select
           className='search'
+          style={{ backgroundColor: 'white' }}
           labelId='demo-multiple-checkbox-label'
           id='demo-multiple-checkbox'
           multiple

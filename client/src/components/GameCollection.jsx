@@ -45,10 +45,6 @@ export default function GameCollection() {
     setOwned(owned => [...owned, game]);
   }
 
-  function handleAddWant(game) {
-    setWant(want => [...want, game]);
-  }
-
   function handleDeleteOwned(id) {
     setOwned(owned => owned.filter(game => game.id !== id));
   }
