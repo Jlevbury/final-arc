@@ -1,4 +1,5 @@
 export function Game({ game, onSelectGame }) {
+  console.log('game', game);
   return (
     <li onClick={() => onSelectGame(game.id)}>
       <img src={game.background_image} alt={`${game.name} poster`} />

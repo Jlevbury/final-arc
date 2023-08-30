@@ -8,4 +8,5 @@ export default function GameList({ games, onSelectGame }) {
       ))}
     </ul>
   );
+
 }

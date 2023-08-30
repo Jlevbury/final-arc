@@ -94,6 +94,8 @@ export default function Page() {
   //   if (data === null) {
   //     return <Loader />;
   //   }
+
+  // if(key === '') return <Loader />
   return (
     <>
       <Spacing lg='150' md='80' />
