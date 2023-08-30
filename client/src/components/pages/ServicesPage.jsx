@@ -3,7 +3,7 @@ import { pageTitle } from "../../helper";
 import Div from "../Div";
 import Hero from "../Layout/Hero";
 import Spacing from "../Spacing";
-import Card from "../Card";
+import SectionCard from "../Card/SectionCard";
 
 export default function ServicesPage() {
 	pageTitle("Final Arc ");
@@ -14,42 +14,40 @@ export default function ServicesPage() {
 
 	return (
 		<>
-			<Div className='container'>
-				<Hero />
+			{/* <Div className='container'> */}
+			<Hero />
 
-				<Spacing
-					lg='15'
-					md='15'
-				/>
+			<hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
+			<Div className='row'>
+				<Div className='col-lg-3 col-sm-6  cs-shine_hover_1 '>
+					<SectionCard
+						title=''
+						link='/emulator'
+						src='../../../public/image/SVG/emuLink.svg'
+						alt='Emu JS'
+					/>{" "}
+					<hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
+					<Spacing
+						lg='15'
+						md='30'
+					/>
+				</Div>
 
-				<Div className='row'>
-					<Div className='col-lg-3 col-sm-6  cs-shine_hover_1 '>
-						<Card
-							title=''
-							link='/emulator'
-							src='../../../public/image/SVG/emuLink.svg'
-							alt='Emu JS'
-						/>
-						<Spacing
-							lg='30'
-							md='60'
-						/>
-					</Div>
-
-					<Div className='col-lg-3 col-sm-6 cs-shine_hover_1 '>
-						<Card
-							title=''
-							link='/gamecollection'
-							src='../../../public/image/SVG/rawgLink.svg'
-							alt='RAWG API'
-						/>
-						<Spacing
-							lg='30'
-							md='60'
-						/>
-					</Div>
+				<Div className='col-lg-3 col-sm-6 cs-shine_hover_1 '>
+					<SectionCard
+						title=''
+						link='/gamecollection'
+						src='../../../public/image/SVG/rawgLink.svg'
+						alt='RAWG API'
+					/>{" "}
+					<hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
+					<Spacing
+						lg='15'
+						md='30'
+					/>
 				</Div>
 			</Div>
+			{/* </Div> */}
 		</>
 	);
 }
