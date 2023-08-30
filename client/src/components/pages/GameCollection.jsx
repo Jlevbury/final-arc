@@ -1,28 +1,33 @@
 // import { Icon } from "@iconify/react";
-import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { pageTitle } from "../../helper";
-// import Header from "../Header";
-import PageHeading from "../PageHeading";
-import Div from "../Div";
-// import Sidebar from "../Sidebar.jsx/index.jsx";
-import Spacing from "../Spacing";
-import { useState } from "react";
-import { useLocalStorageState } from "../hooks/useLocalStorageState";
-import { Search } from "../../components/Search";
-import { NumResults } from "../../components/NumResults";
-import { Main } from "../../components/Main.1";
-import { Box } from "../Box";
-import { GameList } from "../../components/GameList";
-import { GameDetails } from "../../components/GameDetails";
-import { OwnedSummary } from "../../components/OwnedSummary";
-import { OwnedGameList } from "../../components/OwnedGameList";
-import Header from "../Header/index";
-import { ErrorMessage } from "../../components/ErrorMessage";
-import { Loader } from "../../components/Loader";
-import useGames from "../hooks/useGames";
-import GenreFilter from "../../components/GenreFilter";
-import PlatformFilter from "../../components/PlatformFilter";
+import { useState, useEffect } from "react";
+// import axios from 'axios';
+import { useLocalStorageState, useGames } from "../hooks/";
+
+import {
+	GameList,
+	GameDetails,
+	OwnedSummary,
+	OwnedGameList,
+	WantedSummary,
+	WantedGameList,
+	ErrorMessage,
+	Loader,
+	NumResults,
+	Search,
+	Main,
+	Box,
+	Filter,
+	Header,
+	Spacing,
+	Div,
+} from "..";
+
+// const currentUrl = '/api/gamecollection/rawgkey';
+// const urlPrefix =
+//   window.location.hostname === 'localhost'
+//     ? 'http://localhost:3001'
+//     : window.location.hostname;
+const KEY = import.meta.env.VITE_RAWG_KEY;
 
 export const average = (arr) =>
 	arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -31,16 +36,31 @@ export default function GameCollection() {
 	const [query, setQuery] = useState("");
 	const [selectedId, setSelectedId] = useState(null);
 	const [owned, setOwned] = useLocalStorageState([], "owned");
-	const [selectedGenre, setSelectedGenre] = useState("All");
-	const [selectedPlatform, setSelectedPlatform] = useState("All");
+	const [selectedGenre, setSelectedGenre] = useState("");
+	const [selectedPlatform, setSelectedPlatform] = useState("");
+	const [data, setData] = useState(null);
 	const [want, setWant] = useLocalStorageState([], "want");
 
-	const { games, error, isLoading, KEY } = useGames(
+	const { games, error, isLoading } = useGames(
 		query,
 		handleCloseGame,
 		selectedGenre,
-		selectedPlatform
+		selectedPlatform,
+		KEY
 	);
+
+	//   useEffect(() => {
+	//     axios
+	//       .get(urlPrefix + currentUrl)
+	//       .then(function (response) {
+	//         KEY = response.data;
+	//         console.log('KEY: ' + KEY);
+	//         setData('');
+	//       })
+	//       .catch(function (error) {
+	//         console.error('Error ' + error);
+	//       });
+	//   }, []);
 
 	function handleSelectGame(id) {
 		setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -61,48 +81,44 @@ export default function GameCollection() {
 	function handleDeleteOwned(id) {
 		setOwned((owned) => owned.filter((game) => game.id !== id));
 	}
-
-	function handleDeleteWanted(id) {
-		setOwned((want) => want.filter((game) => game.id !== id));
+	function handleDeleteWant(id) {
+		setWant((want) => want.filter((game) => game.id !== id));
 	}
 
-	const params = useParams();
-	pageTitle("Game collection");
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+	//   const params = useParams();
+	//   pageTitle('Game collection');
+	//   useEffect(() => {
+	//     window.scrollTo(0, 0);
+	//   }, []);
+
+	//   if (data === null) {
+	//     return <Loader />;
+	//   }
 	return (
 		<>
-			<Spacing
-				lg='150'
-				md='80'
-			/>
 			<Header />
-			{/* Start Page Heading Section */}
-			<PageHeading
-				title='Game INFORMATION TO BE UPDATED'
-				bgSrc='/images/blog_details_hero_bg.jpeg'
-				pageLinkText={params.blogDetailsId}
+			<Spacing
+				lg='100'
+				md='100'
 			/>
-
 			<Div className='container'>
 				<Div className='row align-items-center'>
-					<Div className='col-xl-5 col-lg-6'>
-						<Div className='cs-radius_15 cs-shine_hover_1'>
-							<img
-								src='/image/SVG/rawg1.svg'
-								alt='Game Collection'
-								className='w-100'
-							/>
-						</Div>
-					</Div>
-					<Div className='col-lg-6 offset-xl-1'>
-						<Spacing
-							lg='0'
-							md='45'
+					<Div className='cs-radius_15 cs-shine_hover_1'>
+						<img
+							src='/image/SVG/rawgLink.svg'
+							alt='Game Collection'
+							className='w-100'
 						/>
+					</Div>
+					<hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
+				</Div>
+				<Div className='col-lg-6 offset-xl-1'>
+					<Spacing
+						lg='45'
+						md='45'
+					/>
 
-						{/* <Div className='cs-section_heading cs-style1'> */}
+					<Div className='cs-section_heading cs-style1'>
 						{/* Search bar */}
 
 						<Search
@@ -112,17 +128,32 @@ export default function GameCollection() {
 						/>
 						<NumResults games={games} />
 
-						<Div className='cs-height_10 cs-height_lg_10' />
-
-						<GenreFilter onSelectGenre={setSelectedGenre} />
-						<PlatformFilter onSelectPlatform={setSelectedPlatform} />
-
+						<Spacing
+							lg='15'
+							md='15'
+						/>
+						<Div
+							className='container'
+							sx={{ display: "flex", flexDirection: "row" }}
+						>
+							<Filter
+								sx={{ flexGrow: 1 }}
+								setSelectFilterQuery={setSelectedGenre}
+								fetchTerm={"genres"}
+								KEY={KEY}
+							/>
+							<Filter
+								sx={{ flexGrow: 1 }}
+								setSelectFilterQuery={setSelectedPlatform}
+								fetchTerm={"platforms"}
+								KEY={KEY}
+							/>
+						</Div>
 						<Div className='cs-height_5 cs-height_lg_5' />
 						<Div className='cs-separator cs-accent_bg' />
-						<Div className='cs-height_45 cs-height_lg_25' />
+
 						<Main>
 							<Box>
-								{/* {isLoading ? <Loader /> : <MovieList movies={movies} />} */}
 								{isLoading && <Loader />}
 								{!isLoading && !error && (
 									<GameList
@@ -155,21 +186,28 @@ export default function GameCollection() {
 									</>
 								)}
 							</Box>
+							<Box>
+								<WantedSummary want={want} />
+								<WantedGameList
+									want={want}
+									onDeleteGame={handleDeleteWant}
+									onSelectGame={handleSelectGame}
+								/>
+							</Box>
 						</Main>
 
 						<Div className='cs-height_45 cs-height_lg_30' />
 					</Div>
 				</Div>
 			</Div>
-			{/* </Div> */}
 			<Spacing
 				lg='150'
 				md='80'
 			/>
-			<Div className='container'>
+			{/* <Div className='container'>
 				<p className='cs-m0'>OTHER CONTENT RELATED TO THE EMULATOR</p>
 				<Div className='cs-height_45 cs-height_lg_30' />
-			</Div>
+			</Div> */}
 		</>
 	);
 }

@@ -1,10 +1,6 @@
 const {Schema, Types} = require('mongoose');
 
 const gameSchema = new Schema({
-    gameId : {
-        type: Types.ObjectId,
-        default: () => new Types.ObjectId(),
-    },
     rawgId : {
         type: String,
         required: [true, "A game ID is required!"],

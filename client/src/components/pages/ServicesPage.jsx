@@ -1,61 +1,53 @@
-import React from "react";
+import React, { useEffect } from "react"; // Prefer destructuring when importing multiple exports
 import { pageTitle } from "../../helper";
-import PageHeading from "../PageHeading";
 import Div from "../Div";
-import SectionHeading from "../SectionHeading";
 import Hero from "../Layout/Hero";
 import Spacing from "../Spacing";
+import SectionCard from "../Card/SectionCard";
 
 export default function ServicesPage() {
 	pageTitle("Final Arc ");
 
-	// Scroll to the top of the page when component mounts
-	React.useEffect(() => {
+	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
 
 	return (
 		<>
-			{/* <PageHeading
-				title='Final Arc '
-				bgSrc='/image/42.jpg'
-				pageLinkText=''
-			/> */}
-			<Spacing
-				lg='150'
-				md='80'
-			/>
+			{/* <Div className='container'> */}
+			<Hero />
 
-			<Div className='container'>
-				<Div className='row '>
-					<Div className='col-xl-4'>
-						<SectionHeading
-							title='The Essentials'
-							subtitle='All your content in one place'
-						/>
-						<Spacing
-							lg='90'
-							md='45'
-						/>
-					</Div>
-					<Hero />
-					{/* You can add more content here */}
+			<hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
+			<Div className='row'>
+				<Div className='col-lg-3 col-sm-6  cs-shine_hover_1 '>
+					<SectionCard
+						title=''
+						link='/emulator'
+						src='../../../public/image/SVG/emuLink.svg'
+						alt='Emu JS'
+					/>{" "}
+					<hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
+					<Spacing
+						lg='15'
+						md='30'
+					/>
+				</Div>
+
+				<Div className='col-lg-3 col-sm-6 cs-shine_hover_1 '>
+					<SectionCard
+						title=''
+						link='/gamecollection'
+						src='../../../public/image/SVG/rawgLink.svg'
+						alt='RAWG API'
+					/>{" "}
+					<hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
+					<Spacing
+						lg='15'
+						md='30'
+					/>
 				</Div>
 			</Div>
-
-			<Spacing
-				lg='150'
-				md='80'
-			/>
-			<Div className='container'></Div>
-			<Spacing
-				lg='125'
-				md='55'
-			/>
-			<Spacing
-				lg='150'
-				md='80'
-			/>
+			{/* </Div> */}
 		</>
 	);
 }

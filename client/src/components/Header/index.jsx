@@ -37,7 +37,7 @@ export default function Header({ variant }) {
 									to='/'
 								>
 									<img
-										src='../../../public/logo2.svg'
+										src='/logo.svg'
 										alt='Logo'
 									/>
 								</Link>
@@ -111,15 +111,15 @@ export default function Header({ variant }) {
 												<ul>
 													<li>
 														<Link
-															to='/contact'
+															to='/teampage'
 															onClick={() => setMobileToggle(false)}
 														>
-															Contact
+															Our Team
 														</Link>
 													</li>
 													<li>
 														<Link
-															to='/faq'
+															to='/FaqPage'
 															onClick={() => setMobileToggle(false)}
 														>
 															FAQ

@@ -1,8 +1,23 @@
 #root {
-	max-width: 1280px;
-	margin: 0 auto;
-	padding: 0 auto;
+	max-width: 1440px;
+	margin: auto;
+	padding: 0;
 	text-align: center;
+	background-image: url("..//public/image/064-v1.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.App-header {
+	background-color: #124bbd;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+	background: rgb(44, 43, 43);
 }
 
 .logo {
@@ -16,6 +31,33 @@
 }
 .logo.react:hover {
 	filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* App.css */
+.customDropdownMenu {
+	background-color: #303233 !important; /* You can use any color here */
+}
+.filter-container {
+	position: relative;
+	background: rgb(44, 43, 43);
+}
+
+.dropdown-list {
+	position: absolute;
+	background: rgb(44, 43, 43);
+	border: 1px solid #ccc;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 200px;
+	max-height: 200px;
+	overflow-y: auto;
+	z-index: 1;
+}
+
+.dropdown-list li {
+	padding: 8px;
+	cursor: pointer;
 }
 
 @keyframes logo-spin {

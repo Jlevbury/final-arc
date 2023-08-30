@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
-const KEY = import.meta.env.VITE_RAWG_KEY;
 
-function useGames(query, callback, selectedGenre, selectedPlatform) {
+const urlPrefix =
+  window.location.hostname === 'localhost'
+     ? 'http://localhost:3001'
+     : window.location.hostname;
+const searchUrl = '/api/searchGames/';
+const apiUrl = urlPrefix + searchUrl;
+
+function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -15,20 +21,17 @@ function useGames(query, callback, selectedGenre, selectedPlatform) {
         try {
           setIsLoading(true);
           setError('');
-          setGames([]);
-          let fetchCommand = `https://api.rawg.io/api/games?key=${KEY}&search=${query}`;
-          if (selectedGenre !== 'All' && selectedPlatform === 'All') {
-            fetchCommand = fetchCommand + `&genres=${selectedGenre}`;
-          } else if ((selectedPlatform === 'All' + selectedGenre) === 'All') {
-            fetchCommand = fetchCommand + `&platforms=${selectedPlatform}`;
-          } else if (selectedPlatform !== 'All' && selectedGenre !== 'All') {
-            fetchCommand =
-              fetchCommand +
-              `&platforms=${selectedPlatform}&genres=${selectedGenre}`;
-          } else {
-            fetchCommand;
+          let fetchCommand = apiUrl;
+          if (query.length > 0) {
+            fetchCommand = fetchCommand + `&search=${query}`;
           }
-          console.log(fetchCommand);
+          if (selectedGenre !== '') {
+            fetchCommand = fetchCommand + `&genres=${selectedGenre}`;
+          }
+          if (selectedPlatform !== '') {
+            fetchCommand = fetchCommand + `&platforms=${selectedPlatform}`;
+          }
+
           const res = await fetch(fetchCommand);
 
           if (!res.ok)
@@ -36,12 +39,9 @@ function useGames(query, callback, selectedGenre, selectedPlatform) {
 
           const data = await res.json();
           if (data.count === 0) throw new Error('Game not found');
-          console.log(data);
-          if (query === '') {
-            setGames([]);
-          } else {
-            setGames(data.results);
-          }
+
+          setGames(data.results);
+
           setIsLoading(false);
           setError('');
         } catch (err) {

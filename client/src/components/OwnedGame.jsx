@@ -1,4 +1,9 @@
-export function OwnedGame({ game, onDeleteGame, onSelectGame }) {
+export default function OwnedGame({ game, onDeleteGame, onSelectGame }) {
+  function handleClick(e) {
+    e.stopPropagation();
+    onDeleteGame(game.id);
+  }
+
   return (
     <li onClick={() => onSelectGame(game.id)}>
       <img src={game.background_image} alt={`${game.name} poster`} />
@@ -13,7 +18,7 @@ export function OwnedGame({ game, onDeleteGame, onSelectGame }) {
           <span>{game.userRating}</span>
         </p>
 
-        <button className='btn-delete' onClick={() => onDeleteGame(game.id)}>
+        <button className='btn-delete' onClick={handleClick}>
           X
         </button>
       </div>
