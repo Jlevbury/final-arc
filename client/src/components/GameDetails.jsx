@@ -96,11 +96,11 @@ export default function GameDetails({
 				<Loader />
 			) : (
 				<>
-					<GameCard
+					{/* <GameCard
 						name={name}
 						description={description_raw}
 						image={background_image}
-					/>
+					/> */}
 					<header>
 						<button
 							className='btn-back'
