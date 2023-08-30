@@ -27,7 +27,7 @@ export default function GameDetails({
 	useEffect(
 		function () {
 			async function getGameDetails() {
-				console.log("Retrieving game details");
+				console.log("Retrieving game details " + apiUrl + selectedId);
 				setIsLoading(true);
 				const res = await fetch(apiUrl + selectedId);
 				const data = await res.json();

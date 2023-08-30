@@ -19,7 +19,6 @@ function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
       // const signal = ', {signal: controller.signal}';
       async function fetchGames() {
         try {
-          console.log("Retrieving games");
           setIsLoading(true);
           setError('');
           let fetchCommand = apiUrl;
@@ -33,6 +32,7 @@ function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
             fetchCommand = fetchCommand + `&platforms=${selectedPlatform}`;
           }
 
+          console.log("Retrieving games " + fetchCommand);
           const res = await fetch(fetchCommand);
 
           if (!res.ok)

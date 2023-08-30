@@ -38,9 +38,9 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 	const fetchData = useCallback(async () => {
 		if (!KEY) return;
 		try {
-			console.log("Retrieving filters");
 			setIsLoading(true);
 			setError("");
+			console.log("Retrieving filters " + apiUrl + " ||| " + fetchTerm);
 			const res = await fetch(
 				`https://api.rawg.io/api/${fetchTerm}?key=${KEY}`
 			);
