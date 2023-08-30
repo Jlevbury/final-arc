@@ -32,7 +32,7 @@ app.get('/api/getFilter/:query', async (req, res) => {
     if (!request.ok)
       throw new Error(`Something went wrong with fetching ${query}`);
     data = await request.json();
-    res.json(data.results);
+    res.json(data);
   } catch (err) {
     console.log(err);
   }
@@ -44,12 +44,12 @@ app.get('/api/searchGames/:query', async (req, res) => {
     const query = req.params.query;
     console.log(query);
     const request = await fetch(
-      `https://api.rawg.io/api/games?key=${KEY}&search=${query}`
+      `https://api.rawg.io/api/games?key=${KEY}${query}`
     );
     if (!request.ok)
       throw new Error(`Something went wrong with fetching ${query}`);
     data = await request.json();
-    res.json(data.results);
+    res.json(data);
   } catch (err) {
     console.log(err);
   }
@@ -66,7 +66,7 @@ app.get('/api/getGameInfo/:query', async (req, res) => {
     if (!request.ok)
       throw new Error(`Something went wrong with fetching ${query}`);
     data = await request.json();
-    res.json(data.results);
+    res.json(data);
   } catch (err) {
     console.log(err);
   }

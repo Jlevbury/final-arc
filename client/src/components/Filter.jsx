@@ -10,6 +10,13 @@ import {
 } from "@mui/material";
 import "../App.css";
 
+const urlPrefix =
+  window.location.hostname === 'localhost'
+     ? 'http://localhost:3001'
+     : window.location.hostname;
+const searchUrl = '/api/getFilter/';
+const apiUrl = urlPrefix + searchUrl;
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -29,21 +36,19 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 	const [selectedTerm, setSelectedTerm] = useState([]);
 
   const fetchData = useCallback(async () => {
-    if (!KEY) return;
+    //if (!KEY) return;
     try {
       setIsLoading(true);
       setError('');
       const res = await fetch(
-        `https://api.rawg.io/api/${fetchTerm}?key=${KEY}`
+		apiUrl + fetchTerm
       );
-
-
+			console.log(res);
 			if (!res.ok)
 				throw new Error(`Something went wrong with fetching ${fetchTerm}`);
 
 			const data = await res.json();
 			if (data.count === 0) throw new Error(`${fetchTerm} not found`);
-
 			setTermList(data.results);
 			setIsLoading(false);
 			setError("");
@@ -53,7 +58,7 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 		} finally {
 			setIsLoading(false);
 		}
-	}, [fetchTerm, KEY]);
+	}, [fetchTerm]);
 
 	useEffect(() => {
 		fetchData();

@@ -2,6 +2,14 @@ import { useEffect, useState } from 'react';
 import useKey from './hooks/useKey';
 import { Loader, StarRating } from './';
 import { GameCard } from './Card';
+
+const urlPrefix =
+  window.location.hostname === 'localhost'
+     ? 'http://localhost:3001'
+     : window.location.hostname;
+const searchUrl = '/api/getGameInfo/';
+const apiUrl = urlPrefix + searchUrl;
+
 export default function GameDetails({
   selectedId,
   onCloseGame,
@@ -20,7 +28,7 @@ export default function GameDetails({
       async function getGameDetails() {
         setIsLoading(true);
         const res = await fetch(
-          `https://api.rawg.io/api/games/${selectedId}?key=${KEY}`
+          apiUrl + selectedId
         );
         const data = await res.json();
         setGame(data);
@@ -28,7 +36,7 @@ export default function GameDetails({
       }
       getGameDetails();
     },
-    [selectedId, KEY]
+    [selectedId]
   );
   const isOwned = owned?.map(game => game.id).includes(selectedId);
   const isWanted = want?.map(game => game.id).includes(selectedId);
