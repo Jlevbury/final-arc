@@ -21,7 +21,8 @@ function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
         try {
           setIsLoading(true);
           setError('');
-          let fetchCommand = apiUrl;
+          //let fetchCommand = apiUrl;
+          let fetchCommand = searchUrl;
           if (query.length > 0) {
             fetchCommand = fetchCommand + `&search=${query}`;
           }
