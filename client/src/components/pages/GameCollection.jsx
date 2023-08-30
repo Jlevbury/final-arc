@@ -1,7 +1,7 @@
 // import { Icon } from "@iconify/react";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 // import axios from 'axios';
-import { useLocalStorageState, useGames } from '../hooks/';
+import { useLocalStorageState, useGames } from "../hooks/";
 
 import {
 	GameList,
@@ -204,10 +204,10 @@ export default function Page() {
 				lg='150'
 				md='80'
 			/>
-			<Div className='container'>
+			{/* <Div className='container'>
 				<p className='cs-m0'>OTHER CONTENT RELATED TO THE EMULATOR</p>
 				<Div className='cs-height_45 cs-height_lg_30' />
-			</Div>
+			</Div> */}
 		</>
 	);
 }

@@ -11,10 +11,9 @@ export default function GameDetails({
 	KEY,
 	owned,
 }) {
-  I;
-  const [game, setGame] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [userRating, setUserRating] = useState('');
+	const [game, setGame] = useState({});
+	const [isLoading, setIsLoading] = useState(false);
+	const [userRating, setUserRating] = useState("");
 
 	useEffect(
 		function () {
@@ -31,8 +30,8 @@ export default function GameDetails({
 		},
 		[selectedId, KEY]
 	);
-	const isOwned = owned.map((game) => game.id).includes(selectedId);
-	const isWanted = want.map((game) => game.id).includes(selectedId);
+	const isOwned = owned?.map((game) => game.id).includes(selectedId);
+	const isWanted = want?.map((game) => game.id).includes(selectedId);
 
 	const {
 		name,
