@@ -142,7 +142,7 @@ export default function GameDetails({
 
 						<Box
 							sx={{
-								backgroundColor: "#0D8BD9",
+								backgroundColor: "#6CA6D9",
 								borderRadius: "8px",
 								opacity: 0.7,
 								color: "#ffffff",

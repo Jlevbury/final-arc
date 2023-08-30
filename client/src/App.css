@@ -3,13 +3,13 @@
 	margin: auto;
 	padding: 0;
 	text-align: center;
-	background-image: url("..//public/image/064-v1.jpg");
+	background-image: url("..//public/image/v02-waves-10.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 .App-header {
-	background-color: #124bbd;
+	background-color: #0b1c26;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
