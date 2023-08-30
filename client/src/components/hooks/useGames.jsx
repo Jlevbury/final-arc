@@ -7,7 +7,7 @@ const urlPrefix =
 const searchUrl = '/api/searchGames/';
 const apiUrl = urlPrefix + searchUrl;
 
-function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
+function useGames(query, callback, selectedGenre, selectedPlatform) {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -21,7 +21,6 @@ function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
         try {
           setIsLoading(true);
           setError('');
-          //let fetchCommand = apiUrl;
           let fetchCommand = apiUrl;
           if (query.length > 0) {
             fetchCommand = fetchCommand + `&search=${query}`;
@@ -63,9 +62,10 @@ function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
       fetchGames();
     },
     [query, selectedGenre, selectedPlatform]
+    
   );
 
-  return { games, isLoading, error, KEY };
+  return { games, isLoading, error };
 }
 
 export default useGames;

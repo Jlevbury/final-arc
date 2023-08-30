@@ -17,7 +17,7 @@ export default function GameDetails({
 	onAddWant,
 	onAddOwned,
 	want,
-	KEY,
+	//KEY,
 	owned,
 }) {
 	const [game, setGame] = useState({});

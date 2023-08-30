@@ -33,7 +33,7 @@ export const average = (arr) =>
 	arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function GameCollection() {
-	const [query, setQuery] = useState("");
+	const [query, setQuery] = useState("fallout");
 	const [selectedId, setSelectedId] = useState(null);
 	const [owned, setOwned] = useLocalStorageState([], "owned");
 	const [selectedGenre, setSelectedGenre] = useState("");
@@ -46,7 +46,7 @@ export default function GameCollection() {
 		handleCloseGame,
 		selectedGenre,
 		selectedPlatform,
-		KEY
+		//KEY
 	);
 
 	//   useEffect(() => {
@@ -140,13 +140,13 @@ export default function GameCollection() {
 								sx={{ flexGrow: 1 }}
 								setSelectFilterQuery={setSelectedGenre}
 								fetchTerm={"genres"}
-								KEY={KEY}
+								//KEY={KEY}
 							/>
 							<Filter
 								sx={{ flexGrow: 1 }}
 								setSelectFilterQuery={setSelectedPlatform}
 								fetchTerm={"platforms"}
-								KEY={KEY}
+								//KEY={KEY}
 							/>
 						</Div>
 						<Div className='cs-height_5 cs-height_lg_5' />
@@ -173,7 +173,7 @@ export default function GameCollection() {
 										onAddOwned={handleAddOwned}
 										onAddWant={handleAddWant}
 										owned={owned}
-										KEY={KEY}
+										//KEY={KEY}
 									/>
 								) : (
 									<>
