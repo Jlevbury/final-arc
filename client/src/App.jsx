@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from 'react';
 import './App.css';
 import Layout from './components/Layout';
 import CustomCursor from './components/CustomCursor';
-import { SignUp } from './components/logReg/Index';
+import { SignUp, SignIn } from './components/logReg/Index';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ServicesPage from './components/pages/ServicesPage';
 import './scss/index.scss';
@@ -12,6 +12,8 @@ import Emulator from './components/pages/Emulator';
 import './utils/animated.css';
 import './utils/aos.css';
 import CollectionFinder from './components/pages/CollectionFinder';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import FaqPage from './components/pages/FAQ';
 
@@ -25,7 +27,7 @@ function App() {
         <Route path='/gamecollection' element={<GameCollection />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/teampage' element={<TeamPage />} />
-        {/* <Route path='/signin' element={<SignIn />} /> */}
+        <Route path='/signin' element={<SignIn />} />
         <Route path='/FaqPage' element={<FaqPage />} />
         <Route path='/emulator' element={<Emulator />} />
         <Route path='/collectionfinder' element={<CollectionFinder />} />

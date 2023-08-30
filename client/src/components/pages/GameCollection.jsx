@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 // import axios from 'axios';
 import { useLocalStorageState, useGames } from '../hooks/';
+
 import {
   GameList,
   GameDetails,
@@ -17,7 +18,6 @@ import {
   Box,
   Filter,
   Header,
-  PageHeading,
   Spacing,
   Div,
 } from '..';
@@ -98,100 +98,97 @@ export default function Page() {
   // if(key === '') return <Loader />
   return (
     <>
-      <Spacing lg='150' md='80' />
       <Header />
-      {/* Start Page Heading Section */}
-      <PageHeading
-        title='Game INFORMATION TO BE UPDATED'
-        bgSrc='/images/blog_details_hero_bg.jpeg'
-        // pageLinkText={params.blogDetailsId}
-      />
-
+      <Spacing lg='100' md='100' />
       <Div className='container'>
         <Div className='row align-items-center'>
-          <Div className='col-xl-5 col-lg-6'>
-            <Div className='cs-radius_15 cs-shine_hover_1'>
-              <img
-                src='/image/SVG/rawgLink.svg'
-                alt='Game Collection'
-                className='w-100'
-              />
-            </Div>
+          <Div className='cs-radius_15 cs-shine_hover_1'>
+            <img
+              src='/image/SVG/rawgLink.svg'
+              alt='Game Collection'
+              className='w-100'
+            />
           </Div>
-          <Div className='col-lg-6 offset-xl-1'>
-            <Spacing lg='0' md='45' />
+          <hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
+        </Div>
+        <Div className='col-lg-6 offset-xl-1'>
+          <Spacing lg='45' md='45' />
 
-            <Div className='cs-section_heading cs-style1'>
-              {/* Search bar */}
+          <Div className='cs-section_heading cs-style1'>
+            {/* Search bar */}
 
-              <Search query={query} setQuery={setQuery} games={games} />
-              <NumResults games={games} />
+            <Search query={query} setQuery={setQuery} games={games} />
+            <NumResults games={games} />
 
-              <Div className='cs-height_10 cs-height_lg_10' />
-
+            <Spacing lg='15' md='15' />
+            <Div
+              className='container'
+              sx={{ display: 'flex', flexDirection: 'row' }}>
               <Filter
+                sx={{ flexGrow: 1 }}
                 setSelectFilterQuery={setSelectedGenre}
                 fetchTerm={'genres'}
                 KEY={KEY}
               />
               <Filter
+                sx={{ flexGrow: 1 }}
                 setSelectFilterQuery={setSelectedPlatform}
                 fetchTerm={'platforms'}
                 KEY={KEY}
               />
-              <Div className='cs-height_5 cs-height_lg_5' />
-              <Div className='cs-separator cs-accent_bg' />
-              <Div className='cs-height_45 cs-height_lg_25' />
-              <Main>
-                <Box>
-                  {isLoading && <Loader />}
-                  {!isLoading && !error && (
-                    <GameList games={games} onSelectGame={handleSelectGame} />
-                  )}
-                  {error && <ErrorMessage message={error} />}
-                </Box>
-                <Div className='cs-height_25 cs-height_lg_20' />
-                <p className='cs-m0'>OTHER CONTENT RELATED TO THE collection</p>
-                <Box>
-                  {selectedId ? (
-                    <GameDetails
-                      selectedId={selectedId}
-                      onCloseGame={handleCloseGame}
-                      onAddOwned={handleAddOwned}
-                      onAddWant={handleAddWant}
-                      owned={owned}
-                      KEY={KEY}
-                    />
-                  ) : (
-                    <>
-                      <OwnedSummary owned={owned} />
-                      <OwnedGameList
-                        owned={owned}
-                        onDeleteGame={handleDeleteOwned}
-                        onSelectGame={handleSelectGame}
-                      />
-                    </>
-                  )}
-                </Box>
-                <Box>
-                  <WantedSummary want={want} />
-                  <WantedGameList
-                    want={want}
-                    onDeleteGame={handleDeleteWant}
-                    onSelectGame={handleSelectGame}
-                  />
-                </Box>
-              </Main>
-
-              <Div className='cs-height_45 cs-height_lg_30' />
             </Div>
+            <Div className='cs-height_5 cs-height_lg_5' />
+            <Div className='cs-separator cs-accent_bg' />
+
+            <Main>
+              <Box>
+                {isLoading && <Loader />}
+                {!isLoading && !error && (
+                  <GameList games={games} onSelectGame={handleSelectGame} />
+                )}
+                {error && <ErrorMessage message={error} />}
+              </Box>
+              <Div className='cs-height_25 cs-height_lg_20' />
+              <p className='cs-m0'>OTHER CONTENT RELATED TO THE collection</p>
+              <Box>
+                {selectedId ? (
+                  <GameDetails
+                    selectedId={selectedId}
+                    onCloseGame={handleCloseGame}
+                    onAddOwned={handleAddOwned}
+                    onAddWant={handleAddWant}
+                    owned={owned}
+                    KEY={KEY}
+                  />
+                ) : (
+                  <>
+                    <OwnedSummary owned={owned} />
+                    <OwnedGameList
+                      owned={owned}
+                      onDeleteGame={handleDeleteOwned}
+                      onSelectGame={handleSelectGame}
+                    />
+                  </>
+                )}
+              </Box>
+              <Box>
+                <WantedSummary want={want} />
+                <WantedGameList
+                  want={want}
+                  onDeleteGame={handleDeleteWant}
+                  onSelectGame={handleSelectGame}
+                />
+              </Box>
+            </Main>
+
+            <Div className='cs-height_45 cs-height_lg_30' />
           </Div>
         </Div>
-        <Spacing lg='150' md='80' />
-        <Div className='container'>
-          <p className='cs-m0'>OTHER CONTENT RELATED TO THE EMULATOR</p>
-          <Div className='cs-height_45 cs-height_lg_30' />
-        </Div>
+      </Div>
+      <Spacing lg='150' md='80' />
+      <Div className='container'>
+        <p className='cs-m0'>OTHER CONTENT RELATED TO THE EMULATOR</p>
+        <Div className='cs-height_45 cs-height_lg_30' />
       </Div>
     </>
   );
