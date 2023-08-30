@@ -3,11 +3,17 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
     Query: {
+        // me: async (parent, args, context) => {
+        //     const userData = await User.findOne({})
+        //     .select('-__v -password')
+        //     .populate('games');
+        //     return userData;
+        // },
         me: async (parent, args, context) => {
-            const userData = await User.findOne({})
-            .select('-__v -password')
-            .populate('games');
-            return userData;
+            if (context.user) {
+              return User.findOne({ _id: context.user._id }).populate('thoughts');
+            }
+            throw AuthenticationError;
         },
         users: async () => {
             return User.find().populate('games');
