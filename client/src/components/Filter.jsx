@@ -82,7 +82,7 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 	return (
 		<Box sx={sx}>
 			<FormControl
-				sx={{ m: 1, width: 300, background: "#0D8BD9", opacity: 0.7 }}
+				sx={{ m: 1, width: 300, background: "#6CA6D9", opacity: 0.7 }}
 			>
 				<InputLabel htmlFor='component-outlined'>
 					Filter by {fetchTerm}
@@ -93,7 +93,7 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 				<Select
 					sx={{
 						width: 300,
-						background: "#2f80ed",
+						background: "#6CA6D9",
 						opacity: 0.75,
 						color: "#000000",
 					}}
