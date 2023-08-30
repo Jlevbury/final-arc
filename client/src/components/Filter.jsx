@@ -38,6 +38,7 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 	const fetchData = useCallback(async () => {
 		if (!KEY) return;
 		try {
+			console.log("Retrieving filters");
 			setIsLoading(true);
 			setError("");
 			const res = await fetch(
