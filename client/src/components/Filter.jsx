@@ -28,15 +28,15 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 	const [termList, setTermList] = useState([]);
 	const [selectedTerm, setSelectedTerm] = useState([]);
 
-	const fetchData = useCallback(async () => {
-		if (!KEY) return;
-		try {
-			console.log(KEY);
-			setIsLoading(true);
-			setError("");
-			const res = await fetch(
-				`https://api.rawg.io/api/${fetchTerm}?key=${KEY}`
-			);
+  const fetchData = useCallback(async () => {
+    if (!KEY) return;
+    try {
+      setIsLoading(true);
+      setError('');
+      const res = await fetch(
+        `https://api.rawg.io/api/${fetchTerm}?key=${KEY}`
+      );
+
 
 			if (!res.ok)
 				throw new Error(`Something went wrong with fetching ${fetchTerm}`);

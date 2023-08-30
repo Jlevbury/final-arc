@@ -1,7 +1,8 @@
 // import { Icon } from "@iconify/react";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useLocalStorageState, useGames } from "../hooks/";
+import { useState, useEffect } from 'react';
+// import axios from 'axios';
+import { useLocalStorageState, useGames } from '../hooks/';
+
 import {
 	GameList,
 	GameDetails,
