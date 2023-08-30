@@ -43,6 +43,7 @@ export const QUERY_GAMES = gql`
         name
         image
         rating
+      }
     }
   }
 `;
