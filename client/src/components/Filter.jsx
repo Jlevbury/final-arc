@@ -11,10 +11,10 @@ import {
 import "../App.css";
 
 const urlPrefix =
-  window.location.hostname === 'localhost'
-     ? 'http://localhost:3001'
-     : window.location.hostname;
-const searchUrl = '/api/getFilter/';
+	window.location.hostname === "localhost"
+		? "http://localhost:3001"
+		: window.location.hostname;
+const searchUrl = "/api/getFilter/";
 const apiUrl = urlPrefix + searchUrl;
 
 const ITEM_HEIGHT = 48;
@@ -35,15 +35,15 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 	const [termList, setTermList] = useState([]);
 	const [selectedTerm, setSelectedTerm] = useState([]);
 
-  const fetchData = useCallback(async () => {
-    //if (!KEY) return;
-    try {
-      setIsLoading(true);
-      setError('');
-      const res = await fetch(
-		apiUrl + fetchTerm
-      );
-			console.log(res);
+	const fetchData = useCallback(async () => {
+		if (!KEY) return;
+		try {
+			setIsLoading(true);
+			setError("");
+			const res = await fetch(
+				`https://api.rawg.io/api/${fetchTerm}?key=${KEY}`
+			);
+
 			if (!res.ok)
 				throw new Error(`Something went wrong with fetching ${fetchTerm}`);
 
@@ -81,7 +81,9 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 
 	return (
 		<Box sx={sx}>
-			<FormControl sx={{ m: 1, width: 300, background: "#054674" }}>
+			<FormControl
+				sx={{ m: 1, width: 300, background: "#0D8BD9", opacity: 0.7 }}
+			>
 				<InputLabel htmlFor='component-outlined'>
 					Filter by {fetchTerm}
 				</InputLabel>

@@ -32,7 +32,7 @@ const KEY = import.meta.env.VITE_RAWG_KEY;
 export const average = (arr) =>
 	arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-export default function Page() {
+export default function GameCollection() {
 	const [query, setQuery] = useState("");
 	const [selectedId, setSelectedId] = useState(null);
 	const [owned, setOwned] = useLocalStorageState([], "owned");
