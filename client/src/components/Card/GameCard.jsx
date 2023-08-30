@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 
 export default function GameCard({ name, description, image }) {
 	return (
-		<Card sx={{ maxWidth: 345, m: 1, background: "#0D8BD9", opacity: 0.8 }}>
+		<Card sx={{ maxWidth: 345, m: 1, background: "#0D8BD9", opacity: 0.75 }}>
 			<CardMedia
 				component='img'
 				alt={name}
