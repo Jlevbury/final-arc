@@ -49,6 +49,7 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 
 			const data = await res.json();
 			if (data.count === 0) throw new Error(`${fetchTerm} not found`);
+			console.log(data);
 			setTermList(data.results);
 			setIsLoading(false);
 			setError("");

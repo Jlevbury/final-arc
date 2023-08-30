@@ -30,6 +30,7 @@ export default function GameDetails({
 				setIsLoading(true);
 				const res = await fetch(apiUrl + selectedId);
 				const data = await res.json();
+				console.log(data);
 				setGame(data);
 				setIsLoading(false);
 			}
