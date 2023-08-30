@@ -4,6 +4,13 @@ import { Loader, StarRating } from "./";
 
 import { Box, Container } from "@mui/material";
 
+const urlPrefix =
+	window.location.hostname === "localhost"
+		? "http://localhost:3001"
+		: window.location.hostname;
+const searchUrl = "/api/getGameInfo/";
+const apiUrl = urlPrefix + searchUrl;
+
 export default function GameDetails({
 	selectedId,
 	onCloseGame,
@@ -21,16 +28,14 @@ export default function GameDetails({
 		function () {
 			async function getGameDetails() {
 				setIsLoading(true);
-				const res = await fetch(
-					`https://api.rawg.io/api/games/${selectedId}?key=${KEY}`
-				);
+				const res = await fetch(apiUrl + selectedId);
 				const data = await res.json();
 				setGame(data);
 				setIsLoading(false);
 			}
 			getGameDetails();
 		},
-		[selectedId, KEY]
+		[selectedId]
 	);
 	const isOwned = owned?.map((game) => game.id).includes(selectedId);
 	const isWanted = want?.map((game) => game.id).includes(selectedId);

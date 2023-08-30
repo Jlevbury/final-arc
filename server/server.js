@@ -32,24 +32,41 @@ app.get('/api/getFilter/:query', async (req, res) => {
     if (!request.ok)
       throw new Error(`Something went wrong with fetching ${query}`);
     data = await request.json();
-    res.json(data.results);
+    res.json(data);
   } catch (err) {
     console.log(err);
   }
 });
 
 //pass in the full search term in the :query (ex: &search=mario&platforms=10)
+app.get('/api/searchGames/:query', async (req, res) => {
+  try {
+    const query = req.params.query;
+    console.log(query);
+    const request = await fetch(
+      `https://api.rawg.io/api/games?key=${KEY}${query}`
+    );
+    if (!request.ok)
+      throw new Error(`Something went wrong with fetching ${query}`);
+    data = await request.json();
+    res.json(data);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//pass in the game id in the :query
 app.get('/api/getGameInfo/:query', async (req, res) => {
   try {
     const query = req.params.query;
     console.log(query);
     const request = await fetch(
-      `https://api.rawg.io/api/games?key=${KEY}&search=${query}`
+      `https://api.rawg.io/api/games/${query}?key=${KEY}`
     );
     if (!request.ok)
       throw new Error(`Something went wrong with fetching ${query}`);
     data = await request.json();
-    res.json(data.results);
+    res.json(data);
   } catch (err) {
     console.log(err);
   }
