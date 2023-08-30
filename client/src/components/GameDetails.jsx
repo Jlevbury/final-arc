@@ -7,7 +7,7 @@ import { Box, Container } from "@mui/material";
 const urlPrefix =
 	window.location.hostname === "localhost"
 		? "http://localhost:3001"
-		: window.location.hostname;
+		: "";
 const searchUrl = "/api/getGameInfo/";
 const apiUrl = urlPrefix + searchUrl;
 

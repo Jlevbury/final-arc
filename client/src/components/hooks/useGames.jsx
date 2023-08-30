@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const urlPrefix =
   window.location.hostname === 'localhost'
      ? 'http://localhost:3001'
-     : window.location.hostname;
+     : "";
 const searchUrl = '/api/searchGames/';
 const apiUrl = urlPrefix + searchUrl;
 
@@ -22,7 +22,7 @@ function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
           setIsLoading(true);
           setError('');
           //let fetchCommand = apiUrl;
-          let fetchCommand = searchUrl;
+          let fetchCommand = apiUrl;
           if (query.length > 0) {
             fetchCommand = fetchCommand + `&search=${query}`;
           }

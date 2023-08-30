@@ -27,7 +27,7 @@ import {
 //   window.location.hostname === 'localhost'
 //     ? 'http://localhost:3001'
 //     : window.location.hostname;
-const KEY = import.meta.env.VITE_RAWG_KEY;
+//const KEY = import.meta.env.VITE_RAWG_KEY;
 
 export const average = (arr) =>
 	arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
