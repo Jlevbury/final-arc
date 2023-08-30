@@ -41,7 +41,7 @@ app.get('/api/getFilter/:query', async (req, res) => {
 //pass in the full search term in the :query (ex: &search=mario&platforms=10)
 app.get('/api/searchGames/:query', async (req, res) => {
   try {
-    const query = req.params.query;
+    let query = req.params.query;
     console.log(query);
     const request = await fetch(
       `https://api.rawg.io/api/games?key=${KEY}${query}`

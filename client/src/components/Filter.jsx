@@ -13,7 +13,7 @@ import "../App.css";
 const urlPrefix =
 	window.location.hostname === "localhost"
 		? "http://localhost:3001"
-		: window.location.hostname;
+		: "";
 const searchUrl = "/api/getFilter/";
 const apiUrl = urlPrefix + searchUrl;
 
@@ -36,12 +36,13 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 	const [selectedTerm, setSelectedTerm] = useState([]);
 
 	const fetchData = useCallback(async () => {
-		if (!KEY) return;
+		// if (!KEY) return;
 		try {
 			setIsLoading(true);
 			setError("");
+			console.log("Retrieving filters " + apiUrl + " ||| " + fetchTerm);
 			const res = await fetch(
-				`https://api.rawg.io/api/${fetchTerm}?key=${KEY}`
+				apiUrl + fetchTerm
 			);
 
 			if (!res.ok)
@@ -49,6 +50,7 @@ function Filter({ setSelectFilterQuery, fetchTerm, KEY, sx }) {
 
 			const data = await res.json();
 			if (data.count === 0) throw new Error(`${fetchTerm} not found`);
+			console.log(data);
 			setTermList(data.results);
 			setIsLoading(false);
 			setError("");

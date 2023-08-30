@@ -7,7 +7,7 @@ import { Box, Container } from "@mui/material";
 const urlPrefix =
 	window.location.hostname === "localhost"
 		? "http://localhost:3001"
-		: window.location.hostname;
+		: "";
 const searchUrl = "/api/getGameInfo/";
 const apiUrl = urlPrefix + searchUrl;
 
@@ -17,7 +17,7 @@ export default function GameDetails({
 	onAddWant,
 	onAddOwned,
 	want,
-	KEY,
+	//KEY,
 	owned,
 }) {
 	const [game, setGame] = useState({});
@@ -27,9 +27,11 @@ export default function GameDetails({
 	useEffect(
 		function () {
 			async function getGameDetails() {
+				console.log("Retrieving game details " + apiUrl + selectedId);
 				setIsLoading(true);
 				const res = await fetch(apiUrl + selectedId);
 				const data = await res.json();
+				console.log(data);
 				setGame(data);
 				setIsLoading(false);
 			}

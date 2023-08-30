@@ -1,6 +1,7 @@
 const typeDefs = `
   type Query {
     me: User
+    user(username: String!): User
     users: [User]
     games(username: String!): User
   }
