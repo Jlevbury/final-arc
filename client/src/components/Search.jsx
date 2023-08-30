@@ -18,7 +18,7 @@ export default function Search({ query, setQuery, games }) {
 
 	return (
 		<Autocomplete
-			sx={{ backgroundColor: "#2f80ed" }}
+			sx={{ backgroundColor: "#0D8BD9", opacity: 0.9 }}
 			filterOptions={(x) => x}
 			id='combo-box-demo'
 			options={games}
@@ -31,6 +31,7 @@ export default function Search({ query, setQuery, games }) {
 			openOnFocus
 			renderInput={(params) => (
 				<TextField
+					sx={{ backgroundColor: "#0D8BD9", opacity: 0.8 }}
 					{...params}
 					label='Search for a game'
 					variant='outlined'

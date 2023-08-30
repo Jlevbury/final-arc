@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 
 export default function GameCard({ name, description, image }) {
 	return (
-		<Card sx={{ maxWidth: 345, m: 1, background: "#2f80ed", opacity: 0.85 }}>
+		<Card sx={{ maxWidth: 345, m: 1, background: "#0D8BD9", opacity: 0.8 }}>
 			<CardMedia
 				component='img'
 				alt={name}
@@ -17,22 +17,18 @@ export default function GameCard({ name, description, image }) {
 			/>
 			<CardContent>
 				<Typography
+					sx={{ color: "black" }}
 					gutterBottom
 					variant='h5'
 					component='div'
 				>
 					{name}
 				</Typography>
-				<Typography
-					variant='body1'
-					color='text.primary'
-				>
-					{description}
-				</Typography>
+				<Typography sx={{ color: "black" }}>{description}</Typography>
 			</CardContent>
 			<CardActions>
-				<Button size='small'>Share</Button>
-				<Button size='small'>Learn More</Button>
+				{/* <Button size='small'>Share</Button>
+				<Button size='small'>Learn More</Button> */}
 			</CardActions>
 		</Card>
 	);
