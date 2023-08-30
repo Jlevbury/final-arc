@@ -34,7 +34,7 @@ function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
 
           console.log("Retrieving games " + fetchCommand);
           const res = await fetch(fetchCommand);
-
+          console.log(res);
           if (!res.ok)
             throw new Error('Something went wrong with fetching games');
 
