@@ -115,23 +115,38 @@ export default function SingUp() {
                   </p>
                 </div>
 
+                  {/* <!-- Username input --> */}
+                  <TEInput
+                  type='username'
+                  label='Username'
+                  size='lg'
+                  className='mb-6'
+                  name='username'
+                  value={formState.username}
+                  onChange={handleChange}
+                ></TEInput>
+
                 {/* <!-- Email input --> */}
                 <TEInput
                   type='email'
                   label='Email address'
                   size='lg'
                   className='mb-6'
+                  name='email'
+                  value={formState.email}
                   onChange={handleChange}
-                  value={formState.email}></TEInput>
+                ></TEInput>
 
                 {/* <!--Password input--> */}
                 <TEInput
                   type='password'
                   label='Password'
-                  className='mb-6'
                   size='lg'
+                  className='mb-6'
+                  name='password'
                   value={formState.password}
-                  onChange={handleChange}></TEInput>
+                  onChange={handleChange}
+                ></TEInput>
 
                 <div className='mb-6 flex items-center justify-between'>
                   {/* <!-- Remember me checkbox --> */}
