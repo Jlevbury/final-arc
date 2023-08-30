@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 
+const urlPrefix =
+  window.location.hostname === 'localhost'
+     ? 'http://localhost:3001'
+     : window.location.hostname;
+const searchUrl = '/api/searchGames/';
+const apiUrl = urlPrefix + searchUrl;
 
 function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-
 
   useEffect(
     function () {
@@ -16,7 +21,7 @@ function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
         try {
           setIsLoading(true);
           setError('');
-          let fetchCommand = `https://api.rawg.io/api/games?key=${KEY}`;
+          let fetchCommand = apiUrl;
           if (query.length > 0) {
             fetchCommand = fetchCommand + `&search=${query}`;
           }

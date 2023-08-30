@@ -1,14 +1,12 @@
+import GameCard from './Card/GameCard';
 export function Game({ game, onSelectGame }) {
   return (
     <li onClick={() => onSelectGame(game.id)}>
-      <img src={game.background_image} alt={`${game.name} poster`} />
-      <h3>{game.name}</h3>
-      <div>
-        <p>
-          <span>🗓</span>
-          {/* <span>{movie.Year}</span> */}
-        </p>
-      </div>
+      <GameCard
+        name={game.name}
+        description={game.description_raw} // Note that the actual description field might differ based on your API response
+        image={game.background_image}
+      />
     </li>
   );
 }

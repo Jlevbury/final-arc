@@ -1,4 +1,4 @@
-export function OwnedGame({ game, onDeleteGame, onSelectGame }) {
+export default function OwnedGame({ game, onDeleteGame, onSelectGame }) {
   function handleClick(e) {
     e.stopPropagation();
     onDeleteGame(game.id);

@@ -1,6 +1,6 @@
 #root {
 	max-width: 1440px;
-	margin: 0;
+	margin: auto;
 	padding: 0;
 	text-align: center;
 	background-image: url("..//public/image/064-v1.jpg");
@@ -17,6 +17,7 @@
 	justify-content: center;
 	font-size: calc(10px + 2vmin);
 	color: white;
+	background: rgb(45, 30, 245);
 }
 
 .logo {
@@ -30,6 +31,33 @@
 }
 .logo.react:hover {
 	filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* App.css */
+.customDropdownMenu {
+	background-color: #303233 !important; /* You can use any color here */
+}
+.filter-container {
+	position: relative;
+	background: rgb(44, 43, 43);
+}
+
+.dropdown-list {
+	position: absolute;
+	background: rgb(44, 43, 43);
+	border: 1px solid #ccc;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 200px;
+	max-height: 200px;
+	overflow-y: auto;
+	z-index: 1;
+}
+
+.dropdown-list li {
+	padding: 8px;
+	cursor: pointer;
 }
 
 @keyframes logo-spin {

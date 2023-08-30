@@ -67,13 +67,14 @@
 
 /* this controls the base styles,FINALLY FIGURED IT OUT SWEET BABY JEEBUS */
 * {
-	margin: 0;
+	margin: auto;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "modifi", sans-serif;
 	scroll-behavior: smooth;
 	color-scheme: normal;
-	color: #faf6f6;
+	color: #04040c;
+	/* background-color: #434343; */
 }
 
 .App-header {

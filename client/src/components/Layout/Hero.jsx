@@ -32,7 +32,8 @@ const Hero = () => {
 					>
 						Final ARC
 					</Div>
-					<Div className='spacer-20'></Div>
+
+					<hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
 					<Div
 						className='h1_big'
 						data-aos='fade-up'
@@ -57,11 +58,8 @@ const Hero = () => {
 						data-aos-easing='ease'
 						data-aos-once='true'
 					>
-						<Spacing
-							lg='15'
-							md='30'
-						/>
-						<li>
+						<hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
+						<li className='mb-4 mt-0 text-base font-dark leading-relaxed bg-secondary'>
 							The Final Arc Gaming Hub is a space for gamers that offers a game
 							emulator, a detailed game database, and a social network. Relive
 							classic titles, discover new games, and connect with like-minded

@@ -1,4 +1,4 @@
-export function WantedGame({ game, onDeleteGame, onSelectGame }) {
+export default function WantedGame({ game, onDeleteGame, onSelectGame }) {
   function handleClick(e) {
     e.stopPropagation();
     onDeleteGame(game.id);

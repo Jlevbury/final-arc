@@ -1,9 +1,9 @@
 import { average } from '../components/pages/GameCollection';
 
-export function OwnedSummary({ owned }) {
+export default function OwnedSummary({ owned }) {
   const avgImdbRating = average(owned.map(game => game.metacritic));
   const avgUserRating = average(owned.map(game => game.userRating));
-  console.log('owned list', avgUserRating);
+
   return (
     <div className='summary'>
       <h2>Games you own</h2>
