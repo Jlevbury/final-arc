@@ -6,6 +6,7 @@ import Div from '../Div';
 import DropDown from './DropDown';
 import { QUERY_ME, QUERY_USER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
+import Auth from '../../utils/auth';
 
 export default function Header({ variant }) {
   const [isSticky, setIsSticky] = useState(false);
@@ -91,9 +92,7 @@ export default function Header({ variant }) {
                       </li>
                     ) : (
                       <li>
-                        <NavLink
-                          to='/signup'
-                          onClick={() => setMobileToggle(false)}>
+                        <NavLink to='/signup' onClick={() => Auth.logout()}>
                           Logout
                         </NavLink>
                       </li>
