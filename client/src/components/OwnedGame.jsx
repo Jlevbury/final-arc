@@ -6,16 +6,13 @@ export default function OwnedGame({ game, onDeleteGame, onSelectGame }) {
 
   return (
     <li onClick={() => onSelectGame(game.id)}>
-      <img src={game.background_image} alt={`${game.name} poster`} />
+      <img src={game.image} alt={`${game.name} poster`} />
       <h3>{game.name}</h3>
       <div>
+        <p>Metacritic Rating</p>
         <p>
           <span>⭐️</span>
-          <span>{game.metacritic}</span>
-        </p>
-        <p>
-          <span>🌟</span>
-          <span>{game.userRating}</span>
+          <span>{game.rating}</span>
         </p>
 
         <button className='btn-delete' onClick={handleClick}>
