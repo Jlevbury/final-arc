@@ -152,31 +152,34 @@ export default function GameDetails({
               </header>
               <div className='rating'>
                 <br />
-                <StarRating size={32} onSetRating={setUserRating} />
-                <br />
                 {!user.username ? (
                   <h3>Please sign in to add games to your collection</h3>
                 ) : (
                   <>
-                    {!isOwned ? (
-                      <>
-                        <br />
-                        <button className='btn-add' onClick={handleAddOwned}>
-                          + Add to Owned
-                        </button>
-                      </>
-                    ) : (
-                      <p>You own this game</p>
-                    )}
-                    {!isWanted ? (
-                      <>
-                        <button className='btn-add' onClick={handleAddWant}>
-                          + Add to Want List
-                        </button>
-                      </>
-                    ) : (
-                      <p>This game is on your want list</p>
-                    )}
+                    <StarRating size={32} onSetRating={setUserRating} />
+                    <br />
+
+                    <>
+                      {!isOwned ? (
+                        <>
+                          <br />
+                          <button className='btn-add' onClick={handleAddOwned}>
+                            + Add to Owned
+                          </button>
+                        </>
+                      ) : (
+                        <p>You own this game</p>
+                      )}
+                      {!isWanted ? (
+                        <>
+                          <button className='btn-add' onClick={handleAddWant}>
+                            + Add to Want List
+                          </button>
+                        </>
+                      ) : (
+                        <p>This game is on your want list</p>
+                      )}
+                    </>
                   </>
                 )}
               </div>
@@ -192,7 +195,6 @@ export default function GameDetails({
               <br />
               <br />
               <h3>Genres:</h3>
-              <br />
               {genres?.map(genre => {
                 return <p key={genre.id}> {genre.name}</p>;
               })}
@@ -205,10 +207,14 @@ export default function GameDetails({
                   );
                 }
               })}
-              <h3>ESRB Rating: </h3>
-              <br /> <br />
-              <p>{esrb?.name}</p>
               <br />
+              {esrb?.name && (
+                <>
+                  <h3>ESRB Rating: </h3>
+                  <p>{esrb?.name}</p>
+                  <br />
+                </>
+              )}
             </Box>
           </Container>
         </>
