@@ -22,7 +22,7 @@ import {
   Div,
 } from '..';
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_GAME } from '../../utils/mutations';
+import { ADD_GAME, REMOVE_GAME } from '../../utils/mutations';
 import { QUERY_GAMES, QUERY_USER } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ export default function GameCollection() {
   const { username } = useParams();
 
   const { loading, data } = useQuery(QUERY_USER, {
-    variables: { username: 'chase' },
+    variables: { username: 'test' },
   });
 
   const ownedGames = data?.user?.games || [];
@@ -91,9 +91,6 @@ export default function GameCollection() {
     setWant(want => [...want, game]);
   }
 
-  function handleDeleteOwned(id) {
-    setOwned(owned => owned.filter(game => game.id !== id));
-  }
   function handleDeleteWant(id) {
     setWant(want => want.filter(game => game.id !== id));
   }
@@ -170,7 +167,6 @@ export default function GameCollection() {
                 <OwnedGameList
                   ownedGames={ownedGames}
                   owned={owned}
-                  onDeleteGame={handleDeleteOwned}
                   onSelectGame={handleSelectGame}
                 />
               </Box>
