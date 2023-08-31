@@ -41,10 +41,6 @@ function CollectionFinder() {
               </p>
             </>
           ))}
-          <h3>{data.user.username}'s Wanted Games</h3>
-          {data.user.games.map(game => (
-            <li key={game._id}>{game.name}</li>
-          ))}
         </ul>
       )}
     </div>
