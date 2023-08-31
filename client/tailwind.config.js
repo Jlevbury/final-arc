@@ -19,6 +19,6 @@ export default {
 			},
 		},
 	},
-	darkMode: "class",
+
 	plugins: [require("tw-elements-react/dist/plugin.cjs")],
 };
