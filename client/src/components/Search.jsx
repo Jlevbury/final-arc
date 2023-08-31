@@ -18,7 +18,7 @@ export default function Search({ query, setQuery, games }) {
 
 	return (
 		<Autocomplete
-			sx={{ backgroundColor: "#6CA6D9", opacity: 0.9 }}
+			sx={{ backgroundColor: "#1F2024", opacity: 0.9 }}
 			filterOptions={(x) => x}
 			id='combo-box-demo'
 			options={games}
