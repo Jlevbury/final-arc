@@ -1,5 +1,5 @@
 import React from "react";
-import { TEInput, TERipple } from "tw-elements-react";
+// import { TEInput, TERipple } from "tw-elements-react";
 import Header from "../Header";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -75,6 +75,7 @@ export default function SignIn() {
 									value={formState.name}
 									onChange={handleChange}
 								/>
+								<br />
 								{/* <!-- Email input --> */}
 								<input
 									placeholder='Your email'
@@ -83,8 +84,10 @@ export default function SignIn() {
 									value={formState.name}
 									onChange={handleChange}
 								/>
+								<br />
 								{/* <!--Password input--> */}
 								<input
+									placeholder='Password'
 									name='password'
 									type='password'
 									className='mb-6'
@@ -101,7 +104,7 @@ export default function SignIn() {
 											type='checkbox'
 											value=''
 											id='exampleCheck2'
-										/>
+										></input>
 										<label
 											className='inline-block pl-[0.15rem] hover:cursor-pointer'
 											htmlFor='exampleCheck2'

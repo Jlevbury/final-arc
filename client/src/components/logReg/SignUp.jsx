@@ -6,7 +6,7 @@ import { ADD_USER } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
 
-export default function SingUp() {
+export default function SignUp() {
 	const [formState, setFormState] = useState({
 		username: "",
 		email: "",
@@ -119,18 +119,21 @@ export default function SingUp() {
 										Or
 									</p>
 								</div>
-								<TEInput
+								<input
+									placeholder='username'
 									name='username'
 									type='username'
-									label='Username address'
+									label='Username '
 									size='lg'
 									className='mb-6'
 									onChange={handleChange}
 									value={formState.username}
-								></TEInput>
+								></input>
+								<br />
 
 								{/* <!-- Email input --> */}
-								<TEInput
+								<input
+									placeholder='email'
 									name='email'
 									type='email'
 									label='Email address'
@@ -138,10 +141,12 @@ export default function SingUp() {
 									className='mb-6'
 									onChange={handleChange}
 									value={formState.email}
-								></TEInput>
+								></input>
+								<br />
 
 								{/* <!--Password input--> */}
-								<TEInput
+								<input
+									placeholder='Password'
 									name='password'
 									type='password'
 									label='Password'
@@ -149,7 +154,7 @@ export default function SingUp() {
 									size='lg'
 									value={formState.password}
 									onChange={handleChange}
-								></TEInput>
+								></input>
 
 								<div className='mb-6 flex items-center justify-between'>
 									{/* <!-- Remember me checkbox --> */}
@@ -176,7 +181,7 @@ export default function SingUp() {
 								<div className='text-center lg:text-left'>
 									<TERipple rippleColor='light'>
 										<button
-											type='button'
+											type='submit'
 											className='inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]'
 										>
 											Register
