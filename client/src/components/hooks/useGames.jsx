@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const urlPrefix =
-  window.location.hostname === 'localhost'
-     ? 'http://localhost:3001'
-     : "";
+  window.location.hostname === 'localhost' ? 'http://localhost:3001' : '';
 const searchUrl = '/api/searchGames/';
 const apiUrl = urlPrefix + searchUrl;
 
@@ -32,16 +30,14 @@ function useGames(query, callback, selectedGenre, selectedPlatform) {
             fetchCommand = fetchCommand + `&platforms=${selectedPlatform}`;
           }
 
-          console.log("Retrieving games " + fetchCommand);
           const res = await fetch(fetchCommand);
-          console.log(res);
+
           if (!res.ok)
             throw new Error('Something went wrong with fetching games');
 
           const data = await res.json();
           if (data.count === 0) throw new Error('Game not found');
-          console.log(data);
-          console.log(data.results);
+
           setGames(data.results);
 
           setIsLoading(false);
@@ -62,7 +58,6 @@ function useGames(query, callback, selectedGenre, selectedPlatform) {
       fetchGames();
     },
     [query, selectedGenre, selectedPlatform]
-    
   );
 
   return { games, isLoading, error };
