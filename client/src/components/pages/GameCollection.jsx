@@ -1,5 +1,5 @@
 // import { Icon } from "@iconify/react";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 // import axios from 'axios';
 import { useLocalStorageState, useGames } from '../hooks/';
 
@@ -22,8 +22,8 @@ import {
   Div,
 } from '..';
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_GAME } from '../../utils/mutations';
-import { QUERY_GAMES } from '../../utils/queries';
+import { ADD_GAME, REMOVE_GAME } from '../../utils/mutations';
+import { QUERY_GAMES, QUERY_USER } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
 
 export const average = arr =>
@@ -35,7 +35,6 @@ export default function GameCollection() {
   const [owned, setOwned] = useLocalStorageState([], 'owned');
   const [selectedGenre, setSelectedGenre] = useState('');
   const [selectedPlatform, setSelectedPlatform] = useState('');
-  const [data, setData] = useState(null);
   const [want, setWant] = useLocalStorageState([], 'want');
 
   const { games, error, isLoading } = useGames(
@@ -45,15 +44,13 @@ export default function GameCollection() {
     selectedPlatform
     //KEY
   );
-  const { username: userParam } = useParams();
+  const { username } = useParams();
 
-  const gameData = useQuery(QUERY_GAMES, {
-    variables: { username: loggedInUser.username },
+  const { loading, data } = useQuery(QUERY_USER, {
+    variables: { username: 'test' },
   });
-  const ownedGames = gameData?.games || [];
 
-  console.log('collectiondbinfo', gameData);
-  console.log('owned games', ownedGames);
+  const ownedGames = data?.user?.games || [];
 
   const [addGame] = useMutation(ADD_GAME);
 
@@ -69,13 +66,16 @@ export default function GameCollection() {
     console.log('handle owned', game);
     const rawgId = game.id.toString();
     const name = game.name;
-    console.log(rawgId, name);
+    const image = game.background_image;
+    const rating = game.metacritic;
 
     try {
       const mutationResult = await addGame({
         variables: {
           name,
           rawgId,
+          image,
+          rating,
         },
       });
 
@@ -91,12 +91,11 @@ export default function GameCollection() {
     setWant(want => [...want, game]);
   }
 
-  function handleDeleteOwned(id) {
-    setOwned(owned => owned.filter(game => game.id !== id));
-  }
   function handleDeleteWant(id) {
     setWant(want => want.filter(game => game.id !== id));
   }
+
+  if (loading) return <Loader />;
 
   return (
     <>
@@ -168,7 +167,6 @@ export default function GameCollection() {
                 <OwnedGameList
                   ownedGames={ownedGames}
                   owned={owned}
-                  onDeleteGame={handleDeleteOwned}
                   onSelectGame={handleSelectGame}
                 />
               </Box>
