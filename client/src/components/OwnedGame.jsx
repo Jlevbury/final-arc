@@ -13,7 +13,6 @@ export default function OwnedGame({ game, onDeleteGame, onSelectGame }) {
       await deleteGame({
         variables: { _id },
       });
-      console.log('Game deleted successfully');
     } catch (error) {
       console.error('Error deleting game:', error);
     }

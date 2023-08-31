@@ -74,9 +74,6 @@ export default function GameCollection() {
           rating,
         },
       });
-
-      // Handle success or update state accordingly
-      console.log('Mutation result:', mutationResult);
     } catch (error) {
       console.error('Error adding game:', error);
       // Handle error if necessary
