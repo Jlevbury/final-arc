@@ -92,7 +92,7 @@ export default function Header({ variant }) {
                       </li>
                     ) : (
                       <li>
-                        <NavLink to='/signup' onClick={() => Auth.logout()}>
+                        <NavLink onClick={() => Auth.logout()}>
                           Logout
                         </NavLink>
                       </li>
