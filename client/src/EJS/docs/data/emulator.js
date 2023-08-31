@@ -280,13 +280,6 @@ class EmulatorJS {
         response.text().then(body => {
           let version = JSON.parse(body);
           if (this.ejs_num_version < version.current_version) {
-            console.log(
-              'Using emulatorjs version ' +
-                this.ejs_num_version +
-                ' but the newest version is ' +
-                version.current_version +
-                '\nopen https://github.com/EmulatorJS/EmulatorJS to update'
-            );
           }
         });
       }

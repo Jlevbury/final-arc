@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import useKey from './hooks/useKey';
 import { Loader, StarRating } from './';
 import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
@@ -41,11 +41,10 @@ export default function GameDetails({
   useEffect(
     function () {
       async function getGameDetails() {
-        console.log('Retrieving game details ' + apiUrl + selectedId);
         setIsLoading(true);
         const res = await fetch(apiUrl + selectedId);
         const data = await res.json();
-        console.log(data);
+
         setGame(data);
         setIsLoading(false);
       }
@@ -97,6 +96,7 @@ export default function GameDetails({
     onAddOwned(newOwnedGame);
     onCloseGame();
   }
+
   function handleAddWant() {
     const newWantGame = {
       metacritic: Number(metacritic),

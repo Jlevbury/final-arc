@@ -21,13 +21,10 @@ import {
   Spacing,
   Div,
 } from '..';
-
-// const currentUrl = '/api/gamecollection/rawgkey';
-// const urlPrefix =
-//   window.location.hostname === 'localhost'
-//     ? 'http://localhost:3001'
-//     : window.location.hostname;
-//const KEY = import.meta.env.VITE_RAWG_KEY;
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_GAME } from '../../utils/mutations';
+import { QUERY_GAMES } from '../../utils/queries';
+import { useParams } from 'react-router-dom';
 
 export const average = arr =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -48,6 +45,17 @@ export default function GameCollection() {
     selectedPlatform
     //KEY
   );
+  const { username: userParam } = useParams();
+
+  const gameData = useQuery(QUERY_GAMES, {
+    variables: { username: loggedInUser.username },
+  });
+  const ownedGames = gameData?.games || [];
+
+  console.log('collectiondbinfo', gameData);
+  console.log('owned games', ownedGames);
+
+  const [addGame] = useMutation(ADD_GAME);
 
   function handleSelectGame(id) {
     setSelectedId(selectedId => (id === selectedId ? null : id));
@@ -57,9 +65,27 @@ export default function GameCollection() {
     setSelectedId(null);
   }
 
-  function handleAddOwned(game) {
-    setOwned(owned => [...owned, game]);
-  }
+  const handleAddOwned = async game => {
+    console.log('handle owned', game);
+    const rawgId = game.id.toString();
+    const name = game.name;
+    console.log(rawgId, name);
+
+    try {
+      const mutationResult = await addGame({
+        variables: {
+          name,
+          rawgId,
+        },
+      });
+
+      // Handle success or update state accordingly
+      console.log('Mutation result:', mutationResult);
+    } catch (error) {
+      console.error('Error adding game:', error);
+      // Handle error if necessary
+    }
+  };
 
   function handleAddWant(game) {
     setWant(want => [...want, game]);
@@ -140,6 +166,7 @@ export default function GameCollection() {
               <Box>
                 <OwnedSummary owned={owned} />
                 <OwnedGameList
+                  ownedGames={ownedGames}
                   owned={owned}
                   onDeleteGame={handleDeleteOwned}
                   onSelectGame={handleSelectGame}

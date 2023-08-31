@@ -11,10 +11,9 @@ export default function useLocalStorageState(initialState, key) {
 
   useEffect(
     function () {
-      console.log(value[0]);
       //localStorage.setItem(key, JSON.stringify(value));
       const singleGame = value[0];
-      console.log(value[0]?.id);
+
       const { data } = addGame({
         variables: {
           rawgId: value.id,
@@ -23,7 +22,6 @@ export default function useLocalStorageState(initialState, key) {
           rating: value.userRating,
         },
       });
-      console.log(data);
     },
     [value, key, addGame]
   );
