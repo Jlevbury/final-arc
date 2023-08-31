@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 
 const urlPrefix =
-  window.location.hostname === 'localhost'
-     ? 'http://localhost:3001'
-     : window.location.hostname;
+  window.location.hostname === 'localhost' ? 'http://localhost:3001' : '';
 const searchUrl = '/api/searchGames/';
 const apiUrl = urlPrefix + searchUrl;
 
-function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
+function useGames(query, callback, selectedGenre, selectedPlatform) {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -62,7 +60,7 @@ function useGames(query, callback, selectedGenre, selectedPlatform, KEY) {
     [query, selectedGenre, selectedPlatform]
   );
 
-  return { games, isLoading, error, KEY };
+  return { games, isLoading, error };
 }
 
 export default useGames;

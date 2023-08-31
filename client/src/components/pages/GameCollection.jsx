@@ -1,213 +1,197 @@
 // import { Icon } from "@iconify/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 // import axios from 'axios';
-import { useLocalStorageState, useGames } from "../hooks/";
+import { useLocalStorageState, useGames } from '../hooks/';
 
 import {
-	GameList,
-	GameDetails,
-	OwnedSummary,
-	OwnedGameList,
-	WantedSummary,
-	WantedGameList,
-	ErrorMessage,
-	Loader,
-	NumResults,
-	Search,
-	Main,
-	Box,
-	Filter,
-	Header,
-	Spacing,
-	Div,
-} from "..";
+  GameList,
+  GameDetails,
+  OwnedSummary,
+  OwnedGameList,
+  WantedSummary,
+  WantedGameList,
+  ErrorMessage,
+  Loader,
+  NumResults,
+  Search,
+  Main,
+  Box,
+  Filter,
+  Header,
+  Spacing,
+  Div,
+} from '..';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_GAME } from '../../utils/mutations';
+import { QUERY_GAMES } from '../../utils/queries';
+import { useParams } from 'react-router-dom';
 
-// const currentUrl = '/api/gamecollection/rawgkey';
-// const urlPrefix =
-//   window.location.hostname === 'localhost'
-//     ? 'http://localhost:3001'
-//     : window.location.hostname;
-const KEY = import.meta.env.VITE_RAWG_KEY;
-
-export const average = (arr) =>
-	arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+export const average = arr =>
+  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function GameCollection() {
-	const [query, setQuery] = useState("");
-	const [selectedId, setSelectedId] = useState(null);
-	const [owned, setOwned] = useLocalStorageState([], "owned");
-	const [selectedGenre, setSelectedGenre] = useState("");
-	const [selectedPlatform, setSelectedPlatform] = useState("");
-	const [data, setData] = useState(null);
-	const [want, setWant] = useLocalStorageState([], "want");
+  const [query, setQuery] = useState('fallout');
+  const [selectedId, setSelectedId] = useState(null);
+  const [owned, setOwned] = useLocalStorageState([], 'owned');
+  const [selectedGenre, setSelectedGenre] = useState('');
+  const [selectedPlatform, setSelectedPlatform] = useState('');
+  const [data, setData] = useState(null);
+  const [want, setWant] = useLocalStorageState([], 'want');
 
-	const { games, error, isLoading } = useGames(
-		query,
-		handleCloseGame,
-		selectedGenre,
-		selectedPlatform,
-		KEY
-	);
+  const { games, error, isLoading } = useGames(
+    query,
+    handleCloseGame,
+    selectedGenre,
+    selectedPlatform
+    //KEY
+  );
+  const { username: userParam } = useParams();
 
-	//   useEffect(() => {
-	//     axios
-	//       .get(urlPrefix + currentUrl)
-	//       .then(function (response) {
-	//         KEY = response.data;
-	//         console.log('KEY: ' + KEY);
-	//         setData('');
-	//       })
-	//       .catch(function (error) {
-	//         console.error('Error ' + error);
-	//       });
-	//   }, []);
+  const gameData = useQuery(QUERY_GAMES, {
+    variables: { username: loggedInUser.username },
+  });
+  const ownedGames = gameData?.games || [];
 
-	function handleSelectGame(id) {
-		setSelectedId((selectedId) => (id === selectedId ? null : id));
-	}
+  console.log('collectiondbinfo', gameData);
+  console.log('owned games', ownedGames);
 
-	function handleCloseGame() {
-		setSelectedId(null);
-	}
+  const [addGame] = useMutation(ADD_GAME);
 
-	function handleAddOwned(game) {
-		setOwned((owned) => [...owned, game]);
-	}
+  function handleSelectGame(id) {
+    setSelectedId(selectedId => (id === selectedId ? null : id));
+  }
 
-	function handleAddWant(game) {
-		setWant((want) => [...want, game]);
-	}
+  function handleCloseGame() {
+    setSelectedId(null);
+  }
 
-	function handleDeleteOwned(id) {
-		setOwned((owned) => owned.filter((game) => game.id !== id));
-	}
-	function handleDeleteWant(id) {
-		setWant((want) => want.filter((game) => game.id !== id));
-	}
+  const handleAddOwned = async game => {
+    console.log('handle owned', game);
+    const rawgId = game.id.toString();
+    const name = game.name;
+    console.log(rawgId, name);
 
-	//   const params = useParams();
-	//   pageTitle('Game collection');
-	//   useEffect(() => {
-	//     window.scrollTo(0, 0);
-	//   }, []);
+    try {
+      const mutationResult = await addGame({
+        variables: {
+          name,
+          rawgId,
+        },
+      });
 
-	//   if (data === null) {
-	//     return <Loader />;
-	//   }
-	return (
-		<>
-			<Header />
-			<Spacing
-				lg='100'
-				md='100'
-			/>
-			<Div className='container'>
-				<Div className='row align-items-center'>
-					<Div className='cs-radius_15 cs-shine_hover_1'>
-						<img
-							src='/image/SVG/rawgLink.svg'
-							alt='Game Collection'
-							className='w-100'
-						/>
-					</Div>
-					<hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
-				</Div>
-				<Div className='col-lg-6 offset-xl-1'>
-					<Spacing
-						lg='45'
-						md='45'
-					/>
+      // Handle success or update state accordingly
+      console.log('Mutation result:', mutationResult);
+    } catch (error) {
+      console.error('Error adding game:', error);
+      // Handle error if necessary
+    }
+  };
 
-					<Div className='cs-section_heading cs-style1'>
-						{/* Search bar */}
+  function handleAddWant(game) {
+    setWant(want => [...want, game]);
+  }
 
-						<Search
-							query={query}
-							setQuery={setQuery}
-							games={games}
-						/>
-						<NumResults games={games} />
+  function handleDeleteOwned(id) {
+    setOwned(owned => owned.filter(game => game.id !== id));
+  }
+  function handleDeleteWant(id) {
+    setWant(want => want.filter(game => game.id !== id));
+  }
 
-						<Spacing
-							lg='15'
-							md='15'
-						/>
-						<Div
-							className='container'
-							sx={{ display: "flex", flexDirection: "row" }}
-						>
-							<Filter
-								sx={{ flexGrow: 1 }}
-								setSelectFilterQuery={setSelectedGenre}
-								fetchTerm={"genres"}
-								KEY={KEY}
-							/>
-							<Filter
-								sx={{ flexGrow: 1 }}
-								setSelectFilterQuery={setSelectedPlatform}
-								fetchTerm={"platforms"}
-								KEY={KEY}
-							/>
-						</Div>
-						<Div className='cs-height_5 cs-height_lg_5' />
-						<Div className='cs-separator cs-accent_bg' />
+  return (
+    <>
+      <Header />
+      <Spacing lg='100' md='100' />
+      <Div className='container'>
+        <Div className='row align-items-center'>
+          <Div className='cs-radius_15 cs-shine_hover_1'>
+            <img
+              src='/image/SVG/rawgLink.svg'
+              alt='Game Collection'
+              className='w-100'
+            />
+          </Div>
+          <hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100' />
+        </Div>
+        <Div className='col-lg-6 offset-xl-1'>
+          <Spacing lg='45' md='45' />
 
-						<Main>
-							<Box>
-								{isLoading && <Loader />}
-								{!isLoading && !error && (
-									<GameList
-										games={games}
-										onSelectGame={handleSelectGame}
-									/>
-								)}
-								{error && <ErrorMessage message={error} />}
-							</Box>
-							<Div className='cs-height_25 cs-height_lg_20' />
-							<p className='cs-m0'>OTHER CONTENT RELATED TO THE collection</p>
-							<Box>
-								{selectedId ? (
-									<GameDetails
-										selectedId={selectedId}
-										onCloseGame={handleCloseGame}
-										onAddOwned={handleAddOwned}
-										onAddWant={handleAddWant}
-										owned={owned}
-										KEY={KEY}
-									/>
-								) : (
-									<>
-										<OwnedSummary owned={owned} />
-										<OwnedGameList
-											owned={owned}
-											onDeleteGame={handleDeleteOwned}
-											onSelectGame={handleSelectGame}
-										/>
-									</>
-								)}
-							</Box>
-							<Box>
-								<WantedSummary want={want} />
-								<WantedGameList
-									want={want}
-									onDeleteGame={handleDeleteWant}
-									onSelectGame={handleSelectGame}
-								/>
-							</Box>
-						</Main>
+          <Div className='cs-section_heading cs-style1'>
+            {/* Search bar */}
 
-						<Div className='cs-height_45 cs-height_lg_30' />
-					</Div>
-				</Div>
-			</Div>
-			<Spacing
-				lg='150'
-				md='80'
-			/>
-			{/* <Div className='container'>
+            <Search query={query} setQuery={setQuery} games={games} />
+            <NumResults games={games} />
+
+            <Spacing lg='15' md='15' />
+            <Div
+              className='container'
+              sx={{ display: 'flex', flexDirection: 'row' }}>
+              <Filter
+                sx={{ flexGrow: 1 }}
+                setSelectFilterQuery={setSelectedGenre}
+                fetchTerm={'genres'}
+                //KEY={KEY}
+              />
+              <Filter
+                sx={{ flexGrow: 1 }}
+                setSelectFilterQuery={setSelectedPlatform}
+                fetchTerm={'platforms'}
+                //KEY={KEY}
+              />
+            </Div>
+            <Div className='cs-height_5 cs-height_lg_5' />
+            <Div className='cs-separator cs-accent_bg' />
+
+            <Main>
+              <Box>
+                {isLoading && <Loader />}
+                {!isLoading && !error && (
+                  <GameList games={games} onSelectGame={handleSelectGame} />
+                )}
+                {error && <ErrorMessage message={error} />}
+              </Box>
+              <Box>
+                {selectedId && (
+                  <GameDetails
+                    selectedId={selectedId}
+                    onCloseGame={handleCloseGame}
+                    onAddOwned={handleAddOwned}
+                    onAddWant={handleAddWant}
+                    owned={owned}
+                    //KEY={KEY}
+                  />
+                )}
+              </Box>
+              <br />
+              <Box>
+                <OwnedSummary owned={owned} />
+                <OwnedGameList
+                  ownedGames={ownedGames}
+                  owned={owned}
+                  onDeleteGame={handleDeleteOwned}
+                  onSelectGame={handleSelectGame}
+                />
+              </Box>
+              <br />
+              <Box>
+                <WantedSummary want={want} />
+                <WantedGameList
+                  want={want}
+                  onDeleteGame={handleDeleteWant}
+                  onSelectGame={handleSelectGame}
+                />
+              </Box>
+            </Main>
+
+            <Div className='cs-height_45 cs-height_lg_30' />
+          </Div>
+        </Div>
+      </Div>
+      <Spacing lg='150' md='80' />
+      {/* <Div className='container'>
 				<p className='cs-m0'>OTHER CONTENT RELATED TO THE EMULATOR</p>
 				<Div className='cs-height_45 cs-height_lg_30' />
 			</Div> */}
-		</>
-	);
+    </>
+  );
 }
