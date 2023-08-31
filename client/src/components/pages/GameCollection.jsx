@@ -60,7 +60,6 @@ export default function GameCollection() {
   }
 
   const handleAddOwned = async game => {
-    console.log(game);
     const rawgId = game.id.toString();
     const name = game.name;
     const image = game.background_image;

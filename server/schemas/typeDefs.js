@@ -35,9 +35,7 @@ const typeDefs = `
     removeGame(_id: String!): User
     removeUser(_id: String!): User
 
-    addGameDEV(_id: String!, rawgId: String!, name: String!, image: String, rating: Float): User
-    removeGameDEV(_id: String!, userId: String!): User
-    removeUserDEV(_id: String!): User
+  
   }
 `;
 

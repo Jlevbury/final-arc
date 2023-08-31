@@ -3,12 +3,6 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    // me: async (parent, args, context) => {
-    //     const userData = await User.findOne({})
-    //     .select('-__v -password')
-    //     .populate('games');
-    //     return userData;
-    // },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
@@ -50,27 +44,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addGameDEV: async (
-      parent,
-      { _id, rawgId, name, image, rating },
-      context
-    ) => {
-      return User.findOneAndUpdate(
-        { _id: userId },
-        { $addToSet: { games: { rawgId, name, image, rating } } },
-        { new: true, runValidators: true }
-      );
-    },
-    removeGameDEV: async (parent, { _id, userId }, context) => {
-      return User.findOneAndUpdate(
-        { _id: userId },
-        { $pull: { games: { _id: _id } } },
-        { new: true }
-      );
-    },
-    removeUserDEV: async (parent, { _id }, context) => {
-      return User.findOneAndDelete({ _id: _id });
-    },
+
     addGame: async (parent, { rawgId, name, image, rating }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
