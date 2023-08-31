@@ -21,7 +21,6 @@ function minify(source){
     const ast = UglifyJS.parse(source);
     return UglifyJS.minify(ast).code;
 }
-console.log('minifying');
+
 fs.writeFileSync('../emulator.min.css', uglifycss.processString(fs.readFileSync('../emulator.css', 'utf8')));
 fs.writeFileSync('../emulator.min.js', minify(code));
-console.log('done!');
