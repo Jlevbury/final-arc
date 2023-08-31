@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
+import Spacing from "../Spacing";
 
 export default function SignIn() {
 	const [formState, setFormState] = useState({ email: "", password: "" });
@@ -67,7 +68,12 @@ export default function SignIn() {
 						<div className='mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12'>
 							<form onSubmit={handleFormSubmit}>
 								{/* <!--Sign in section--> */}
+								<div className='flex flex-row items-center justify-center lg:justify-start'>
+									<p className='mb-0 mr-4 text-lg justify-center'>Sign In !</p>
+								</div>
 
+								{/* <!-- Separator between social media sign in and email/password sign in --> */}
+								<div className='my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300'></div>
 								<input
 									placeholder='Your username'
 									name='username'
@@ -75,7 +81,10 @@ export default function SignIn() {
 									value={formState.name}
 									onChange={handleChange}
 								/>
-								<br />
+								<Spacing
+									lg='15'
+									md='30'
+								/>
 								{/* <!-- Email input --> */}
 								<input
 									placeholder='Your email'
@@ -84,7 +93,10 @@ export default function SignIn() {
 									value={formState.name}
 									onChange={handleChange}
 								/>
-								<br />
+								<Spacing
+									lg='15'
+									md='30'
+								/>
 								{/* <!--Password input--> */}
 								<input
 									placeholder='Password'
