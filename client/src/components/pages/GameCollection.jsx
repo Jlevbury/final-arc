@@ -23,7 +23,7 @@ import {
 } from '..';
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_GAME, REMOVE_GAME } from '../../utils/mutations';
-import { QUERY_GAMES, QUERY_USER } from '../../utils/queries';
+import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
 
 export const average = arr =>
@@ -44,13 +44,11 @@ export default function GameCollection() {
     selectedPlatform
     //KEY
   );
-  const { username } = useParams();
 
-  const { loading, data } = useQuery(QUERY_USER, {
-    variables: { username: 'test' },
-  });
+  const { loading, data } = useQuery(QUERY_ME);
+  console.log(data);
 
-  const ownedGames = data?.user?.games || [];
+  const ownedGames = data?.me?.games || [];
 
   const [addGame] = useMutation(ADD_GAME);
 
