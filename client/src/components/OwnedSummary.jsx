@@ -6,7 +6,7 @@ export default function OwnedSummary({ ownedGames }) {
 
   return (
     <div className='summary'>
-      <h2>Games you own</h2>
+      <h1>Games you own</h1>
       {ownedGames.length > 0 ? (
         <>
           <div>

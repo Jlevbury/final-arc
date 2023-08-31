@@ -167,7 +167,6 @@ export default function GameCollection() {
                 />
               </Box> */}
             </Main>
-            �
             <Div className='cs-height_45 cs-height_lg_30' />
           </Div>
         </Div>
