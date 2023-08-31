@@ -43,7 +43,7 @@ const Hero = () => {
 					>
 						<Typewriter
 							options={{
-								strings: ["Play ...", "Collect..", "Something Else.."],
+								strings: ["Play..", "Collect..", "Explore.."],
 								autoStart: true,
 								loop: true,
 								delay: 150,
