@@ -143,11 +143,13 @@ export default function GameDetails({
                   <h1>{name}</h1>
                   <br />
                   <p>Released {released}</p>
-                  <p>Genres</p>
-                  <p>
-                    <span>⭐</span>
-                    {metacritic} Metacritic rating
-                  </p>
+                  <br />
+                  {metacritic && (
+                    <p>
+                      <span>⭐</span>
+                      {metacritic} Metacritic rating
+                    </p>
+                  )}
                 </div>
               </header>
               <div className='rating'>

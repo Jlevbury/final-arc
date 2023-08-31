@@ -8,6 +8,7 @@ export default function useLocalStorageState(initialState, key) {
     return storedValue ? JSON.parse(storedValue) : initialState;
   });
   const [addGame, { error, data }] = useMutation(ADD_GAME);
+
   useEffect(
     function () {
       console.log(value[0]);
@@ -15,11 +16,16 @@ export default function useLocalStorageState(initialState, key) {
       const singleGame = value[0];
       console.log(value[0]?.id);
       const { data } = addGame({
-        variables: { rawgId: value.id, name: value.name, image: value.background_image, rating: value.userRating },
+        variables: {
+          rawgId: value.id,
+          name: value.name,
+          image: value.background_image,
+          rating: value.userRating,
+        },
       });
       console.log(data);
-  },
-    [value, key]
+    },
+    [value, key, addGame]
   );
 
   return [value, setValue];

@@ -124,10 +124,8 @@ export default function GameCollection() {
                 )}
                 {error && <ErrorMessage message={error} />}
               </Box>
-              <Div className='cs-height_25 cs-height_lg_20' />
-              <p className='cs-m0'>OTHER CONTENT RELATED TO THE collection</p>
               <Box>
-                {selectedId ? (
+                {selectedId && (
                   <GameDetails
                     selectedId={selectedId}
                     onCloseGame={handleCloseGame}
@@ -136,17 +134,18 @@ export default function GameCollection() {
                     owned={owned}
                     //KEY={KEY}
                   />
-                ) : (
-                  <>
-                    <OwnedSummary owned={owned} />
-                    <OwnedGameList
-                      owned={owned}
-                      onDeleteGame={handleDeleteOwned}
-                      onSelectGame={handleSelectGame}
-                    />
-                  </>
                 )}
               </Box>
+              <br />
+              <Box>
+                <OwnedSummary owned={owned} />
+                <OwnedGameList
+                  owned={owned}
+                  onDeleteGame={handleDeleteOwned}
+                  onSelectGame={handleSelectGame}
+                />
+              </Box>
+              <br />
               <Box>
                 <WantedSummary want={want} />
                 <WantedGameList
