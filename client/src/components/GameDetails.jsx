@@ -154,9 +154,11 @@ export default function GameDetails({
                       <p>You own this game</p>
                     ) : (
                       <>
-                        <button className='btn-add' onClick={handleAddOwned}>
-                          + Add to Owned
-                        </button>
+                        {userRating > 0 && (
+                          <button className='btn-add' onClick={handleAddOwned}>
+                            + Add to Owned
+                          </button>
+                        )}
                       </>
                     )}
                   </>

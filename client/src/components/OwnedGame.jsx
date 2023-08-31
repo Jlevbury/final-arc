@@ -23,7 +23,6 @@ export default function OwnedGame({ game, onDeleteGame, onSelectGame }) {
       <img src={game.image} alt={`${game.name} poster`} />
       <h3>{game.name}</h3>
       <div>
-        <p>Metacritic Rating</p>
         <p>
           <span>⭐️</span>
           <span>{game.rating}</span> Your Rating
