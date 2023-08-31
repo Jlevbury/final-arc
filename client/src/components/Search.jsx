@@ -31,7 +31,7 @@ export default function Search({ query, setQuery, games }) {
 			openOnFocus
 			renderInput={(params) => (
 				<TextField
-					sx={{ backgroundColor: "#6CA6D9", opacity: 0.8 }}
+					sx={{ backgroundColor: "#6CA6D9", color: "#000000", opacity: 0.8 }}
 					{...params}
 					label='Search for a game'
 					variant='outlined'
