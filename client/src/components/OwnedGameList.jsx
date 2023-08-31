@@ -6,7 +6,6 @@ export default function OwnedGameList({
   onSelectGame,
   ownedGames,
 }) {
-  console.log('owned', ownedGames);
   return (
     <ul className='list list-movies'>
       {ownedGames.map(game => (

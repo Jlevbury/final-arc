@@ -36,7 +36,7 @@ app.get('/api/getFilter/:query', async (req, res) => {
 app.get('/api/searchGames/:query', async (req, res) => {
   try {
     let query = req.params.query;
-    console.log(query);
+
     const request = await fetch(
       `https://api.rawg.io/api/games?key=${KEY}${query}`
     );
@@ -53,7 +53,7 @@ app.get('/api/searchGames/:query', async (req, res) => {
 app.get('/api/getGameInfo/:query', async (req, res) => {
   try {
     const query = req.params.query;
-    console.log(query);
+
     const request = await fetch(
       `https://api.rawg.io/api/games/${query}?key=${KEY}`
     );

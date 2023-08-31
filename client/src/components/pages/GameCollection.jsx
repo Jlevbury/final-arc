@@ -1,7 +1,7 @@
 // import { Icon } from "@iconify/react";
 import { useState } from 'react';
 // import axios from 'axios';
-import { useLocalStorageState, useGames } from '../hooks/';
+import { useGames } from '../hooks/';
 
 import {
   GameList,
@@ -32,10 +32,10 @@ export const average = arr =>
 export default function GameCollection() {
   const [query, setQuery] = useState('fallout');
   const [selectedId, setSelectedId] = useState(null);
-  const [owned, setOwned] = useLocalStorageState([], 'owned');
+  // const [owned, setOwned] = useLocalStorageState([], 'owned');
   const [selectedGenre, setSelectedGenre] = useState('');
   const [selectedPlatform, setSelectedPlatform] = useState('');
-  const [want, setWant] = useLocalStorageState([], 'want');
+  // const [want, setWant] = useLocalStorageState([], 'want');
 
   const { games, error, isLoading } = useGames(
     query,
@@ -46,7 +46,6 @@ export default function GameCollection() {
   );
 
   const { loading, data } = useQuery(QUERY_ME);
-  console.log(data);
 
   const ownedGames = data?.me?.games || [];
 
@@ -61,7 +60,6 @@ export default function GameCollection() {
   }
 
   const handleAddOwned = async game => {
-    console.log('handle owned', game);
     const rawgId = game.id.toString();
     const name = game.name;
     const image = game.background_image;
@@ -85,13 +83,13 @@ export default function GameCollection() {
     }
   };
 
-  function handleAddWant(game) {
-    setWant(want => [...want, game]);
-  }
+  // function handleAddWant(game) {
+  //   setWant(want => [...want, game]);
+  // }
 
-  function handleDeleteWant(id) {
-    setWant(want => want.filter(game => game.id !== id));
-  }
+  // function handleDeleteWant(id) {
+  //   setWant(want => want.filter(game => game.id !== id));
+  // }
 
   if (loading) return <Loader />;
 
@@ -115,10 +113,8 @@ export default function GameCollection() {
 
           <Div className='cs-section_heading cs-style1'>
             {/* Search bar */}
-
             <Search query={query} setQuery={setQuery} games={games} />
             <NumResults games={games} />
-
             <Spacing lg='15' md='15' />
             <Div
               className='container'
@@ -138,7 +134,6 @@ export default function GameCollection() {
             </Div>
             <Div className='cs-height_5 cs-height_lg_5' />
             <Div className='cs-separator cs-accent_bg' />
-
             <Main>
               <Box>
                 {isLoading && <Loader />}
@@ -153,32 +148,29 @@ export default function GameCollection() {
                     selectedId={selectedId}
                     onCloseGame={handleCloseGame}
                     onAddOwned={handleAddOwned}
-                    onAddWant={handleAddWant}
-                    owned={owned}
                     //KEY={KEY}
                   />
                 )}
               </Box>
               <br />
               <Box>
-                <OwnedSummary owned={owned} />
+                <OwnedSummary ownedGames={ownedGames} />
                 <OwnedGameList
                   ownedGames={ownedGames}
-                  owned={owned}
                   onSelectGame={handleSelectGame}
                 />
               </Box>
               <br />
-              <Box>
+              {/* <Box>
                 <WantedSummary want={want} />
                 <WantedGameList
                   want={want}
                   onDeleteGame={handleDeleteWant}
                   onSelectGame={handleSelectGame}
                 />
-              </Box>
+              </Box> */}
             </Main>
-
+            �
             <Div className='cs-height_45 cs-height_lg_30' />
           </Div>
         </Div>

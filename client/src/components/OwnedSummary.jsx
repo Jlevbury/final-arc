@@ -1,28 +1,20 @@
 import { average } from '../components/pages/GameCollection';
 
-export default function OwnedSummary({ owned }) {
-  const avgImdbRating = average(owned.map(game => game.metacritic));
-  const avgUserRating = average(owned.map(game => game.userRating));
+export default function OwnedSummary({ ownedGames }) {
+  const avgImdbRating = average(ownedGames.map(game => game.metacritic));
+  const avgUserRating = average(ownedGames.map(game => game.userRating));
 
   return (
     <div className='summary'>
       <h2>Games you own</h2>
-      {owned.length > 0 ? (
+      {ownedGames.length > 0 ? (
         <>
           <div>
             <p>
               <span>#️⃣</span>
-              <span>{owned.length} games</span>
+              <span>{ownedGames.length} games</span>
             </p>
-
-            <p>
-              <span>⭐️</span>
-              <span>{avgImdbRating.toFixed(2)}</span>
-            </p>
-            <p>
-              <span>🌟</span>
-              <span>{avgUserRating.toFixed(2)}</span>
-            </p>
+            <br />
           </div>
         </>
       ) : (
