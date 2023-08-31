@@ -11,46 +11,9 @@ export default function TeamPage() {
 		window.scrollTo(0, 0);
 	}, []);
 
-	const teamData = [
-		{
-			memberImage: "",
-			memberName: "Chase Chambers",
-			memberDesignation: "Backend Scaffolding",
-			memberSocial: {
-				linkedin: "/",
-				twitter: "/",
-				youtube: "/",
-				facebook: "/",
-			},
-		},
-		{
-			memberImage: "",
-			memberName: "James Levesque",
-			memberDesignation: "Front End UI/UX",
-			memberSocial: {
-				linkedin: "/",
-				twitter: "/",
-				youtube: "/",
-				facebook: "/",
-			},
-		},
-		{
-			memberImage: "",
-			memberName: "Austin Waller",
-			memberDesignation: "Backend Scaffolding",
-			memberSocial: {
-				linkedin: "/",
-				twitter: "/",
-				youtube: "/",
-				facebook: "/",
-			},
-		},
-	];
-
 	return (
 		<>
 			<Header />
-
 			<Spacing
 				lg='145'
 				md='80'
@@ -65,25 +28,74 @@ export default function TeamPage() {
 					lg='90'
 					md='45'
 				/>
-				<Div className='row'>
-					{teamData.map((item, index) => (
-						<Div
-							key={index}
-							className='col-lg-3 col-sm-6'
-						>
-							<Spacing
-								lg='80'
-								md='30'
+				<Div
+					className='row'
+					style={{ display: "flex", justifyContent: "space-between" }}
+				>
+					<div className='block max-w-[18rem] rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700'>
+						<div className='relative overflow-hidden bg-cover bg-no-repeat'>
+							<img
+								className='rounded-t-lg'
+								src='/image/paul-w.jpg'
+								alt=''
 							/>
-						</Div>
-					))}
+						</div>
+						<div className='p-6'>
+							<h1>Austin Waller</h1>
+							<h2>Backend visionary-</h2>
+							<p className='text-base text-neutral-600 dark:text-neutral-200'>
+								Database scaffolding and development, Apollo & Graphql
+								specialist
+							</p>
+						</div>
+					</div>
+
+					<div className='block max-w-[18rem] rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700'>
+						<div className='relative overflow-hidden bg-cover bg-no-repeat'>
+							<img
+								className='rounded-t-lg'
+								src='/image/steve-carrell.jpg'
+								alt=''
+							/>
+						</div>
+						<div className='p-6'>
+							<h1>Chase Chambers</h1>
+							<h2>Backend Architect</h2>
+							<p className='text-base text-neutral-600 dark:text-neutral-200'>
+								React component and API interface development, bridging the gap
+								between both worlds
+							</p>
+						</div>
+					</div>
+
+					<div className='block max-w-[18rem] rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700'>
+						<div className='relative overflow-hidden bg-cover bg-no-repeat'>
+							<img
+								className='rounded-t-lg'
+								src='/image/lebowski.jpg'
+								alt=''
+							/>
+						</div>
+						<div className='p-6'>
+							<h1>James Levesque</h1>
+							<h2>Frontend Artist</h2>
+							<p className='text-base text-neutral-600 dark:text-neutral-200'>
+								React component development, UI/UX implementation and asset
+								creation
+							</p>
+						</div>
+					</div>
 				</Div>
 				<Spacing
-					lg='70'
-					md='50'
+					lg='80'
+					md='30'
 				/>
-				<Div className='container'></Div>
 			</Div>
+			<Spacing
+				lg='70'
+				md='50'
+			/>
+			<Div className='container'></Div>
 		</>
 	);
 }
