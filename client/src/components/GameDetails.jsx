@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import useKey from './hooks/useKey';
 import { Loader, StarRating } from './';
 import { Navigate, useParams } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
@@ -19,7 +19,7 @@ export default function GameDetails({
   onAddWant,
   onAddOwned,
   want,
-  //KEY,
+  // KEY,
   owned,
 }) {
   const [game, setGame] = useState({});
@@ -33,25 +33,23 @@ export default function GameDetails({
   });
 
   const user = data?.me || data?.user || {};
-  // navigate to personal profile page if username is yours
+
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to='/gamecollection' />;
   }
 
-  useEffect(
-    function () {
-      async function getGameDetails() {
-        setIsLoading(true);
-        const res = await fetch(apiUrl + selectedId);
-        const data = await res.json();
+  useEffect(() => {
+    async function getGameDetails() {
+      setIsLoading(true);
+      const res = await fetch(apiUrl + selectedId);
+      const data = await res.json();
 
-        setGame(data);
-        setIsLoading(false);
-      }
-      getGameDetails();
-    },
-    [selectedId]
-  );
+      setGame(data);
+      setIsLoading(false);
+    }
+    getGameDetails();
+  }, [selectedId]);
+
   const isOwned = owned?.map(game => game.id).includes(selectedId);
   const isWanted = want?.map(game => game.id).includes(selectedId);
 
@@ -67,17 +65,14 @@ export default function GameDetails({
     website,
   } = game;
 
-  useEffect(
-    function () {
-      if (!name) return;
-      document.title = `Game | ${name}`;
+  useEffect(() => {
+    if (!name) return;
+    document.title = `Game | ${name}`;
 
-      return function () {
-        document.title = 'Final Arc';
-      };
-    },
-    [name]
-  );
+    return () => {
+      document.title = 'Final Arc';
+    };
+  }, [name]);
 
   useKey('Escape', onCloseGame);
 
@@ -137,13 +132,10 @@ export default function GameDetails({
                 <button className='btn-back' onClick={onCloseGame}>
                   &larr;
                 </button>
-                <img src={background_image} alt={`Poster of ${name}`}></img>
+                <img src={background_image} alt={`Poster of ${name}`} />
                 <div className='details-overview'>
-                  <br />
                   <h1>{name}</h1>
-                  <br />
                   <p>Released {released}</p>
-                  <br />
                   {metacritic && (
                     <p>
                       <span>⭐</span>
@@ -153,69 +145,39 @@ export default function GameDetails({
                 </div>
               </header>
               <div className='rating'>
-                <br />
                 {!user.username ? (
                   <h3>Please sign in to add games to your collection</h3>
                 ) : (
                   <>
-                    {/* <StarRating
-											size={32}
-											onSetRating={setUserRating}
-										/> */}
-                    <br />
-
-                    <>
-                      {!isOwned ? (
-                        <>
-                          <br />
-                          <button className='btn-add' onClick={handleAddOwned}>
-                            + Add to Owned
-                          </button>
-                        </>
-                      ) : (
-                        <p>You own this game</p>
-                      )}
-                      {!isWanted ? (
-                        <>
-                          <button className='btn-add' onClick={handleAddWant}>
-                            + Add to Want List
-                          </button>
-                        </>
-                      ) : (
-                        <p>This game is on your want list</p>
-                      )}
-                    </>
+                    <StarRating size={32} onSetRating={setUserRating} />
+                    {isOwned ? (
+                      <p>You own this game</p>
+                    ) : (
+                      <>
+                        <button className='btn-add' onClick={handleAddOwned}>
+                          + Add to Owned
+                        </button>
+                      </>
+                    )}
                   </>
                 )}
               </div>
-              <br />
               <p>{description_raw}</p>
-              <br />
-              <br />
               <a href={website} target='_blank' rel='noreferrer'>
                 Visit the site
               </a>
-              <br />
-              <br />
               <h3>Genres:</h3>
-              {genres?.map(genre => {
-                return <p key={genre.id}> {genre.name}</p>;
-              })}
+              {genres?.map(genre => (
+                <p key={genre.id}> {genre.name}</p>
+              ))}
               <h3>Platforms:</h3>
-              <br />
-              {platforms?.map(platform => {
-                {
-                  return (
-                    <p key={platform.platform.id}> {platform.platform.name}</p>
-                  );
-                }
-              })}
-              <br />
+              {platforms?.map(platform => (
+                <p key={platform.platform.id}> {platform.platform.name}</p>
+              ))}
               {esrb?.name && (
                 <>
                   <h3>ESRB Rating: </h3>
                   <p>{esrb?.name}</p>
-                  <br />
                 </>
               )}
             </Box>

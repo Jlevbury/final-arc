@@ -26,7 +26,7 @@ export default function OwnedGame({ game, onDeleteGame, onSelectGame }) {
         <p>Metacritic Rating</p>
         <p>
           <span>⭐️</span>
-          <span>{game.rating}</span>
+          <span>{game.rating}</span> Your Rating
         </p>
 
         <button

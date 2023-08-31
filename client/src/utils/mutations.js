@@ -25,7 +25,12 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_GAME = gql`
-  mutation addGame($rawgId: String!, $name: String!, $image: String, $rating: Float) {
+  mutation addGame(
+    $rawgId: String!
+    $name: String!
+    $image: String
+    $rating: Float
+  ) {
     addGame(rawgId: $rawgId, name: $name, image: $image, rating: $rating) {
       _id
       username
