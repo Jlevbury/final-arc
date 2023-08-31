@@ -83,18 +83,25 @@ export default function Header({ variant }) {
                       </DropDown>
                     </li>
                     {!user.username ? (
-                      <li>
-                        <NavLink
-                          to='/signup'
-                          onClick={() => setMobileToggle(false)}>
-                          Login / Register
-                        </NavLink>
-                      </li>
+                      <>
+                        <li>
+                          <NavLink
+                            to='/signup'
+                            onClick={() => setMobileToggle(false)}>
+                            Register
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to='/signin'
+                            onClick={() => setMobileToggle(false)}>
+                            Login
+                          </NavLink>
+                        </li>
+                      </>
                     ) : (
                       <li>
-                        <NavLink onClick={() => Auth.logout()}>
-                          Logout
-                        </NavLink>
+                        <NavLink onClick={() => Auth.logout()}>Logout</NavLink>
                       </li>
                     )}
                     <li className='menu-item-has-children'>

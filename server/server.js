@@ -18,17 +18,11 @@ const server = new ApolloServer({
   resolvers,
 });
 
-// app.get('/api/gamecollection/rawgkey', (req, res) => {
-//   res.json(process.env.VITE_RAWG_KEY);
-// });
-
 //same logic as what is in the filters.js file. Pass in genres or platforms in the :query
 app.get('/api/getFilter/:query', async (req, res) => {
   try {
     const query = req.params.query;
-    const request = await fetch(
-      `https://api.rawg.io/api/${query}?key=${KEY}`
-    );
+    const request = await fetch(`https://api.rawg.io/api/${query}?key=${KEY}`);
     if (!request.ok)
       throw new Error(`Something went wrong with fetching ${query}`);
     data = await request.json();
@@ -78,9 +72,12 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
-  app.use('/graphql', expressMiddleware(server, {
-    context: authMiddleware
-  }));
+  app.use(
+    '/graphql',
+    expressMiddleware(server, {
+      context: authMiddleware,
+    })
+  );
 
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -97,4 +94,4 @@ const startApolloServer = async () => {
   });
 };
 
-  startApolloServer();
+startApolloServer();
