@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import useKey from "../components/hooks/useKey";
-import { TextField, Autocomplete } from "@mui/material";
+import { TextField, Autocomplete, Paper } from "@mui/material";
 
 export default function Search({ query, setQuery, games }) {
 	const inputEl = useRef(null);
@@ -8,12 +8,12 @@ export default function Search({ query, setQuery, games }) {
 
 	useEffect(() => {
 		if (isOpen) {
-			inputEl.current.focus(); // Focus on the input when the Autocomplete opens
+			inputEl.current.focus();
 		}
 	}, [isOpen]);
 
 	useKey("Enter", function () {
-		setIsOpen((prevIsOpen) => !prevIsOpen); // Toggle isOpen when Enter key is pressed
+		setIsOpen((prevIsOpen) => !prevIsOpen);
 	});
 
 	return (
@@ -29,9 +29,12 @@ export default function Search({ query, setQuery, games }) {
 			onInputChange={(_, value) => setQuery(value)}
 			getOptionLabel={(games) => games.name}
 			openOnFocus
+			PaperComponent={({ children }) => (
+				<Paper style={{ background: "grey" }}>{children}</Paper>
+			)}
 			renderInput={(params) => (
 				<TextField
-					sx={{ backgroundColor: "#6CA6D9", opacity: 0.8 }}
+					style={{ backgroundColor: "#6CA6D9", color: "#000000", opacity: 0.8 }}
 					{...params}
 					label='Search for a game'
 					variant='outlined'

@@ -73,8 +73,11 @@
 	font-family: "modifi", sans-serif;
 	scroll-behavior: smooth;
 	color-scheme: normal;
-	color: #ffffff;
+	color: #f3ecec;
 	/* background-color: #434343; */
+}
+input {
+	color: black;
 }
 
 .App-header {

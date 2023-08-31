@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"; // Prefer destructuring when importing multiple exports
+import React, { useEffect } from "react";
 import { pageTitle } from "../../helper";
 import Div from "../Div";
 import Hero from "../Layout/Hero";
